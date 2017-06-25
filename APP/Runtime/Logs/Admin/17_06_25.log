@@ -1,94 +1,38 @@
-[ 2017-06-25T19:59:10+08:00 ] 127.0.0.1 /Admin
+[ 2017-06-25T23:39:41+08:00 ] 127.0.0.1 /Admin
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.024001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T19:59:13+08:00 ] 127.0.0.1 /Admin/Login/index.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T19:59:19+08:00 ] 127.0.0.1 /Admin/Login/sign.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-ERR: SQLSTATE[HY000] [1049] Unknown database 'vince'
-
-[ 2017-06-25T20:00:02+08:00 ] 127.0.0.1 /Admin/Login/sign.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0030s ]
-SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' AND `password` = 'b7a1b6d08af8f9fbc5c009889bb4b165' LIMIT 1   [ RunTime:0.0010s ]
-SQL: UPDATE `card_admin` SET `id`='1',`username`='admin',`nickname`='九幽',`avatar`='',`password`='b7a1b6d08af8f9fbc5c009889bb4b165',`phone`='0',`email`='jian34long@163.com',`status`='1',`regtime`='1497332555',`loginip`='127.0.0.1',`logintime`='1498392002' WHERE `id` = 1 [ RunTime:0.0010s ]
-SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
-SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
-NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
-NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
-SQL: INSERT INTO `card_log` (`time`,`ip`,`uid`,`logtext`) VALUES ('1498392002','127.0.0.1','admin','登录') [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:00:04+08:00 ] 127.0.0.1 /Admin/Index/index.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-NOTIC: [2048] Declaration of Admin\Model\NavModel::getTreeData() should be compatible with Common\Model\BaseModel::getTreeData($type = 'tree', $order = '', $name = 'name', $child = 'id', $parent = 'pid') D:\phpStudy\WWW\Code\APP\Admin\Model\NavModel.class.php 第 5 行.
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
 SQL: SHOW COLUMNS FROM `card_nav` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_nav` ORDER BY order_number is null,order_number,id  [ RunTime:0.0000s ]
+SQL: SELECT * FROM `card_nav` ORDER BY order_number,id is null,order_number,id  [ RunTime:0.0000s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
 INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-25T23:39:42+08:00 ] 127.0.0.1 /Admin/Index/Welcome.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
 INFO: [ view_filter ] --START--
 INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
 INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
@@ -96,150 +40,7 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
 
-[ 2017-06-25T20:00:04+08:00 ] 127.0.0.1 /Admin/Nav/index.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-NOTIC: [2048] Declaration of Admin\Model\NavModel::getTreeData() should be compatible with Common\Model\BaseModel::getTreeData($type = 'tree', $order = '', $name = 'name', $child = 'id', $parent = 'pid') D:\phpStudy\WWW\Code\APP\Admin\Model\NavModel.class.php 第 5 行.
-SQL: SHOW COLUMNS FROM `card_nav` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_nav` ORDER BY order_number is null,order_number,id  [ RunTime:0.0000s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
-
-[ 2017-06-25T20:00:11+08:00 ] 127.0.0.1 /Admin/Config/log.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
-SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
-NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\Code\APP\Admin\Controller\ConfigController.class.php 第 82 行.
-SQL: SELECT COUNT(*) AS tp_count FROM `card_log` LIMIT 1   [ RunTime:0.0000s ]
-SQL: SELECT * FROM `card_log` ORDER BY id desc LIMIT 0,14   [ RunTime:0.0000s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
-NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 56 行.
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
-
-[ 2017-06-25T20:00:15+08:00 ] 127.0.0.1 /Admin/Nav/index.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
-NOTIC: [2048] Declaration of Admin\Model\NavModel::getTreeData() should be compatible with Common\Model\BaseModel::getTreeData($type = 'tree', $order = '', $name = 'name', $child = 'id', $parent = 'pid') D:\phpStudy\WWW\Code\APP\Admin\Model\NavModel.class.php 第 5 行.
-SQL: SHOW COLUMNS FROM `card_nav` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_nav` ORDER BY order_number is null,order_number,id  [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:00:17+08:00 ] 127.0.0.1 /Admin/Config/index.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_config` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_config`  [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:00:29+08:00 ] 127.0.0.1 /Admin/Rule/admin_user_list.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
-SQL: SHOW COLUMNS FROM `card_auth_group_access` [ RunTime:0.0030s ]
-SQL: SELECT u.id,u.username,u.nickname,u.email,u.status,u.regtime,u.loginip,u.logintime,aga.group_id,ag.title FROM card_auth_group_access aga RIGHT JOIN card_admin u ON aga.uid=u.id LEFT JOIN card_auth_group ag ON aga.group_id=ag.id   [ RunTime:0.0010s ]
-SQL: SHOW COLUMNS FROM `card_auth_group` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_auth_group`  [ RunTime:0.0000s ]
-INFO: [ view_parse ] --START--
-NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Template.class.php 第 527 行.
-NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Template.class.php 第 527 行.
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
-
-[ 2017-06-25T20:00:30+08:00 ] 127.0.0.1 /Admin/Rule/group.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_auth_group` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_auth_group`  [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:00:32+08:00 ] 127.0.0.1 /Admin/Rule/admin_user_list.html
+[ 2017-06-25T23:39:44+08:00 ] 127.0.0.1 /Admin/Rule/admin_user_list.html
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
@@ -247,55 +48,61 @@ INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
 SQL: SHOW COLUMNS FROM `card_auth_group_access` [ RunTime:0.0020s ]
-SQL: SELECT u.id,u.username,u.nickname,u.email,u.status,u.regtime,u.loginip,u.logintime,aga.group_id,ag.title FROM card_auth_group_access aga RIGHT JOIN card_admin u ON aga.uid=u.id LEFT JOIN card_auth_group ag ON aga.group_id=ag.id   [ RunTime:0.0010s ]
+SQL: SELECT u.id,u.username,u.nickname,u.email,u.status,u.regtime,u.loginip,u.logintime,aga.group_id,ag.title FROM card_auth_group_access aga RIGHT JOIN card_admin u ON aga.uid=u.id LEFT JOIN card_auth_group ag ON aga.group_id=ag.id   [ RunTime:0.0000s ]
 SQL: SHOW COLUMNS FROM `card_auth_group` [ RunTime:0.0020s ]
 SQL: SELECT * FROM `card_auth_group`  [ RunTime:0.0000s ]
 INFO: [ view_parse ] --START--
-NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Template.class.php 第 527 行.
-NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Template.class.php 第 527 行.
+NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Template.class.php 第 527 行.
+NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Template.class.php 第 527 行.
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
 INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
 INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
 INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
 
-[ 2017-06-25T20:00:33+08:00 ] 127.0.0.1 /Admin/Rule/group.html
+[ 2017-06-25T23:39:45+08:00 ] 127.0.0.1 /Admin/Rule/empty_password/id/4/username/JIUYOU.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `card_admin` SET `password`='d41d8cd98f00b204e9800998ecf8427e',`regtime`='1498405185' WHERE `id` = 4 [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
+
+[ 2017-06-25T23:42:51+08:00 ] 127.0.0.1 /Admin
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
-SQL: SHOW COLUMNS FROM `card_auth_group` [ RunTime:0.0030s ]
-SQL: SELECT * FROM `card_auth_group`  [ RunTime:0.0000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
 INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
 INFO: [ view_filter ] --START--
 INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
 INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
 
-[ 2017-06-25T20:00:34+08:00 ] 127.0.0.1 /Admin/Rule/index.html
+[ 2017-06-25T23:42:54+08:00 ] 127.0.0.1 /Admin/Login/index.html
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
-SQL: SHOW COLUMNS FROM `card_auth_rule` [ RunTime:0.0030s ]
-SQL: SELECT * FROM `card_auth_rule` ORDER BY id is null,id  [ RunTime:0.0000s ]
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
@@ -303,62 +110,125 @@ INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
 INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
 INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
 INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
 
-[ 2017-06-25T20:03:27+08:00 ] 127.0.0.1 /Admin/Config/log.html
+[ 2017-06-25T23:42:59+08:00 ] 127.0.0.1 /Admin/Login/sign.html
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
-NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\Code\APP\Admin\Controller\ConfigController.class.php 第 82 行.
-SQL: SELECT COUNT(*) AS tp_count FROM `card_log` LIMIT 1   [ RunTime:0.0000s ]
-SQL: SELECT * FROM `card_log` ORDER BY id desc LIMIT 0,14   [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 56 行.
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' AND `password` = 'b7a1b6d08af8f9fbc5c009889bb4b165' LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `card_admin` SET `id`='1',`username`='admin',`nickname`='九幽',`avatar`='',`password`='b7a1b6d08af8f9fbc5c009889bb4b165',`phone`='0',`email`='jian34long@163.com',`status`='1',`regtime`='1497332555',`loginip`='127.0.0.1',`logintime`='1498405379' WHERE `id` = 1 [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
 
-[ 2017-06-25T20:03:28+08:00 ] 127.0.0.1 /Admin/Config/index.html
+[ 2017-06-25T23:43:08+08:00 ] 127.0.0.1 /Admin/Login/sign.html
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
 INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
-SQL: SHOW COLUMNS FROM `card_config` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_config`  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' AND `password` = 'b7a1b6d08af8f9fbc5c009889bb4b165' LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `card_admin` SET `id`='1',`username`='admin',`nickname`='九幽',`avatar`='',`password`='b7a1b6d08af8f9fbc5c009889bb4b165',`phone`='0',`email`='jian34long@163.com',`status`='1',`regtime`='1497332555',`loginip`='127.0.0.1',`logintime`='1498405388' WHERE `id` = 1 [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+
+[ 2017-06-25T23:43:20+08:00 ] 127.0.0.1 /Admin/Login/sign.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' AND `password` = 'b7a1b6d08af8f9fbc5c009889bb4b165' LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `card_admin` SET `id`='1',`username`='admin',`nickname`='九幽',`avatar`='',`password`='b7a1b6d08af8f9fbc5c009889bb4b165',`phone`='0',`email`='jian34long@163.com',`status`='1',`regtime`='1497332555',`loginip`='127.0.0.1',`logintime`='1498405400' WHERE `id` = 1 [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `card_admin` WHERE `username` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+
+[ 2017-06-25T23:43:42+08:00 ] 127.0.0.1 /Admin
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `card_nav` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `card_nav` ORDER BY order_number,id is null,order_number,id  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-25T23:43:42+08:00 ] 127.0.0.1 /Admin/Index/Welcome.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
 INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
 INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
 INFO: [ view_filter ] --START--
 INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
 INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
 
-[ 2017-06-25T20:03:30+08:00 ] 127.0.0.1 /Admin/Config/edit.html
+[ 2017-06-25T23:43:46+08:00 ] 127.0.0.1 /Admin/Nav/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `card_nav` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `card_nav` ORDER BY order_number is null,order_number,id  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-25T23:43:47+08:00 ] 127.0.0.1 /Admin/Config/index.html
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
@@ -366,49 +236,75 @@ INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
 SQL: SHOW COLUMNS FROM `card_config` [ RunTime:0.0020s ]
-NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
-NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
-SQL: UPDATE `card_config` SET `content`='我的网站',`optime`='1498392210' WHERE `configname` = 'cfg_name' [ RunTime:0.0000s ]
-SQL: UPDATE `card_config` SET `content`='内容管理系统',`optime`='1498392210' WHERE `configname` = 'cfg_keywords' [ RunTime:0.0000s ]
-SQL: UPDATE `card_config` SET `content`='这是基于Auth权限的管理系统',`optime`='1498392210' WHERE `configname` = '<cfg_description>' [ RunTime:0.0000s ]
-SQL: UPDATE `card_config` SET `content`='CopyRight © 2016 九幽IT 版权所有 粤ICP备16060013号-1',`optime`='1498392210' WHERE `configname` = 'cfg_powerby' [ RunTime:0.0010s ]
-SQL: UPDATE `card_config` SET `content`='22',`optime`='1498392210' WHERE `configname` = 'cfg_url' [ RunTime:0.0000s ]
-SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
-NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
-NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
-SQL: INSERT INTO `card_log` (`time`,`ip`,`uid`,`logtext`) VALUES ('1498392210','127.0.0.1','admin','系统配置更新') [ RunTime:0.0010s ]
-SQL: SELECT * FROM `card_config` ORDER BY id asc  [ RunTime:0.0000s ]
-NOTIC: [8] Use of undefined constant ture - assumed 'ture' D:\phpStudy\WWW\Code\APP\Admin\Model\ConfigModel.class.php 第 33 行.
+SQL: SELECT * FROM `card_config`  [ RunTime:0.0000s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
 INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\SVN\Code-Help.git\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 55 行.
+NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\SVN\Code-Help.git\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 55 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
 INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
 
-[ 2017-06-25T20:03:31+08:00 ] 127.0.0.1 /Admin/Config/index.html
+[ 2017-06-25T23:43:47+08:00 ] 127.0.0.1 /Admin/Config/log.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\SVN\Code-Help.git\APP\Admin\Controller\ConfigController.class.php 第 82 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `card_log` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `card_log` ORDER BY id desc LIMIT 0,14   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\SVN\Code-Help.git\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 64 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-06-25T23:44:35+08:00 ] 127.0.0.1 /Admin/Config/alldel.html?id=%2C37
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0010s ]
+SQL: DELETE FROM `card_log` WHERE `id` = 37 [ RunTime:0.0000s ]
+
+[ 2017-06-25T23:44:36+08:00 ] 127.0.0.1 /Admin/Config/log
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_config` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_config`  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\SVN\Code-Help.git\APP\Admin\Controller\ConfigController.class.php 第 82 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `card_log` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `card_log` ORDER BY id desc LIMIT 0,14   [ RunTime:0.0010s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\SVN\Code-Help.git\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 64 行.
 INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
 INFO: [ view_filter ] --START--
 INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
 INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
@@ -416,22 +312,61 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
 
-[ 2017-06-25T20:03:32+08:00 ] 127.0.0.1 /Admin/Config/log.html
+[ 2017-06-25T23:44:40+08:00 ] 127.0.0.1 /Admin/Rule/admin_user_list.html
 INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `card_auth_group_access` [ RunTime:0.0010s ]
+SQL: SELECT u.id,u.username,u.nickname,u.email,u.status,u.regtime,u.loginip,u.logintime,aga.group_id,ag.title FROM card_auth_group_access aga RIGHT JOIN card_admin u ON aga.uid=u.id LEFT JOIN card_auth_group ag ON aga.group_id=ag.id   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `card_auth_group` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `card_auth_group`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Template.class.php 第 527 行.
+NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Template.class.php 第 527 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-06-25T23:44:42+08:00 ] 127.0.0.1 /Admin/Rule/empty_password/id/4/username/JIUYOU.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `card_admin` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\SVN\Code-Help.git\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `card_admin` SET `password`='d41d8cd98f00b204e9800998ecf8427e',`regtime`='1498405482' WHERE `id` = 4 [ RunTime:0.0000s ]
 SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
-NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\Code\APP\Admin\Controller\ConfigController.class.php 第 82 行.
+
+[ 2017-06-25T23:44:44+08:00 ] 127.0.0.1 /Admin/Config/log.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\SVN\Code-Help.git\APP\Admin\Controller\ConfigController.class.php 第 82 行.
 SQL: SELECT COUNT(*) AS tp_count FROM `card_log` LIMIT 1   [ RunTime:0.0010s ]
 SQL: SELECT * FROM `card_log` ORDER BY id desc LIMIT 0,14   [ RunTime:0.0000s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
 INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 56 行.
+NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\SVN\Code-Help.git\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 64 行.
 INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
 INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
 INFO: [ view_filter ] --START--
@@ -441,145 +376,28 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
 
-[ 2017-06-25T20:03:37+08:00 ] 127.0.0.1 /Admin/Config/index.html
+[ 2017-06-25T23:44:45+08:00 ] 127.0.0.1 /Admin/Config/log.html
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
 INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_config` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_config`  [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
-NOTIC: [8] Use of undefined constant bool - assumed 'bool' D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\fa0a8cdbfb7a536d4e1a016e7fef28fe.php 第 47 行.
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:03:38+08:00 ] 127.0.0.1 /Admin/Nav/index.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-NOTIC: [2048] Declaration of Admin\Model\NavModel::getTreeData() should be compatible with Common\Model\BaseModel::getTreeData($type = 'tree', $order = '', $name = 'name', $child = 'id', $parent = 'pid') D:\phpStudy\WWW\Code\APP\Admin\Model\NavModel.class.php 第 5 行.
-SQL: SHOW COLUMNS FROM `card_nav` [ RunTime:0.0030s ]
-SQL: SELECT * FROM `card_nav` ORDER BY order_number is null,order_number,id  [ RunTime:0.0000s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:03:41+08:00 ] 127.0.0.1 /Admin/Config/log.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_begin ] --START--
 INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
 SQL: SHOW COLUMNS FROM `card_log` [ RunTime:0.0020s ]
-NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\Code\APP\Admin\Controller\ConfigController.class.php 第 82 行.
-SQL: SELECT COUNT(*) AS tp_count FROM `card_log` LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: where D:\phpStudy\WWW\SVN\Code-Help.git\APP\Admin\Controller\ConfigController.class.php 第 82 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `card_log` LIMIT 1   [ RunTime:0.0010s ]
 SQL: SELECT * FROM `card_log` ORDER BY id desc LIMIT 0,14   [ RunTime:0.0000s ]
 INFO: [ view_parse ] --START--
 INFO: [ template_filter ] --START--
 INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
 INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\Code\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 56 行.
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:03:44+08:00 ] 127.0.0.1 /Admin/Rule/index.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
-SQL: SHOW COLUMNS FROM `card_auth_rule` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_auth_rule` ORDER BY id is null,id  [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:03:46+08:00 ] 127.0.0.1 /Admin/Rule/group.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_auth_group` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_auth_group`  [ RunTime:0.0010s ]
-INFO: [ view_parse ] --START--
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\SVN\Code-Help.git\APP\Runtime\Cache\Admin\2ac4ccaba5f9ce7af1092fd072b40dfc.php 第 64 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
 INFO: [ view_filter ] --START--
 INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
 INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
 INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
-
-[ 2017-06-25T20:03:48+08:00 ] 127.0.0.1 /Admin/Rule/admin_user_list.html
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
-INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
-SQL: SHOW COLUMNS FROM `card_auth_group_access` [ RunTime:0.0020s ]
-SQL: SELECT u.id,u.username,u.nickname,u.email,u.status,u.regtime,u.loginip,u.logintime,aga.group_id,ag.title FROM card_auth_group_access aga RIGHT JOIN card_admin u ON aga.uid=u.id LEFT JOIN card_auth_group ag ON aga.group_id=ag.id   [ RunTime:0.0010s ]
-SQL: SHOW COLUMNS FROM `card_auth_group` [ RunTime:0.0020s ]
-SQL: SELECT * FROM `card_auth_group`  [ RunTime:0.0000s ]
-INFO: [ view_parse ] --START--
-NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Template.class.php 第 527 行.
-NOTIC: [8] Undefined offset: 1 D:\phpStudy\WWW\Code\ThinkPHP\Library\Think\Template.class.php 第 527 行.
-INFO: [ template_filter ] --START--
-INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
-INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
-INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
-INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
-INFO: [ view_filter ] --START--
-INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
-INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
-INFO: [ app_end ] --START--
-INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
-INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
 

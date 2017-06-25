@@ -15,8 +15,16 @@
     <script src="/Public/Common/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/Public/Admin/Css/main.css" />
     
+
 </head>
 <body>
+
+
+<!--面包屑导航-->
+<ol class="breadcrumb">
+    <li><a href="<?php echo U('Index/Welcome');?>">Home</a></li>
+    <li class="active">系统设置</li>
+</ol>
 
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#home">系统基本参数</a></li>

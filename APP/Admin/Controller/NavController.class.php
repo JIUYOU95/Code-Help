@@ -7,7 +7,7 @@ class NavController extends AuthController {
 	 * 菜单列表
 	 */
 	public function index(){
-		$data=D('Nav')->getTreeData('tree','order_number,id');
+		$data=D('Nav')->getTree('tree','order_number,id');
 		$this->assign('data',$data);
 		$this->display();
 	}

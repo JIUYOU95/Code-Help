@@ -15,30 +15,32 @@
     <script src="/Public/Common/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/Public/Admin/Css/main.css" />
     
+
 </head>
 <body>
+
 <script type="text/javascript">
 $(function(){
 	//全选和取消选择
     $('input[name="all"]').click(function(){
-      if ($(this).prop("checked")) {  
-            $("input[name=id]").each(function() {  
-                $(this).prop("checked", true);  
-            });  
-        } else {  
-            $("input[name=id]").each(function() {  
-                $(this).prop("checked", false);  
-            });  
-        }  
+      if ($(this).prop("checked")) {
+            $("input[name=id]").each(function() {
+                $(this).prop("checked", true);
+            });
+        } else {
+            $("input[name=id]").each(function() {
+                $(this).prop("checked", false);
+            });
+        }
     });
      //ajax删除
     $('input[type="button"]').click(function(){
-      var text="";  
-      $("input[name=id]").each(function(){  
-        if ($(this).prop("checked")) {  
-          text += ","+$(this).val();  
-        }  
-      });  
+      var text="";
+      $("input[name=id]").each(function(){
+        if ($(this).prop("checked")) {
+          text += ","+$(this).val();
+        }
+      });
       $.get("<?php echo U('alldel');?>",{'id':text},function(data){
         if(data){
           alert('日志删除成功');
@@ -50,6 +52,12 @@ $(function(){
     });
 })
 </script>
+<!--面包屑导航-->
+<ol class="breadcrumb">
+    <li><a href="<?php echo U('Index/Welcome');?>">Home</a></li>
+    <li class="active">系统日志</li>
+</ol>
+
 <form class="form-inline" role="form" action="<?php echo U('log');?>" method="post">
   <div class="form-group">
     <label for="name">查看指定用户的日志</label>

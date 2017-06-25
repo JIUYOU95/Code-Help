@@ -15,8 +15,16 @@
     <script src="/Public/Common/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/Public/Admin/Css/main.css" />
     
+
 </head>
 <body>
+
+<!--面包屑导航-->
+<ol class="breadcrumb">
+    <li><a href="<?php echo U('Index/Welcome');?>">Home</a></li>
+    <li class="active">菜单管理</li>
+</ol>
+
 <ul id="myTab" class="nav nav-tabs">
 	<li class="active"><a href="#lists" data-toggle="tab">菜单列表</a></li>
 	<li><a href="javascript:;" onclick="add()">添加菜单</a></li>
@@ -39,8 +47,8 @@
 					<td><?php echo ($v['_name']); ?></td>
 					<td><?php echo ($v['mca']); ?></td>
 					<td style="text-align:center;">
-						<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" onclick="add_child(this)">添加子菜单</a> | 
-						<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" navMca="<?php echo ($v['mca']); ?>" navIco="<?php echo ($v['ico']); ?>" onclick="edit(this)">修改</a> | 
+						<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" onclick="add_child(this)">添加子菜单</a> |
+						<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" navMca="<?php echo ($v['mca']); ?>" navIco="<?php echo ($v['ico']); ?>" onclick="edit(this)">修改</a> |
 						<a href="javascript:if(confirm('确定删除？'))location='<?php echo U('Admin/Nav/delete',array('id'=>$v['id'],'name'=>$v['name']));?>'">删除</a>
 					</td>
 				</tr><?php endforeach; endif; ?>
@@ -58,11 +66,11 @@
 <div class="modal fade" id="myModal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header"> 
+			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
 				<h4 class="modal-title" id="myModalLabel"> 添加菜单</h4>
 			</div>
-			<form class="form-horizontal" action="<?php echo U('Admin/Nav/add');?>" method="post"> 
+			<form class="form-horizontal" action="<?php echo U('Admin/Nav/add');?>" method="post">
 			<input type="hidden" name="pid" value="0">
 			<div class="modal-body">
 				<div class="form-group">
@@ -75,7 +83,7 @@
 				<div class="form-group">
 				    <label for="mca" class="col-sm-2 control-label">链接</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址"> 
+				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址">
 				    </div>
 				    <span class="col-sm-6 control-label">模块/控制器/方法 例如 Admin/Nav/index</span>
 				</div>
@@ -99,11 +107,11 @@
 <div class="modal fade" id="myModal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header"> 
+			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
 				<h4 class="modal-title" id="myModalLabel">修改菜单</h4>
 			</div>
-			<form class="form-horizontal" action="<?php echo U('Admin/Nav/edit');?>" method="post"> 
+			<form class="form-horizontal" action="<?php echo U('Admin/Nav/edit');?>" method="post">
 			<input type="hidden" name="id">
 			<div class="modal-body">
 				<div class="form-group">
@@ -116,7 +124,7 @@
 				<div class="form-group">
 				    <label for="mca" class="col-sm-2 control-label">链接</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址"> 
+				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址">
 				    </div>
 				    <span class="col-sm-6 control-label">模块/控制器/方法 例如 Admin/Nav/index</span>
 				</div>

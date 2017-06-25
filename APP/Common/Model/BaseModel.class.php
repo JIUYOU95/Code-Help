@@ -52,7 +52,7 @@ class BaseModel extends Model{
      * 数据排序
      * @param  array $data   数据源
      * @param  string $id    主键
-     * @param  string $order 排序字段   
+     * @param  string $order 排序字段
      * @return boolean       操作是否成功
      */
     public function orderData($data,$id='id',$order='order_number'){
@@ -65,7 +65,7 @@ class BaseModel extends Model{
     /**
      * 获取全部数据
      * @param  string $type  tree获取树形结构 level获取层级结构
-     * @param  string $order 排序方式   
+     * @param  string $order 排序方式
      * @return array         结构数据
      */
     public function getTreeData($type='tree',$order='',$name='name',$child='id',$parent='pid'){
@@ -109,14 +109,14 @@ class BaseModel extends Model{
                 ->where($map)
                 ->order($order)
                 ->limit($page->firstRow.','.$page->listRows)
-                ->select();         
+                ->select();
         }else{
             $list=$this
                 ->field($field)
                 ->where($map)
                 ->order($order)
                 ->limit($page->firstRow.','.$page->listRows)
-                ->select();         
+                ->select();
         }
         $data=array(
             'data'=>$list,
@@ -125,6 +125,6 @@ class BaseModel extends Model{
         return $data;
     }
 
-    
+
 
 }

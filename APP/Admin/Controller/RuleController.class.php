@@ -238,7 +238,7 @@ class RuleController extends AuthController {
                             'group_id'=>$v
                             );
                         D('AuthGroupAccess')->addData($group);
-                    }                   
+                    }
                 }
                 // 操作成功
                 $this->success('添加成功',U('Admin/Rule/admin_user_list'));
@@ -256,7 +256,7 @@ class RuleController extends AuthController {
     public function edit_admin(){
         if(IS_POST){
             $data=I('post.');
-            
+
             // 组合where数组条件
             $uid=$data['id'];
             $map['id']=$uid;
@@ -287,7 +287,7 @@ class RuleController extends AuthController {
                 //     $this->success('编辑成功',U('Admin/Rule/edit_admin',array('id'=>$uid)));
                 // }else{
                 //     // 操作失败
-                //     $this->error($error_word);                  
+                //     $this->error($error_word);
                 // }
 
             }
@@ -331,7 +331,7 @@ class RuleController extends AuthController {
     /*
      *管理员状态处理
      */
-    
+
     public function lockHandle(){
         $id=I('id');
         $lock=I('lock');
@@ -347,5 +347,21 @@ class RuleController extends AuthController {
         }else{
             $this->error('用户'.$msg.'失败！');
         }
+    }
+
+    /*
+     * 清空密码
+     */
+    public function empty_password(){
+        $map['id']=I('id');
+        $data['password']='';
+        $result=D('Admin')->editData($map,$data);
+        if ($result) {
+            D('Log')->addData('清空密码-'.I('username'));
+            $this->success('清空密码成功',U('Admin/Rule/admin_user_list'));
+        }else{
+            $this->error('清空密码失败');
+        }
+
     }
 }

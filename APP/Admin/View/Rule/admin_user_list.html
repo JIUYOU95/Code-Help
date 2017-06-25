@@ -11,6 +11,12 @@ $(function(){
 	});
 });
 </script>
+<!--面包屑导航-->
+<ol class="breadcrumb">
+    <li><a href="{:U('Index/Welcome')}">Home</a></li>
+    <li class="active">管理员列表</li>
+</ol>
+
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#home">管理员列表</a></li>
 	<li><a data-toggle="tab" href="#menu1">添加管理员</a></li>
@@ -57,15 +63,16 @@ $(function(){
 					</if>
 				</td>
 				<td>
-					<if condition="$v['status'] eq 1"> 
+					<if condition="$v['status'] eq 1">
 						<a href="{:U('Admin/Rule/lockHandle',array('id'=>$v['id'],'username'=>$v['username'],'lock'=>3))}" class='<if condition="$v['id'] eq 1">nopurview</if>'>锁定</a>
 					<elseif condition="$v['status'] eq 3"/>
 						<a href="{:U('Admin/Rule/lockHandle',array('id'=>$v['id'],'username'=>$v['username'],'lock'=>1))}">解锁</a>
 					<elseif condition="$v['status'] eq 2"/>
 						<a href="">验证</a>
 					</if>
-					| <a href="{:U('Admin/Rule/edit_admin',array('id'=>$v['id']))}">修改权限或密码</a>
+					| <a href="{:U('Admin/Rule/edit_admin',array('id'=>$v['id']))}">修改</a>
 					| <a href="{:U('Admin/Rule/delete_admin',array('id'=>$v['id'],'username'=>$v['username']))}" class='<if condition="$v['id'] eq 1">nodel</if>'>删除</a>
+					| <a href="{:U('Admin/Rule/empty_password',array('id'=>$v['id'],'username'=>$v['username']))}">清空密码</a>
 				</td>
 			</tr>
 			</foreach>
@@ -78,7 +85,7 @@ $(function(){
 				<tr>
 					<th>管理组</th>
 					<td>
-					<foreach name="group" item="v"> 
+					<foreach name="group" item="v">
 						<label for="{$v['id']}">{$v['title']}</label>
 						<input class="xb-icheck" type="checkbox" name="group_ids[]" value="{$v['id']}" id="{$v['id']}"> &emsp;
 					</foreach>
@@ -106,7 +113,7 @@ $(function(){
 				</tr>
 				<tr>
 					<th>状态</th>
-					<td> 
+					<td>
 						<div class="btn-group" data-toggle="buttons">
 						    <label class="btn btn-primary active">
 						        <input type="radio" name="status" value="1" checked> 允许登录

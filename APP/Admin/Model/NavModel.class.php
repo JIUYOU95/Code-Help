@@ -24,7 +24,7 @@ class NavModel extends BaseModel {
 	 * @param  string $type tree获取树形结构 level获取层级结构
 	 * @return array       	结构数据
 	 */
-	public function getTreeData($type='tree',$order=''){
+	public function getTree($type='tree',$order=''){
 		//var_dump('Nav');
 		$Opadmin=new Opadmin();
 		$uid=$Opadmin->getUserid();
@@ -34,7 +34,7 @@ class NavModel extends BaseModel {
 		}else{
 			$data=$this->order('order_number is null,'.$order)->select();
 		}
-	
+
 		// 获取树形或者结构数据
 		if($type=='tree'){
 			$data=\Org\Nx\Data::tree($data,'name','id','pid');
@@ -57,7 +57,7 @@ class NavModel extends BaseModel {
 						unset($data[$k]);
 					}
 				}
-				
+
 			}
 		}
 		 //p($data);die;

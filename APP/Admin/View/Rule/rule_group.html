@@ -2,8 +2,14 @@
 <style type="text/css">
 .table{margin:10px 0;}
 </style>
+<!--面包屑导航-->
+<ol class="breadcrumb">
+    <li><a href="{:U('Index/Welcome')}">Home</a></li>
+    <li class="active">分配权限</li>
+</ol>
+
 <h3 class="text-center">为<span class="text-danger">{$group_data['title']}</span>分配权限</h3>
-<form action="" method="post"> 
+<form action="" method="post">
 <input type="hidden" name="id" value="{$group_data['id']}">
 <table class="table table-striped table-bordered table-hover table-condensed">
 	<foreach name="rule_data" item="v">
@@ -22,7 +28,7 @@
 					<th width="15%"> <label>{$n['title']} <input type="checkbox" name="rule_ids[]" value="{$n['id']}" <if condition="in_array($n['id'],$group_data['rules'])"> checked="checked"</if> onclick="checkAll(this)"></label></th>
 					<td>
 					<notempty name="n['_data']">
-						<volist name="n['_data']" id="c"> 
+						<volist name="n['_data']" id="c">
 							<label>&emsp;{$c['title']} <input type="checkbox" name="rule_ids[]" value="{$c['id']}" <if condition="in_array($c['id'],$group_data['rules'])"> checked="checked"</if> ></label>
 						</volist>
 					</notempty>

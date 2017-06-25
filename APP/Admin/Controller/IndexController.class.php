@@ -12,4 +12,8 @@ class IndexController extends AuthController {
 		$this->assign('data',$nav_data);
         $this->display();
     }
+
+    public function Welcome(){
+    	 $this->display();
+    }
 }

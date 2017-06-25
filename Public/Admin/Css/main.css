@@ -4,12 +4,14 @@ table,.btn,.form-control{font-size:12px;}
 a:hover, a:focus{text-decoration:none;}
 ul,ol,li{list-style:none;margin:0;padding:0;}
 label{font-weight:normal;cursor:pointer;margin:0;}
-.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, 
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th,
 .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{border:none;vertical-align:middle;height:25px;line-height:25px;border-top:1px solid #ddd;}
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th{text-align:center;font-weight:normal;}
 table tfoot{text-align:center;}
 form{overflow:hidden;}
 input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
+/*面包屑导航*/
+.breadcrumb{background-color:#fff;}
 /*
  *标签页
  */

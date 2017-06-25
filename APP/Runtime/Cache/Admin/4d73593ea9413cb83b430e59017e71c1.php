@@ -27,7 +27,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Interest-Admin</a>
+            <a href="<?php echo U('Welcome');?>" class="navbar-brand">Interest-Admin</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -69,7 +69,7 @@
         					<ul class="submenu">
         					<?php if(is_array($v['_data'])): foreach($v['_data'] as $key=>$n): ?><li><a href="<?php echo U($n['mca']);?>"><?php echo ($n['name']); ?></a></li><?php endforeach; endif; ?>
         					</ul>
-        				</li><?php endif; endforeach; endif; ?>				
+        				</li><?php endif; endforeach; endif; ?>
             </ul>
         </div>
 
@@ -79,13 +79,13 @@
 	                <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>面板标题</h3>
 	            </div>
               	<div class="panel-body">
-              		<iframe src="<?php echo U('Nav/index');?>" id="main" name="main" width="100%" height="100%" frameborder="0" scrolling="yes"></iframe>
+              		<iframe src="<?php echo U('Welcome');?>" id="main" name="main" width="100%" height="100%" frameborder="0" scrolling="yes"></iframe>
                 </div>
             </div>
         </div>
     </div>
 </div>
-                      
+
 
 
 </body>

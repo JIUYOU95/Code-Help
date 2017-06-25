@@ -15,8 +15,10 @@
     <script src="/Public/Common/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/Public/Admin/Css/main.css" />
     
+
 </head>
 <body>
+
 <script type="text/javascript">
 $(function(){
 	$('.nopurview').click(function(){
@@ -29,6 +31,12 @@ $(function(){
 	});
 });
 </script>
+<!--面包屑导航-->
+<ol class="breadcrumb">
+    <li><a href="<?php echo U('Index/Welcome');?>">Home</a></li>
+    <li class="active">管理员列表</li>
+</ol>
+
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#home">管理员列表</a></li>
 	<li><a data-toggle="tab" href="#menu1">添加管理员</a></li>
@@ -74,8 +82,9 @@ $(function(){
 						<a href="<?php echo U('Admin/Rule/lockHandle',array('id'=>$v['id'],'username'=>$v['username'],'lock'=>1));?>">解锁</a>
 					<?php elseif($v['status'] == 2): ?>
 						<a href="">验证</a><?php endif; ?>
-					| <a href="<?php echo U('Admin/Rule/edit_admin',array('id'=>$v['id']));?>">修改权限或密码</a>
+					| <a href="<?php echo U('Admin/Rule/edit_admin',array('id'=>$v['id']));?>">修改</a>
 					| <a href="<?php echo U('Admin/Rule/delete_admin',array('id'=>$v['id'],'username'=>$v['username']));?>" class='<?php if($v['id'] == 1): ?>nodel<?php endif; ?>'>删除</a>
+					| <a href="<?php echo U('Admin/Rule/empty_password',array('id'=>$v['id'],'username'=>$v['username']));?>">清空密码</a>
 				</td>
 			</tr><?php endforeach; endif; ?>
 			</tbody>
@@ -113,7 +122,7 @@ $(function(){
 				</tr>
 				<tr>
 					<th>状态</th>
-					<td> 
+					<td>
 						<div class="btn-group" data-toggle="buttons">
 						    <label class="btn btn-primary active">
 						        <input type="radio" name="status" value="1" checked> 允许登录

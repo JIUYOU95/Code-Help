@@ -9,7 +9,7 @@ class AdminModel extends BaseModel{
     protected $_validate=array(
         array('username','require','用户名必须',0,'',3), // 验证字段必填
         array('nickname','require','昵称必须',0,'',3), // 验证字段必填
-        array('password','require','密码必须',0,'',1), // 验证字段必填
+        //array('password','require','密码必须',0,'',1), // 验证字段必填
 
     );
 
