@@ -24,97 +24,102 @@
 <ol class="breadcrumb">
     <li><a href="<?php echo U('Index/Welcome');?>">Home</a></li>
     <li class="active">系统设置</li>
+    <span class="btn btn-primary rightbut" data-toggle="modal" data-target="#myModal">新增系统设置</span>
 </ol>
 
-<ul class="nav nav-tabs">
-	<li class="active"><a data-toggle="tab" href="#home">系统基本参数</a></li>
-	<li><a data-toggle="tab" href="#menu1">添加系统设置</a></li>
-</ul>
-
 <div class="tab-content">
-	<div id="home" class="tab-pane fade in active">
-		<table class="table table-bordered table-striped table-hover table-condensed" border="1">
-			<thead>
-			<tr>
-				<th>参数说明</th>
-				<th>参数值</th>
-				<th>变量名</th>
-				<!--<th>操作</th>-->
-			</tr>
-			</thead>
-			<form action="<?php echo U('edit');?>" method="post">
-			<tbody>
-			<?php if(is_array($data)): foreach($data as $key=>$v): ?><tr>
-				<td><?php echo ($v['info']); ?></td>
-				<td>
-					<?php if($v['type'] == 'string'): ?><input name="<?php echo ($v['configname']); ?>" type="text" id="<<?php echo ($v['configname']); ?>>"  value="<?php echo ($v['content']); ?>" class="form-control" />
-		             <?php elseif($v['type'] == 'number'): ?>
-		                <input name="<?php echo ($v['configname']); ?>" type="text" id="<<?php echo ($v['configname']); ?>>"  value="<?php echo ($v['content']); ?>" class="form-control" />
-		            <?php elseif($v['type'] == 'bstring'): ?>
-		            	<textarea name="<<?php echo ($v['configname']); ?>>" id="<<?php echo ($v['configname']); ?>>" class="form-control"><?php echo ($v['content']); ?></textarea>
-		            <?php elseif($v['type'] == bool): ?>
-		            	<div class="btn-group" data-toggle="buttons">
-						    <label class="btn btn-primary <?php if($v['content'] == 'Y'): ?>active<?php endif; ?>">
-						        <input type="radio" name="<?php echo ($v['configname']); ?>" value="Y"> 开启
-						    </label>
-						    <label class="btn btn-primary <?php if($v['content'] == 'N'): ?>active<?php endif; ?>">
-						        <input type="radio" name="<?php echo ($v['configname']); ?>" value="N"> 关闭
-						    </label>
-						</div><?php endif; ?>
-				</td>
-				<td style="text-align:center;"><?php echo ($v['configname']); ?></td>
-				<!--<td style="text-align:center;"><a href="">删除</a></td>-->
-			</tr><?php endforeach; endif; ?>
-			</tbody>
-			<tfoot>
-			<tr>
-				<td colspan="3"><input class="btn btn-success" type="submit" value="更改信息"></td>
-			</tr>
-			</tfoot>
-			</form>
-		</table>
-	</div>
-	<div id="menu1" class="tab-pane fade">
-		<form class="form-inline" action="<?php echo U('add');?>" method="post">
-			<table class="table table-striped table-bordered table-hover table-condensed">
-				<tr>
-					<th>变量名</th>
-					<td> <input class="form-control" type="text" name="configname"></td>
-				</tr>
-				<tr>
-					<th>参数值</th>
-					<td> <input class="form-control" type="text" name="content"></td>
-				</tr>
-				<tr>
-					<th>参数说明</th>
-					<td> <input class="form-control" type="text" name="info"></td>
-				</tr>
-				<tr>
-					<th>参数类型</th>
-					<td>
-						<div class="btn-group" data-toggle="buttons">
-						    <label class="btn btn-primary active">
-						        <input type="radio" name="type" value="string" checked> 文本
-						    </label>
-						    <label class="btn btn-primary">
-						        <input type="radio" name="type" value="bstring"> 多行文本
-						    </label>
-						    <label class="btn btn-primary">
-						        <input type="radio" name="type" value="bool"> 布尔(Y/N)
-						    </label>
-						    <label class="btn btn-primary">
-						        <input type="radio" name="type" value="number"> 数字
-						    </label>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td> <input class="btn btn-success" type="submit" value="添加"></td>
-				</tr>
-			</table>
+	<table class="table table-bordered table-striped table-hover table-condensed" border="1">
+		<thead>
+		<tr>
+			<th>参数说明</th>
+			<th>参数值</th>
+			<th>变量名</th>
+			<!--<th>操作</th>-->
+		</tr>
+		</thead>
+		<form action="<?php echo U('edit');?>" method="post">
+		<tbody>
+		<?php if(is_array($data)): foreach($data as $key=>$v): ?><tr>
+			<td><?php echo ($v['info']); ?></td>
+			<td>
+				<?php if($v['type'] == 'string'): ?><input name="<?php echo ($v['configname']); ?>" type="text" id="<<?php echo ($v['configname']); ?>>"  value="<?php echo ($v['content']); ?>" class="form-control" autocomplete="off" />
+	             <?php elseif($v['type'] == 'number'): ?>
+	                <input name="<?php echo ($v['configname']); ?>" type="text" id="<<?php echo ($v['configname']); ?>>"  value="<?php echo ($v['content']); ?>" class="form-control" autocomplete="off" />
+	            <?php elseif($v['type'] == 'bstring'): ?>
+	            	<textarea name="<<?php echo ($v['configname']); ?>>" id="<<?php echo ($v['configname']); ?>>" class="form-control" autocomplete="off" ><?php echo ($v['content']); ?></textarea>
+	            <?php elseif($v['type'] == bool): ?>
+	            	<div class="btn-group" data-toggle="buttons">
+					    <label class="btn btn-primary <?php if($v['content'] == 'Y'): ?>active<?php endif; ?>">
+					        <input type="radio" name="<?php echo ($v['configname']); ?>" value="Y"> 开启
+					    </label>
+					    <label class="btn btn-primary <?php if($v['content'] == 'N'): ?>active<?php endif; ?>">
+					        <input type="radio" name="<?php echo ($v['configname']); ?>" value="N"> 关闭
+					    </label>
+					</div><?php endif; ?>
+			</td>
+			<td style="text-align:center;"><?php echo ($v['configname']); ?></td>
+			<!--<td style="text-align:center;"><a href="">删除</a></td>-->
+		</tr><?php endforeach; endif; ?>
+		</tbody>
+		<tfoot>
+		<tr>
+			<td colspan="3"><input class="btn btn-success" type="submit" value="更改信息"></td>
+		</tr>
+		</tfoot>
 		</form>
-	</div>
+	</table>
+</div>
+<!--新增配置-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">添加系统设置</h4>
+            </div>
+            <form class="form-inline" action="<?php echo U('add');?>" method="post">
+            <div class="modal-body">
+				<table class="table table-striped table-bordered table-hover table-condensed">
+					<tr>
+						<th>变量名</th>
+						<td> <input class="form-control" type="text" name="configname" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<th>参数值</th>
+						<td> <input class="form-control" type="text" name="content" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<th>参数说明</th>
+						<td> <input class="form-control" type="text" name="info" autocomplete="off"></td>
+					</tr>
+					<tr>
+						<th>参数类型</th>
+						<td>
+							<div class="btn-group" data-toggle="buttons">
+							    <label class="btn btn-primary active">
+							        <input type="radio" name="type" value="string" checked> 文本
+							    </label>
+							    <label class="btn btn-primary">
+							        <input type="radio" name="type" value="bstring"> 多行文本
+							    </label>
+							    <label class="btn btn-primary">
+							        <input type="radio" name="type" value="bool"> 布尔(Y/N)
+							    </label>
+							    <label class="btn btn-primary">
+							        <input type="radio" name="type" value="number"> 数字
+							    </label>
+							</div>
+						</td>
+					</tr>
+				</table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">提交</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 

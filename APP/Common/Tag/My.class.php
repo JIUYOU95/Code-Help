@@ -8,14 +8,14 @@ class My extends TagLib {
     protected $tags=array(
         'bootstrapcss'=>array('','close'=>0),
         'bootstrapjs'=>array('','close'=>0),
+        'layuicss'=>array('','close'=>0),
+        'layuijs'=>array('','close'=>0),
         'jquery'=>array('','close'=>0),
         'font'=>array('','close'=>0),
         'nicescroll'=>array('','close'=>0),
         'site'=>array('','close'=>0),
         'admin'=>array('','close'=>0),
         'admincss'=>array('','close'=>0),
-        'logincss'=>array('','close'=>0),
-        'loginjs'=>array('','close'=>0),
         
     );
 
@@ -36,6 +36,20 @@ php;
         $link=<<<php
     <script src="__COMMON__/jquery/2.0.0/jquery.min.js"></script>
     <script src="__COMMON__/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+php;
+    return $link;
+    }
+    /*layuicss*/
+    public function _layuicss($tag,$content){
+         $link=<<<php
+    <link rel="stylesheet" href="__COMMON__/layui/css/layui.css" />
+php;
+    return $link;
+    }
+    /*layuijs*/
+    public function _layuijs($tag,$content){
+         $link=<<<php
+     <script src="__COMMON__/layui/layui.js"></script>
 php;
     return $link;
     }
@@ -85,32 +99,5 @@ php;
 php;
     return $link;
     }
-    /*登录css引入*/
-    public function _logincss($tag,$content) {
-        $link=<<<php
-    <!-- CSS -->
-    <link rel="stylesheet" href="__PUBLIC__/Admin/Login/css/supersized.css">
-    <link rel="stylesheet" href="__PUBLIC__/Admin/Login/css/style.css">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-        <script src="__PUBLIC__/Admin/Login/js/html5.js"></script>
-    <![endif]-->
-php;
-    return $link;
-    }
-
-     /**
-     * 登录js引入
-     */
-    public function _loginjs(){
-        $link=<<<php
-    <!-- Javascript -->
-    <script src="__COMMON__/jquery/2.0.0/jquery.min.js"></script>
-    <script src="__PUBLIC__/Admin/Login/js/supersized.3.2.7.min.js" ></script>
-    <script src="__PUBLIC__/Admin/Login/js/supersized-init.js" ></script>
-    <script src="__PUBLIC__/Admin/Login/js/scripts.js" ></script>
-php;
-    return $link;
-    }
 }

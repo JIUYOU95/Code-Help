@@ -21,6 +21,7 @@ class LoginController extends Controller{
             }
             //验证用户状态
             $username=I('username');
+
             $user=M('Admin')->where(array('username'=>$username))->find();
             $status=$user['status'];
             if($status==3){
@@ -28,14 +29,14 @@ class LoginController extends Controller{
             }elseif($status==2){
                 $this->redirect('Login/error_msg',array('msg'=>'2'));
             }else{
-                $logid=D('Log')->addData('登录');
+                $logid= A('Config')->add_log('登录'); 
                 if(!$logid)
                     $this->error('日志记录失败');
                 else
                     $this->success('登录成功',U('Admin/Index/index'));
             }
         }else{
-            $this->error('用户名或密码不对');
+            $this->redirect('Login/error_msg',array('msg'=>'1'));
         }
         //$this->display();
     }
@@ -55,6 +56,11 @@ class LoginController extends Controller{
     //错误页面
     public function error_msg(){
         $this->msg=I('msg');
+        $this->display();
+    }
+
+    //锁屏
+    public function lock(){
         $this->display();
     }
 

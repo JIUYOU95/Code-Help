@@ -2,10 +2,10 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Bootstrap后台</title>
+<title><?php echo ($config['title']); ?></title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="<?php echo ($config['description']); ?>">
 <meta name="author" content="">
     <script src="/Public/Common/jquery/2.0.0/jquery.min.js"></script>
     <link rel="stylesheet" href="/Public/Common/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -38,9 +38,10 @@
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo ($nickname); ?> <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
-                  <li><a href="#">修改密码</a></li>
+                  <li><a href="<?php echo U('Config/user');?>"><i class="fa fa-user"></i> 个人中心</a></li>
+                  <li><a href="<?php echo U('Login/lock');?>" target="_top"><i class="fa fa-unlock-alt"></i> 锁屏</a></li>
                   <li class="divider"></li>
-                  <li><a href="<?php echo U('Login/logout');?>" target="_top"><i class="fa fa-power-off"></i> 退出</a></li>
+                  <li><a href="<?php echo U('Login/logout');?>" target="_top"><i class="fa fa-sign-out"></i> 退出</a></li>
                 </ul>
               </li>
             </ul>

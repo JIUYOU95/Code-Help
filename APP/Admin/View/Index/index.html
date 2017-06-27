@@ -2,10 +2,10 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Bootstrap后台</title>
+<title>{$config['title']}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="{$config['description']}">
 <meta name="author" content="">
 <jquery/>
 <font/>
@@ -36,9 +36,10 @@
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">{$nickname} <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
-                  <li><a href="#">修改密码</a></li>
+                  <li><a href="{:U('Config/user')}"><i class="fa fa-user"></i> 个人中心</a></li>
+                  <li><a href="{:U('Login/lock')}" target="_top"><i class="fa fa-unlock-alt"></i> 锁屏</a></li>
                   <li class="divider"></li>
-                  <li><a href="{:U('Login/logout')}" target="_top"><i class="fa fa-power-off"></i> 退出</a></li>
+                  <li><a href="{:U('Login/logout')}" target="_top"><i class="fa fa-sign-out"></i> 退出</a></li>
                 </ul>
               </li>
             </ul>

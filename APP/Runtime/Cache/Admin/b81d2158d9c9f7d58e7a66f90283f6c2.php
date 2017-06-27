@@ -5,23 +5,29 @@
 <title>error</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Vince/Public/Common/bootstrap/3.3.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/Vince/Public/Common/bootstrap/3.3.0/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="/Vince/Public/Common/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/Public/Common/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Public/Common/bootstrap/3.3.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="/Public/Common/font-awesome/4.7.0/css/font-awesome.min.css" />
 <style type="text/css">
 body{font-family:"Microsoft Yahei";}
 p{text-align:center;color:red;}
 </style>
 </head>
 <body>
-
+<!--
+1->用户名或密码错误
+2,3->登录限制
+4->权限限制
+-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="myModalLabel">
-                <?php if(($msg == 3) OR ($msg == 2)): ?>登录限制
+                <?php if($msg == 1): ?>登录错误
+                <?php elseif(($msg == 3) OR ($msg == 2)): ?>
+                    登录限制
                 <?php elseif($msg == 4): ?>
                     权限限制
                 <?php else: ?>
@@ -29,7 +35,9 @@ p{text-align:center;color:red;}
                 </h4>
             </div>
             <div class="modal-body">
-                <?php if($msg == 3): ?>尊敬的用户，你的账户已被锁定，请联系管理员解锁！
+                <?php if($msg == 1): ?>尊敬的用户，你输入的用户名或密码错误！请重新输入。
+                <?php elseif($msg == 3): ?>
+                    尊敬的用户，你的账户已被锁定，请联系管理员解锁！
                 <?php elseif($msg == 2): ?>
                     尊敬的用户，你的账户还没有完成邮箱验证，请验证后登陆！
                 <?php elseif($msg == 4): ?>
@@ -44,37 +52,19 @@ p{text-align:center;color:red;}
     </div><!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-    <script src="/Vince/Public/Common/jquery/2.0.0/jquery.min.js"></script>
-    <script src="/Vince/Public/Common/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="/Public/Common/jquery/2.0.0/jquery.min.js"></script>
+    <script src="/Public/Common/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script>
 $(function() {
     $('#myModal').modal()
     keyboard: true
+    $('#myModal').on('hide.bs.modal',
+        function() {
+            window.location='<?php echo U(index);?>';
+        })
 });
 </script>
-<?php if(($msg == 3) OR ($msg == 2)): ?><!-- 登录限制 -->
-    <script>
-    $(function() {
-        $('#myModal').on('hide.bs.modal',
-        function() {
-            window.location='<?php echo U(index);?>';
-        })
-    });
-    </script>
-    <!-- /.modal -->
-<?php elseif($msg == 4): ?>
-    <!-- 权限限制 -->
-    <script>
-    $(function() {
-        $('#myModal').on('hide.bs.modal',
-        function() {
-            window.location='<?php echo U(index);?>';
-        })
-    });
-    </script>
-    <!-- /.modal -->
-<?php else: ?>
-    value3<?php endif; ?>
+
 
 </body>
 </html>

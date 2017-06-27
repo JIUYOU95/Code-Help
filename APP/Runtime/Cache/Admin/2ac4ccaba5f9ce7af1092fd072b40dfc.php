@@ -61,7 +61,7 @@ $(function(){
 <form class="form-inline" role="form" action="<?php echo U('log');?>" method="post">
   <div class="form-group">
     <label for="name">查看指定用户的日志</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="请输入用户名" value="<?php echo ($name); ?>">
+    <input type="text" class="form-control" id="name" name="name" placeholder="请输入用户名" value="<?php echo ($name); ?>" autocomplete="off">
   </div>
   <button type="submit" class="btn btn-default">提交</button>
 </form>

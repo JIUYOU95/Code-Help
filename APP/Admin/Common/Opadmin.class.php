@@ -21,8 +21,8 @@ class Opadmin{
      * +----------------------------------------------------------
      */
 	Public function __construct($username='',$password=''){
-		//$this->cfg_prefix=C('cfg_prefix');
-		$this->cfg_prefix='card_';
+		$this->cfg_prefix=C('cfg_prefix');
+		//$this->cfg_prefix='card_';
 		//给保存SESSION的成员变量名称加上前缀
 		$this->kUserid=$this->cfg_prefix.$this->kUserid;
 		$this->kNickname=$this->cfg_prefix.$this->kNickname;

@@ -12,14 +12,20 @@ p{text-align:center;color:red;}
 </style>
 </head>
 <body>
-
+<!--
+1->用户名或密码错误
+2,3->登录限制
+4->权限限制
+-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="myModalLabel">
-                <if condition="($msg eq 3) OR ($msg eq 2)">
+                <if condition="$msg eq 1">
+                    登录错误
+                <elseif condition="($msg eq 3) OR ($msg eq 2)"/>
                     登录限制
                 <elseif condition="$msg eq 4"/>
                     权限限制
@@ -29,7 +35,9 @@ p{text-align:center;color:red;}
                 </h4>
             </div>
             <div class="modal-body">
-                <if condition="$msg eq 3">
+                <if condition="$msg eq 1">
+                    尊敬的用户，你输入的用户名或密码错误！请重新输入。
+                <elseif condition="$msg eq 3"/>
                     尊敬的用户，你的账户已被锁定，请联系管理员解锁！
                 <elseif condition="$msg eq 2"/>
                     尊敬的用户，你的账户还没有完成邮箱验证，请验证后登陆！
@@ -51,33 +59,13 @@ p{text-align:center;color:red;}
 $(function() {
     $('#myModal').modal()
     keyboard: true
+    $('#myModal').on('hide.bs.modal',
+        function() {
+            window.location='{:U(index)}';
+        })
 });
 </script>
-<if condition="($msg eq 3) OR ($msg eq 2)">
-    <!-- 登录限制 -->
-    <script>
-    $(function() {
-        $('#myModal').on('hide.bs.modal',
-        function() {
-            window.location='{:U(index)}';
-        })
-    });
-    </script>
-    <!-- /.modal -->
-<elseif condition="$msg eq 4"/>
-    <!-- 权限限制 -->
-    <script>
-    $(function() {
-        $('#myModal').on('hide.bs.modal',
-        function() {
-            window.location='{:U(index)}';
-        })
-    });
-    </script>
-    <!-- /.modal -->
-<else />
-    value3
-</if>
+
 
 </body>
 </html>

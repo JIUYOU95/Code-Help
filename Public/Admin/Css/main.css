@@ -10,8 +10,11 @@ label{font-weight:normal;cursor:pointer;margin:0;}
 table tfoot{text-align:center;}
 form{overflow:hidden;}
 input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
+/*font*/
+.fa-px{font-size:1.5em;}
 /*面包屑导航*/
-.breadcrumb{background-color:#fff;}
+.breadcrumb{background-color:#fff;padding:0;height:31px;line-height:31px;}
+.breadcrumb .rightbut{float:right;}
 /*
  *标签页
  */

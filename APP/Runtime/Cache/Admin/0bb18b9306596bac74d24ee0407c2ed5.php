@@ -23,44 +23,39 @@
 <ol class="breadcrumb">
     <li><a href="<?php echo U('Index/Welcome');?>">Home</a></li>
     <li class="active">菜单管理</li>
+    <span class="btn btn-primary rightbut" onclick="add()">新增菜单</span>
 </ol>
 
-<ul id="myTab" class="nav nav-tabs">
-	<li class="active"><a href="#lists" data-toggle="tab">菜单列表</a></li>
-	<li><a href="javascript:;" onclick="add()">添加菜单</a></li>
-</ul>
-<div id="myTabContent" class="tab-content">
-	<div class="tab-pane fade in active" id="lists">
-		<form action="<?php echo U('order');?>" method="post">
-			<table class="table table-striped table-bordered table-hover table-condensed">
-				<thead>
-				<tr>
-					<th width="8%">排序</th>
-					<th>菜单名</th>
-					<th>连接</th>
-					<th>操作</th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php if(is_array($data)): foreach($data as $key=>$v): ?><tr>
-					<td> <input class="form-control" style="width:40px;height:25px;margin:0 auto;" type="text" name="<?php echo ($v['id']); ?>" value="<?php echo ($v['order_number']); ?>"></td>
-					<td><?php echo ($v['_name']); ?></td>
-					<td><?php echo ($v['mca']); ?></td>
-					<td style="text-align:center;">
-						<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" onclick="add_child(this)">添加子菜单</a> |
-						<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" navMca="<?php echo ($v['mca']); ?>" navIco="<?php echo ($v['ico']); ?>" onclick="edit(this)">修改</a> |
-						<a href="javascript:if(confirm('确定删除？'))location='<?php echo U('Admin/Nav/delete',array('id'=>$v['id'],'name'=>$v['name']));?>'">删除</a>
-					</td>
-				</tr><?php endforeach; endif; ?>
-				</tbody>
-				<tfoot>
-				<tr>
-					<td colspan="4"><input class="btn btn-success" type="submit" value="排序"></td>
-				</tr>
-				</tfoot>
-			</table>
-		</form>
-	</div>
+<div class="tab-content">
+	<form action="<?php echo U('order');?>" method="post">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+			<thead>
+			<tr>
+				<th width="8%">排序</th>
+				<th>菜单名</th>
+				<th>连接</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<?php if(is_array($data)): foreach($data as $key=>$v): ?><tr>
+				<td> <input class="form-control" style="width:40px;height:25px;margin:0 auto;" type="text" name="<?php echo ($v['id']); ?>" value="<?php echo ($v['order_number']); ?>" autocomplete="off"></td>
+				<td><?php echo ($v['_name']); ?></td>
+				<td><?php echo ($v['mca']); ?></td>
+				<td style="text-align:center;">
+					<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" onclick="add_child(this)">添加子菜单</a> |
+					<a href="javascript:;" navId="<?php echo ($v['id']); ?>" navName="<?php echo ($v['name']); ?>" navMca="<?php echo ($v['mca']); ?>" navIco="<?php echo ($v['ico']); ?>" onclick="edit(this)">修改</a> |
+					<a href="javascript:if(confirm('确定删除？'))location='<?php echo U('Admin/Nav/delete',array('id'=>$v['id'],'name'=>$v['name']));?>'">删除</a>
+				</td>
+			</tr><?php endforeach; endif; ?>
+			</tbody>
+			<tfoot>
+			<tr>
+				<td colspan="4"><input class="btn btn-success" type="submit" value="排序"></td>
+			</tr>
+			</tfoot>
+		</table>
+	</form>
 </div>
 
 <div class="modal fade" id="myModal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -76,21 +71,21 @@
 				<div class="form-group">
 				    <label for="name" class="col-sm-2 control-label">菜单名</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control"  id="name" name="name" placeholder="请输入菜单名">
+				      <input type="text" class="form-control"  id="name" name="name" placeholder="请输入菜单名" autocomplete="off">
 				    </div>
 				    <span class="col-sm-6"></span>
 				</div>
 				<div class="form-group">
 				    <label for="mca" class="col-sm-2 control-label">链接</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址">
+				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址" autocomplete="off">
 				    </div>
 				    <span class="col-sm-6 control-label">模块/控制器/方法 例如 Admin/Nav/index</span>
 				</div>
 				<div class="form-group">
 				    <label for="ico" class="col-sm-2 control-label">图标</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control" id="ico" name="ico" placeholder="请输入图标名字">
+				      <input type="text" class="form-control" id="ico" name="ico" placeholder="请输入图标名字" autocomplete="off">
 				    </div>
 				    <span class="col-sm-6 control-label">font-awesome图标 输入fa fa- 后边的即可</span>
 				</div>
@@ -117,21 +112,21 @@
 				<div class="form-group">
 				    <label for="name" class="col-sm-2 control-label">菜单名</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control"  id="name" name="name" placeholder="请输入菜单名">
+				      <input type="text" class="form-control"  id="name" name="name" placeholder="请输入菜单名" autocomplete="off">
 				    </div>
 				    <span class="col-sm-6"></span>
 				</div>
 				<div class="form-group">
 				    <label for="mca" class="col-sm-2 control-label">链接</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址">
+				      <input type="text" class="form-control" id="mca" name="mca" placeholder="请输入链接地址" autocomplete="off">
 				    </div>
 				    <span class="col-sm-6 control-label">模块/控制器/方法 例如 Admin/Nav/index</span>
 				</div>
 				<div class="form-group">
 				    <label for="ico" class="col-sm-2 control-label">图标</label>
 				    <div class="col-sm-4">
-				      <input type="text" class="form-control" id="ico" name="ico" placeholder="请输入图标名字">
+				      <input type="text" class="form-control" id="ico" name="ico" placeholder="请输入图标名字" autocomplete="off">
 				    </div>
 				    <span class="col-sm-6 control-label">font-awesome图标 输入fa fa- 后边的即可</span>
 				</div>
