@@ -1,9 +1,34 @@
 <include file="Public:header" />
 <layuicss/>
+<style type="text/css">
+.site-demo-upload {position:relative;background: #e2e2e2;}
+.site-demo-upload, .site-demo-upload img {width:200px;height:200px;border-radius:100%;}
+.site-demo-upload .site-demo-upbar{position:absolute;top:50%;left:50%;margin:-18px 0 0 -56px;}
+.site-demo-upload .layui-upload-button{background-color: rgba(0,0,0,.2);color: rgba(255,255,255,1);}
+</style>
 <!--面包屑导航-->
 <ol class="breadcrumb">
     <li><a href="{:U('Index/Welcome')}">Home</a></li>
     <li class="active">个人中心</li>
 </ol>
+
+<div class="site-demo-upload">
+  <img id="lay_demo_upload" src="__PUBLIC__/Admin/Images/Kitty.jpg">
+  <div class="site-demo-upbar">
+    <input type="file" name="avatar" class="layui-upload-file">
+  </div>
+  </form>
+</div>
+
 <layuijs/>
+<script>
+layui.use('upload', function(){
+  	layui.upload({
+	    url: "{:U('avatar')}" //上传接口
+	    ,success: function(res){ //上传成功后的回调
+	      console.log(res)
+	    }
+  	});
+})
+</script>
 <include file="Public:footer" />
