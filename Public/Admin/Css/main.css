@@ -23,6 +23,15 @@ input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
  /*日志*/
  .search_log{text-align:center;margin-top:20px; }
 
+ /*个人中心*/
+.site-demo-upload {position:relative;background:#e2e2e2;display:inline-block;margin:20px 50px;}
+.site-demo-upload, .site-demo-upload img {width:200px;height:200px;border-radius:100%;}
+.site-demo-upload .site-demo-upbar{position:absolute;top:50%;left:50%;margin:-18px 0 0 -56px;}
+.site-demo-upload .layui-upload-button{background-color: rgba(0,0,0,.2);color: rgba(255,255,255,1);}
+
+.user-list{width:300px;}
+.user-list li span{display:inline-block;padding-left:20px;}
+
  /*分页*/
 .page{display:block;border-radius:4px;text-align:center;}
 .page div{overflow:hidden;display:inline-block;}

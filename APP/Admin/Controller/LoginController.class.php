@@ -29,11 +29,8 @@ class LoginController extends Controller{
             }elseif($status==2){
                 $this->redirect('Login/error_msg',array('msg'=>'2'));
             }else{
-                $logid= A('Config')->add_log('登录'); 
-                if(!$logid)
-                    $this->error('日志记录失败');
-                else
-                    $this->success('登录成功',U('Admin/Index/index'));
+                //A('Config')->add_log('登录');
+                $this->success('登录成功',U('Admin/Index/index'));
             }
         }else{
             $this->redirect('Login/error_msg',array('msg'=>'1'));
@@ -61,7 +58,23 @@ class LoginController extends Controller{
 
     //锁屏
     public function lock(){
-        $this->display();
+        if(IS_POST){
+            $Opadmin=new Opadmin(I('username'),I('password'));
+            if($Opadmin->login()){
+                $this->success('解锁成功',U('Admin/Index/index'));
+            }else{
+                $this->redirect('Login/error_msg',array('msg'=>'1'));
+            }
+        }else{
+            $Opadmin=new Opadmin();
+            if($Opadmin->loginlock()){
+                $this->username=$Opadmin->getUsername();
+                $this->nickname=$Opadmin->getNickname();
+                $where['username']=$Opadmin->getUsername();
+                $this->avatar = M('Admin')->where($where)->getField('avatar');  
+            }
+            $this->display();
+        }
     }
 
 	//退出

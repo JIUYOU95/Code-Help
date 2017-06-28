@@ -55,7 +55,6 @@ class Opadmin{
 			//登陆成功赋值
 			$this->userid	=$data['id'];
 			$this->nickname	=$data['nickname'];
-
 			$this->SaveSession();
 			//更新登陆信息
 			$data['loginip']=get_client_ip();
@@ -142,7 +141,18 @@ class Opadmin{
 		unset($_SESSION[$this->kUserid]);
 		unset($_SESSION[$this->kNickname]);
 		unset($_SESSION[$this->kUsername]);
-		//unset($_SESSION[$this->kPurviews]);
+		return true;
+	}
+	/**
+     * +----------------------------------------------------------
+     * 用户锁屏
+     *@return bool
+     * +----------------------------------------------------------      
+     * +----------------------------------------------------------
+     */
+	public function loginlock(){
+		$this->userid="";
+		unset($_SESSION[$this->kUserid]);
 		return true;
 	}
 	/**

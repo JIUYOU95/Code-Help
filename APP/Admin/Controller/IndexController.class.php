@@ -9,7 +9,7 @@ class IndexController extends AuthController {
     	$config=$Opadmin->config();
         $this->assign('config',$config);
     	// 分配菜单数据
-		$nav_data=D('Nav')->getTreeData('level','order_number,id');
+		$nav_data=D('Nav')->getTree('level','order_number,id');
 		$this->assign('data',$nav_data);
         $this->display();
     }

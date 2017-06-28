@@ -12,3 +12,9 @@ function p($array){
 function writeArr($arr, $filename) {
     return file_put_contents($filename, "<?php\r\nreturn " . var_export($arr, true) . ";");
 }
+
+function unfile($url){
+	if (file_exists($url) == true) {
+		return unlink($url);
+	}
+}
