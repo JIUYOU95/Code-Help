@@ -60,7 +60,18 @@ p{text-align:center;color:red;}
 </div>
 <!-- /.modal -->
 <bootstrapjs/>
-<if condition="$msg eq 5">
+<if condition="$msg eq 4">
+<script>
+$(function() {
+    $('#myModal').modal()
+    keyboard: true
+    $('#myModal').on('hide.bs.modal',
+        function() {
+            window.history.back();
+        })
+});
+</script>
+<elseif condition="$msg eq 5">
 <script>
 $(function() {
     $('#myModal').modal()

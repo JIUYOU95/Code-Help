@@ -8,6 +8,7 @@ class My extends TagLib {
     protected $tags=array(
         'bootstrapcss'=>array('','close'=>0),
         'bootstrapjs'=>array('','close'=>0),
+        'bootstrapselect'=>array('','close'=>0),
         'layuicss'=>array('','close'=>0),
         'layuijs'=>array('','close'=>0),
         'jquery'=>array('','close'=>0),
@@ -21,7 +22,6 @@ class My extends TagLib {
 
     /**
      * bootstrapcss引入
-      
      */
     public function _bootstrapcss($tag,$content) {
         $link=<<<php
@@ -31,7 +31,7 @@ class My extends TagLib {
 php;
     return $link;
     }
-     /*bootstrapjs引入*/
+    /*bootstrapjs引入*/
     public function _bootstrapjs($tag,$content) {
         $link=<<<php
     <script src="__COMMON__/jquery/2.0.0/jquery.min.js"></script>
@@ -39,6 +39,17 @@ php;
 php;
     return $link;
     }
+
+    /*bootstrap-select引入*/
+    public function _bootstrapselect($tag,$content) {
+        $link=<<<php
+    <link rel="stylesheet" href="__COMMON__/bootstrap-select/1.7.2/css/bootstrap-select.min.css" />
+    <script src="__COMMON__/bootstrap-select/1.7.2/js/bootstrap-select.min.js"></script>
+    <script src="__COMMON__/bootstrap-select/1.7.2/js/i18n/defaults-zh_CN.min.js"></script>
+php;
+    return $link;
+    }
+
     /*layuicss*/
     public function _layuicss($tag,$content){
          $link=<<<php
