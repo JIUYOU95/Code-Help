@@ -63,7 +63,7 @@ class LoginController extends Controller{
             if($Opadmin->login()){
                 $this->success('解锁成功',U('Admin/Index/index'));
             }else{
-                $this->redirect('Login/error_msg',array('msg'=>'1'));
+                $this->redirect('Login/error_msg',array('msg'=>'5'));
             }
         }else{
             $Opadmin=new Opadmin();

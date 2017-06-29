@@ -13,17 +13,24 @@
 <style type="text/css">
 *{margin:0;padding:0;}
 body{background:url("../../Public/Admin/Images/bglogin.png");}
-.panel{width:326px;margin:auto;margin-top:20%;padding:30px 0;}
+.panel{width:326px;margin:auto;margin-top:20px;padding:30px 0;}
 .panel .center-block{width:100%;}
 .panel .verify{overflow:hidden;}
 .panel .verify input{float:left;width:140px;margin-right:10px;}
 .panel .verify img{width:140px;float:left;}
 .panel-body .error{text-align:center;margin-top:20px;}
+
+.site-demo-upload {background:#e2e2e2;margin:40px auto;}
+.site-demo-upload, .site-demo-upload img {width:200px;height:200px;border-radius:100%;}
 </style>
 
 </head>
 <body>
 <!--表单-->
+<!--avatar-->
+<div class="site-demo-upload">
+    <img id="lay_demo_upload" src="__PUBLIC__/Admin/Images/Kitty.jpg">
+</div>
 <div class="panel panel-default">
     <div class="panel-body">
         <form action="{:U('sign')}" method="post">

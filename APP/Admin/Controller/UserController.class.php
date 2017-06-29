@@ -8,9 +8,21 @@ class UserController extends AuthController {
 	 */
 	public function index(){
 		$Opadmin=new Opadmin();
-		$where['uid']=$Opadmin->getUserid();
-		$this->data = M('Admin')->where($where)->find();
-     	$this->display();
+		$where['id']=$Opadmin->getUserid();
+		if(IS_POST){
+			$data=I('post.');
+			$result=$Opadmin->updateinfo($data);
+			if($result){
+				A('Config')->add_log('更新个人资料-'.I('nickname'));
+                $this->success('更新成功',U('Admin/User/index'));
+			}else{
+				$this->error('更新个人资料失败！');
+			}
+		}else{
+			$this->data = M('Admin')->where($where)->find();
+     		$this->display();
+		}
+		
 	}
 	/*
 	 *头像更新
@@ -42,25 +54,24 @@ class UserController extends AuthController {
 	 * 密码修改
 	 */
 	public function edit_password(){
-		p($_POST);die;
 		if(IS_POST){
-
 			$Admin=D('Admin');
 			$Opadmin=new Opadmin();
 			$where['id']=$Opadmin->getUserid();
-			$where['password']=$Opadmin->joinmd5(I('repassword'));
+			$where['password']=$Opadmin->joinmd5(I('repwd'));
 			$count=$Admin->where($where)->count();
-
-			if(!$count&&I('password')!=''){
+			if(!$count){
 				$this->error('原始密码不正确');
 			}else{
-				// 如果修改密码则md5
-	            if (!empty(I('password'))) {
-	                $data=array('password'=>I('password'));
-	            }
-	           
+	            $data['password']=md5(I('password'));
 				$whereup['id']=$Opadmin->getUserid();
-				$Admin->where($whereup)->setField($data);
+				$result=$Admin->where($whereup)->save($data);
+				if($result){
+					A('Config')->add_log('密码修改-'.$Opadmin->getNickname());	//写入日志
+					$this->success('密码修改成功',U('User/index'));
+				}else{
+					$this->error('密码和原始密码重复');
+				}
 				
 			}
 		}
