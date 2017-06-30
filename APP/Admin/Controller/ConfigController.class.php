@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 use Common\Controller\AuthController;
 use Admin\Common\Opadmin;
+use Common\Common\Category;
 class ConfigController extends AuthController {
 	/*
 	 *系统设置
@@ -67,6 +68,78 @@ class ConfigController extends AuthController {
 	 */
 	public function delete(){
 
+	}
+
+	/*
+	 * 分类列表
+	 */
+	public function type(){
+		$data=D('Type')->getTreeData('tree','id');
+		$this->assign('data',$data);
+		$this->display();
+	}
+
+	/*
+	 * 分类新增
+	 */
+	public function add_type(){
+		$data=I('post.');
+		unset($data['id']);
+		$result=D('Type')->addData($data);
+		if ($result) {
+			A('Config')->add_log('添加分类-'.I('name'));
+			$this->success('添加成功',U('Config/type'));
+		}else{
+			$this->error('添加失败');
+		}
+	}
+
+	/**
+	 * 分类修改
+	 */
+	public function edit_type(){
+		$data=I('post.');
+		$map=array(
+			'id'=>$data['id']
+			);
+		$result=D('Type')->editData($map,$data);
+		if ($result) {
+			A('Config')->add_log('修改分类-'.I('name'));
+			$this->success('修改成功',U('Config/type'));
+		}else{
+			$this->error('修改失败');
+		}
+	}
+
+	/**
+	 * 删除菜单
+	 */
+	public function del_type(){
+		$id=I('get.id');
+		$map=array(
+			'id'=>$id
+			);
+		$result=D('Type')->deleteData($map);
+		if($result){
+			A('Config')->add_log('删除分类-'.I('name'));
+			$this->success('删除成功',U('Config/type'));
+		}else{
+			$this->error('请先删除子菜单');
+		}
+	}
+
+	/**
+	 * 分类排序
+	 */
+	public function order_type(){
+		$data=I('post.');
+		$result=D('Type')->orderData($data,'id','sort');
+		if ($result) {
+			A('Config')->add_log('分类排序');
+			$this->success('排序成功',U('Config/type'));
+		}else{
+			$this->error('排序失败');
+		}
 	}
 
 	/*

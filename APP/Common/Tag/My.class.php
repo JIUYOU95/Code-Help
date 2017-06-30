@@ -22,11 +22,12 @@ class My extends TagLib {
 
     /**
      * bootstrapcss引入
+     <link rel="stylesheet" href="__COMMON__/bootstrap/3.3.0/css/bootstrap-theme.min.css" />
      */
     public function _bootstrapcss($tag,$content) {
         $link=<<<php
     <link rel="stylesheet" href="__COMMON__/bootstrap/3.3.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="__COMMON__/bootstrap/3.3.0/css/bootstrap-theme.min.css" />
+    
     <link rel="stylesheet" href="__COMMON__/font-awesome/4.7.0/css/font-awesome.min.css" />
 php;
     return $link;
