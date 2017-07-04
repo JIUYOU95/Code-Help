@@ -77,4 +77,11 @@ class UserController extends AuthController {
 		}
 		
 	}
+
+	/*
+	 * 通讯录
+	 */
+	public function address(){
+		$this->display();
+	}
 }

@@ -12,9 +12,22 @@ class FrontController extends AuthController {
 	 * 图标字体
 	 */
 	public function font(){
+
+		if(IS_POST){
+			if(I('pid'))
+			$pid=I('pid');
+			$this->pid=$pid;
+			//if(I('name'))
+			//$where['zh_name'] = array('like','%'.I('name').'%');
+			
+		}
 		$data=D('Type')->relation(true)->select();
+		//$data=D('Type')->getdate();
+		//p($data);die;
+		//echo D('Type')->_sql();
 		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','1');
 		$list=Category::unlimitedForLayer($data,'child','1');
+		//p($list);die;
 		$this->assign('data',$font);
 		$this->assign('lists',$list);
 		$this->display();
@@ -49,5 +62,6 @@ class FrontController extends AuthController {
 			$this->error('修改失败');
 		}
 	}
+
 
 }
