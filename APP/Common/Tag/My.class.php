@@ -13,6 +13,7 @@ class My extends TagLib {
         'layuijs'=>array('','close'=>0),
         'jquery'=>array('','close'=>0),
         'font'=>array('','close'=>0),
+        'WdatePicker'=>array('','close'=>0),
         'nicescroll'=>array('','close'=>0),
         'site'=>array('','close'=>0),
         'admin'=>array('','close'=>0),
@@ -76,6 +77,13 @@ php;
     public function _font($tag,$content) {
         $link=<<<php
     <link rel="stylesheet" href="__COMMON__/font-awesome/4.7.0/css/font-awesome.min.css" />
+php;
+    return $link;
+    }
+    /*WdatePicker时间控件*/
+     public function _WdatePicker($tag,$content) {
+        $link=<<<php
+    <script src="__COMMON__/My97DatePicker/4.8/WdatePicker.js"></script>
 php;
     return $link;
     }

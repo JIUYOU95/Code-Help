@@ -32,6 +32,7 @@ class BaseModel extends RelationModel{
             $data[$k]=trim($v);
         }
         $result=$this->where($map)->save($data);
+        echo $this->_sql();die;
         return $result;
     }
 

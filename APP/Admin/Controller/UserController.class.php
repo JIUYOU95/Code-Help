@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 use Common\Controller\AuthController;
 use Admin\Common\Opadmin;
+use Common\Common\Category;
 class UserController extends AuthController {
 	/*
 	 *个人中心
@@ -82,6 +83,91 @@ class UserController extends AuthController {
 	 * 通讯录
 	 */
 	public function address(){
+		$data=D('Type')->where('pid=31')->select();
+		$this->assign('data',$data);
+		$book=D('Address')->relation(true)->select();
+		$this->assign('list',$book);
 		$this->display();
+	}
+
+	/*
+	 * 通讯录新增
+	 */
+	public function add_address(){
+		$address=D('Address');
+		$data=I('post.');
+		unset($data['id']);
+		if ($address->create()){
+			$result=$address->addData($data);
+			if ($result) {
+				A('Config')->add_log('新增通讯录-'.I('name'));
+				$this->success('添加成功',U('User/address'));
+			}else{
+				$this->error('添加失败');
+			}
+		}else{
+			$this->error($address->getError());
+		}
+		
+	}
+
+	/*
+	 * 通讯录修改
+	 */
+	public function edit_address(){
+		$address=D('Address');
+		if(IS_POST){
+			if ($address->create()){
+				$data=I('post.');
+				$map=array(
+					'id'=>$data['id']
+					);
+				//p($_POST);die;
+				$result=$address->editData($map,$data);
+				if ($result) {
+					A('Config')->add_log('修改通讯录-'.I('name'));
+					$this->success('修改成功',U('User/address'));
+				}else{
+					$this->error('修改失败');
+				}
+			}else{
+				$this->error($address->getError());
+			}
+		}else{
+			$data=D('Type')->where('pid=31')->select();
+			$this->assign('data',$data);
+			$book=D('Address')->relation(true)->select();
+			$this->assign('list',$book);
+			$where['id']=I('id');
+			$data=$address->where()->find();
+			$this->assign('edit',$data);
+			$this->display('address');
+		}
+	}
+	/*
+	 * 头像
+	 */
+	public function add_avatar(){
+		$upload = new \Think\Upload();
+		$upload->maxSize  = 0 ;
+		$upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
+		$upload->rootPath = 'Public/Uploads/avatar/';
+		$upload->autoSub  = false;
+		$info = $upload->uploadOne($_FILES['avatar']);
+		if(!$info) {
+			$this->ajaxReturn(0);
+		}else{
+			$Opadmin=new Opadmin();
+			$where['uid']=$Opadmin->getUserid();
+			$avatar = M('Address')->where($where)->getField('avatar');
+			unfile('Public/Uploads/avatar/'.$avatar);	//原始头像删除
+			
+			$datainfo['avatar']=$info['savename'];
+			$Opadmin->updateinfo($datainfo);		//更新头像
+
+			$username=$Opadmin->getUsername();
+			A('Config')->add_log('更新头像-'.$username);	//写入日志
+			$this->ajaxReturn($info['savename']);
+		}
 	}
 }
