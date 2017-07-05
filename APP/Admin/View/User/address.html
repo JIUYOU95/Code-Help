@@ -33,7 +33,7 @@
         <th>出生日期</th>
         <th>手机号码</th>
         <th>操作</th>
-      </tr> 
+      </tr>
     </thead>
     <tbody>
     <foreach name="list" item="v">
@@ -42,7 +42,7 @@
         <td>{$v.name}</td>
         <td>{$v.type}</td>
         <td>{$v.sex}</td>
-        <td>{$v.birthday}</td>
+        <td>{$v.birthday|date='Y-m-d',###}</td>
         <td>{$v.phone}</td>
         <td>
         	<a href="{:U('edit_address',array('id'=>$v['id']))}">修改</a>	|
@@ -99,19 +99,19 @@
 				<div class="layui-form-item">
 				    <label for="birthday" class="layui-form-label">出生日期</label>
 				    <div class="layui-input-inline">
-				      <input type="text" onClick="WdatePicker()" class="layui-input" id="birthday" name="birthday" placeholder="请输入出生日期" value="{$edit.birthday}" readonly>
+				      <input type="text" onClick="WdatePicker()" class="layui-input" id="birthday" name="birthday" placeholder="请输入出生日期" value="{$edit.birthday|date='Y-m-d',###}" readonly>
 				    </div>
 				</div>
 				<div class="layui-form-item">
-				    <label for="ID_Card" class="layui-form-label">身份证号码</label>
+				    <label for="id_card" class="layui-form-label">身份证号码</label>
 				    <div class="layui-input-block">
-				      <input type="text" lay-verify="identity" class="layui-input" id="ID_Card" name="ID_Card" placeholder="请输入身份证号码" value="{$edit.ID_Card}" autocomplete="off">
+				      <input type="text" lay-verify="identity" class="layui-input" id="id_card" name="id_card" placeholder="请输入身份证号码" value="{$edit.id_card}" autocomplete="off">
 				    </div>
 				</div>
 				<div class="layui-form-item">
 				    <label for="phone" class="layui-form-label">手机号码</label>
 				    <div class="layui-input-block">
-				      <input type="tel" lay-verify="phone" class="layui-input" id="phone" name="phone" placeholder="请输入手机号码" value="{$edit.phone}" autocomplete="off">
+				      <input type="text" lay-verify="phone" class="layui-input" id="phone" name="phone" placeholder="请输入手机号码" value="{$edit.phone}" autocomplete="off">
 				    </div>
 				</div>
 				<div class="layui-form-item">
@@ -169,8 +169,7 @@ layui.use(['form','upload'], function(){
 
 // 添加菜单
 function add(){
-	$("input[name='name'],input[name='sex']").val('');
-	$("input[name='pid']").val(0);
+	$("input[name='name'],input[name='birthday'],input[name='id_card'],input[name='phone'],input[name='weixin'],input[name='email'],input[name='address']").val('');
 	$('#myModal-add').modal('show');
 }
 </script>

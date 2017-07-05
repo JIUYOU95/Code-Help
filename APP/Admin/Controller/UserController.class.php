@@ -23,7 +23,7 @@ class UserController extends AuthController {
 			$this->data = M('Admin')->where($where)->find();
      		$this->display();
 		}
-		
+
 	}
 	/*
 	 *头像更新
@@ -42,7 +42,7 @@ class UserController extends AuthController {
 			$where['uid']=$Opadmin->getUserid();
 			$avatar = M('Admin')->where($where)->getField('avatar');
 			unfile('Public/Uploads/avatar/'.$avatar);	//原始头像删除
-			
+
 			$datainfo['avatar']=$info['savename'];
 			$Opadmin->updateinfo($datainfo);		//更新头像
 
@@ -73,10 +73,10 @@ class UserController extends AuthController {
 				}else{
 					$this->error('密码和原始密码重复');
 				}
-				
+
 			}
 		}
-		
+
 	}
 
 	/*
@@ -98,6 +98,7 @@ class UserController extends AuthController {
 		$data=I('post.');
 		unset($data['id']);
 		if ($address->create()){
+			$data['birthday']=strtotime(I('birthday'));
 			$result=$address->addData($data);
 			if ($result) {
 				A('Config')->add_log('新增通讯录-'.I('name'));
@@ -108,7 +109,7 @@ class UserController extends AuthController {
 		}else{
 			$this->error($address->getError());
 		}
-		
+
 	}
 
 	/*
@@ -117,12 +118,13 @@ class UserController extends AuthController {
 	public function edit_address(){
 		$address=D('Address');
 		if(IS_POST){
-			if ($address->create()){
+			if($address->create()){
 				$data=I('post.');
+				//p($data);die;
 				$map=array(
 					'id'=>$data['id']
 					);
-				//p($_POST);die;
+				$data['birthday']=strtotime(I('birthday'));
 				$result=$address->editData($map,$data);
 				if ($result) {
 					A('Config')->add_log('修改通讯录-'.I('name'));
@@ -139,8 +141,9 @@ class UserController extends AuthController {
 			$book=D('Address')->relation(true)->select();
 			$this->assign('list',$book);
 			$where['id']=I('id');
-			$data=$address->where()->find();
-			$this->assign('edit',$data);
+			$list=$address->where($where)->find();
+			//p($list);
+			$this->assign('edit',$list);
 			$this->display('address');
 		}
 	}
@@ -161,7 +164,7 @@ class UserController extends AuthController {
 			$where['uid']=$Opadmin->getUserid();
 			$avatar = M('Address')->where($where)->getField('avatar');
 			unfile('Public/Uploads/avatar/'.$avatar);	//原始头像删除
-			
+
 			$datainfo['avatar']=$info['savename'];
 			$Opadmin->updateinfo($datainfo);		//更新头像
 
