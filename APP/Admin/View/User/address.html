@@ -6,7 +6,27 @@
 .site-demo-upload, .site-demo-upload img{width:100px;height:100px;}
 .site-demo-upload{margin:10px auto;display:block;}
 .layui-upload-button{opacity:0;}
+.layui-form-select{width:40%;display:inline-block;}
+input[name="name"]{width:55%;display:inline-block;}
+.layui-form-select input{border:none;}
+
+.layui-table{margin:0;}
+.layui-table tr{cursor:pointer;border-bottom:1px solid #e2e2e2;display:block;}
+.layui-table tr:last-child{border-bottom:none;}
+.layui-table td, .layui-table th{padding:4px 10px;}
 </style>
+<script type="text/javascript">
+$(document).ready(function(e){
+//自动宽高
+    var edit=function(){
+        var iframe = $("#edit");
+        var h = $(window).height() - iframe.offset().top-55;
+        if(h < 300) h = 300;
+        iframe.height(h);
+    }
+    edit();
+})
+</script>
 <!--面包屑导航-->
 <ol class="breadcrumb">
     <li><a href="{:U('Index/Welcome')}">Home</a></li>
@@ -14,148 +34,63 @@
     <li class="active">通讯录</li>
     <span class="btn btn-primary rightbut" onclick="add()">新增信息</span>
 </ol>
-
-<div class="layui-form">
-  <table class="layui-table" lay-skin="line">
-    <colgroup>
-      <col width="50">
-      <col width="150">
-      <col width="150">
-      <col width="200">
-      <col>
-    </colgroup>
-    <thead>
-      <tr>
-        <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
-        <th>姓名</th>
-       	<th>分类</th>
-        <th>性别</th>
-        <th>出生日期</th>
-        <th>手机号码</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-    <foreach name="list" item="v">
-      <tr>
-        <td><input type="checkbox" name="id" lay-skin="primary"></td>
-        <td>{$v.name}</td>
-        <td>{$v.type}</td>
-        <td>{$v.sex}</td>
-        <td>{$v.birthday|date='Y-m-d',###}</td>
-        <td>{$v.phone}</td>
-        <td>
-        	<a href="{:U('edit_address',array('id'=>$v['id']))}">修改</a>	|
-        	<a href="">删除</a>
-        </td>
-      </tr>
-    </foreach>
-    </tbody>
-  </table>
-</div>
-
-
-<!--新增通讯录-->
-<div class="modal fade" id="myModal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
-				<h4 class="modal-title" id="myModalLabel">新增信息</h4>
-			</div>
-			<div class="modal-body">
-				<div class="site-demo-upload">
-				  <img id="lay_demo_upload" src="__PUBLIC__/Admin/Images/thinkphp.gif">
-				  <div class="site-demo-upbar">
-				    <input type="file" name="avatar" class="layui-upload-file">
-				  </div>
-				</div>
-			<form class="layui-form" <if condition='ACTION_NAME eq "address"'>action="{:U('User/add_address')}"<else/>action="{:U('User/edit_address')}"</if> method="post">
-				<div class="layui-form-item">
-				    <div class="layui-inline">
-				      <label class="layui-form-label">分组</label>
-				      <div class="layui-input-inline">
-				        <select name="pid"  lay-verify="required">
+<table class="table table-bordered" style="width:100%;margin:0;">
+	<tr>
+		<td style="width:40%;padding:0;border-right:1px solid #e2e2e2;vertical-align:top;">
+			<div class="layui-form">
+				<div class="search_address">
+					<select name="pid"  lay-verify="required">
 				        <foreach name="data" item="v">
 				          <option value="{$v.id}" <if condition="$edit['pid'] eq $v['id']">selected</if>>{$v.name}</option>
 				        </foreach>
-				        </select>
-				      </div>
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label for="name" class="layui-form-label">姓名</label>
-				    <div class="layui-input-block">
-				      <input type="text" lay-verify="required" class="layui-input" lay-verify="date" id="name" name="name" placeholder="请输入姓名" value="{$edit.name}" autocomplete="off">
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label class="layui-form-label">性别</label>
-				    <div class="layui-input-block">
-						<input type="radio" name="sex" value="男" title="男" <if condition="$edit['sex'] eq '男'">checked</if>>
-      					<input type="radio" name="sex" value="女" title="女" <if condition="$edit['sex'] eq '女'">checked</if>>
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label for="birthday" class="layui-form-label">出生日期</label>
-				    <div class="layui-input-inline">
-				      <input type="text" onClick="WdatePicker()" class="layui-input" id="birthday" name="birthday" placeholder="请输入出生日期" value="{$edit.birthday|date='Y-m-d',###}" readonly>
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label for="id_card" class="layui-form-label">身份证号码</label>
-				    <div class="layui-input-block">
-				      <input type="text" lay-verify="identity" class="layui-input" id="id_card" name="id_card" placeholder="请输入身份证号码" value="{$edit.id_card}" autocomplete="off">
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label for="phone" class="layui-form-label">手机号码</label>
-				    <div class="layui-input-block">
-				      <input type="text" lay-verify="phone" class="layui-input" id="phone" name="phone" placeholder="请输入手机号码" value="{$edit.phone}" autocomplete="off">
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label for="weixin" class="layui-form-label">微信号</label>
-				    <div class="layui-input-block">
-				      <input type="text" class="layui-input" id="weixin" name="weixin" placeholder="请输入微信号" value="{$edit.weixin}" autocomplete="off">
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label for="email" class="layui-form-label">邮箱</label>
-				    <div class="layui-input-block">
-				      <input type="email" lay-verify="email" class="layui-input" id="email" name="email" placeholder="请输入邮箱" value="{$edit.email}" autocomplete="off">
-				    </div>
-				</div>
-				<div class="layui-form-item">
-				    <label for="address" class="layui-form-label">住址</label>
-				    <div class="layui-input-block">
-				      <input type="text" class="layui-input" id="address" name="address" placeholder="请输入住址" value="{$edit.address}" autocomplete="off">
-				    </div>
-				</div>
+				    </select>
+				    <input type="text" name="name" autocomplete="off" placeholder="搜索联系人" class="layui-input">
+			    </div>
+			  	<table class="layui-table" lay-skin="nob">
+				  	<colgroup>
+				      <col width="50">
+				      <col width="60">
+				      <col>
+				    </colgroup>
+				    <tbody style="display:block;overflow:scroll;overflow-x:hidden;height:610px;">
+				    <foreach name="list" item="v">
+					    <tr navId="{$v['id']}" onclick="read(this)">
+					        <td><input type="checkbox" name="id" lay-skin="primary"></td>
+					        <td class="avatar">
+					        	<if condition="$v['avatar'] eq ''">
+					        		<img src="__PUBLIC__/Admin/Images/thinkphp.gif">
+					        	<else/>
+					        		<img src="__PUBLIC__/Uploads/avatar/{$v['avatar']}">
+					        	</if>
+					        </td>
+					        <td class="phone">
+					        	<span>{$v.name}</span>
+					        	<small>{$v.phone}</small>
+					        </td>
+					    </tr>
+				    </foreach>
+				    </tbody>
+				</table>
 			</div>
-			<input type="hidden" name="id" value="{$edit.id}">
-			<div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">提交更改</button>
-            </div>
-            </form>
+		</td>
+		<td style="vertical-align:top;padding:0;">
+			<iframe src="{:U('User/read_address')}" id="edit" name="edit" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<div class="layui-form">
+			<input type="checkbox" name="id[]" lay-skin="primary" lay-filter="allChoose" title="全选">
 		</div>
-	</div>
-</div>
+		</td>
+	</tr>
+</table>
 
 <layuijs/>
 <script>
 layui.use(['form','upload'], function(){
-  var form = layui.form(),
-  upload = layui.upload;
-  //上传文件
-  upload({
-	    url: "#"
-	    ,success: function(res){
-        $('#lay_demo_upload').attr("src","__PUBLIC__/Uploads/avatar/"+res)
-	      //console.log(res)
-	    }
-  	});
+  var form = layui.form();
+
   //全选
   form.on('checkbox(allChoose)', function(data){
     var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
@@ -167,21 +102,10 @@ layui.use(['form','upload'], function(){
 
 })
 
-// 添加菜单
-function add(){
-	$("input[name='name'],input[name='birthday'],input[name='id_card'],input[name='phone'],input[name='weixin'],input[name='email'],input[name='address']").val('');
-	$('#myModal-add').modal('show');
+function read(obj){
+	var $id=$(obj).attr('navId');
+	window.self.edit.location="{:U('Admin/User/read_address/id/"+$id+"')}";
 }
 </script>
-<if condition='ACTION_NAME eq "edit_address"'>
-<script>
-$(function() {
-    $('#myModal-add').modal('show');
-    $('#myModal-add').on('hide.bs.modal',
-    function() {
-        window.location='{:U(address)}';
-    })
-});
-</script>
-</if>
+
 <include file="Public:footer" />

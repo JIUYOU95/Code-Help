@@ -90,6 +90,19 @@ class UserController extends AuthController {
 		$this->display();
 	}
 
+	public function read_address(){
+		if(I('id')){
+			$where['id']=I('id');
+		}else{
+			$where['id']='3';
+		}
+		
+		$book=D('Address')->where($where)->relation(true)->find();
+		//p($book);
+		$this->assign('list',$book);
+		$this->display();
+	}
+
 	/*
 	 * 通讯录新增
 	 */
@@ -136,15 +149,15 @@ class UserController extends AuthController {
 				$this->error($address->getError());
 			}
 		}else{
+			//p(I('id'));die;
 			$data=D('Type')->where('pid=31')->select();
 			$this->assign('data',$data);
-			$book=D('Address')->relation(true)->select();
-			$this->assign('list',$book);
+
 			$where['id']=I('id');
 			$list=$address->where($where)->find();
 			//p($list);
 			$this->assign('edit',$list);
-			$this->display('address');
+			$this->display();
 		}
 	}
 	/*
