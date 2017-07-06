@@ -19,7 +19,7 @@ class FrontController extends AuthController {
 			$this->pid=$pid;
 			//if(I('name'))
 			//$where['zh_name'] = array('like','%'.I('name').'%');
-			
+
 		}
 		$data=D('Type')->relation(true)->select();
 		//$data=D('Type')->getdate();

@@ -33,7 +33,7 @@ function autoSubmit(){
     <ul class="font">
     <foreach name="v.child" item="vo">
         <foreach name="vo.type" item="vc">
-        <li data-toggle="popover" tabindex="0" role="button" data-trigger="focus"  data-placement="auto" data-content="{$vc.zh_name} &lt;i class=   &quot;fa fa-{$vc.en_name}   &quot;&gt;&lt;/i&gt;" title="{$vc.en_name}"><i class="fa fa-{$vc.en_name} fa-3x"></i></li>
+        <li data-toggle="popover" tabindex="0" role="button" data-trigger="focus"  data-placement="auto" data-content="&lt;i class=&quot;fa fa-{$vc.en_name}&quot;&gt;&lt;/i&gt; {$vc.zh_name}" title="{$vc.en_name}"><i class="fa fa-{$vc.en_name} fa-3x"></i></li>
         </foreach>
     </foreach>
     </ul>

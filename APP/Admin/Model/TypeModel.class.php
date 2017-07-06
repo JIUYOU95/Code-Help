@@ -4,12 +4,12 @@ use Common\Model\BaseModel;
 use Admin\Common\Opadmin;
 class TypeModel extends BaseModel {
 	protected $_link=array(
-		'Font'=> array(  
+		'Font'=> array(
 	    	  'mapping_type'=>self::HAS_MANY,
 	          'class_name'=>'Font',
 	          'foreign_key'=>'pid',
 	          'mapping_name'=>'type',
-	          //'condition'=>'pid=.$pid.',
+	          //'condition'=>'pid=5',
 	          'mapping_fields'=>'id,pid,zh_name,en_name',
 	    ),
 	);
