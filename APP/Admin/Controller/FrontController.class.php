@@ -27,7 +27,7 @@ class FrontController extends AuthController {
 			$where['pid']='5';
 			$this->pid='5';
 		}
-		$list=D('Font')->where($where)->select();
+		$list=D('Font')->where($where)->order('id desc')->select();
 		$this->type=D('Type')->where(array('id'=>I('pid')))->find();
 		$this->assign('lists',$list);
 		$this->display();
@@ -41,7 +41,7 @@ class FrontController extends AuthController {
 		$result=D('Font')->addData($data);
 		if ($result) {
 			A('Config')->add_log('添加图标字体-'.I('zh_name'));
-			$this->success('添加成功',U('Admin/Front/font'));
+			$this->redirect('Admin/Front/font',array('pid'=>I('pid')));
 		}else{
 			$this->error('添加失败');
 		}
@@ -58,7 +58,7 @@ class FrontController extends AuthController {
 		$pid=D('Font')->where($map)->find();
 		if ($result) {
 			A('Config')->add_log('修改图标字体-'.I('zh_name'));
-			$this->redirect(U('Admin/Front/font',array('pid'=>$pid['pid'])));
+			$this->redirect('Admin/Front/font',array('pid'=>$pid['pid']));
 		}else{
 			$this->error('修改失败');
 		}
@@ -75,7 +75,7 @@ class FrontController extends AuthController {
 		$result=D('Font')->editData($map);
 		if($result){
 			A('Config')->add_log('删除字体图标-'.I('name'));
-			$this->redirect(U('Admin/Front/font',array('pid'=>$pid['pid'])));
+			$this->redirect('Admin/Front/font',array('pid'=>$pid['pid']));
 		}else{
 			$this->error('删除字体图标失败');
 		}
