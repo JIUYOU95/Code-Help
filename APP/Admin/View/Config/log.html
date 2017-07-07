@@ -1,18 +1,7 @@
 <include file="Public:header" />
+<layuicss/>
 <script type="text/javascript">
 $(function(){
-	//全选和取消选择
-    $('input[name="all"]').click(function(){
-      if ($(this).prop("checked")) {
-            $("input[name=id]").each(function() {
-                $(this).prop("checked", true);
-            });
-        } else {
-            $("input[name=id]").each(function() {
-                $(this).prop("checked", false);
-            });
-        }
-    });
      //ajax删除
     $('input[type="button"]').click(function(){
       var text="";
@@ -46,12 +35,16 @@ $(function(){
   <button type="submit" class="btn btn-default">提交</button>
 </form>
 
-<table class="table table-bordered table-striped table-hover table-condensed center">
+<div class="layui-form">
+  <table class="layui-table" lay-skin="line">
+    <colgroup>
+      <col width="50">
+      <col width="150">
+      <col>
+    </colgroup>
 	<thead>
 	<tr>
-		<th>
-			<input type='checkbox' name='all' id="all">
-		</th>
+		<th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
 		<th>操作人</th>
 		<th>行为</th>
 		<th>时间</th>
@@ -61,7 +54,7 @@ $(function(){
 	<tbody>
 	<foreach name="loglist.data" item="v">
 	<tr>
-		<td><input type="checkbox" value="{$v['id']}" id="{$v.id}" name='id'/></td>
+		<td><input type="checkbox" value="{$v['id']}" id="{$v.id}" name='id' lay-skin="primary"></td>
 		<td>{$v.uid}</td>
 		<td>{$v.logtext}</td>
 		<td>{$v.time|date='Y-m-d H:i:s',###}</td>
@@ -74,4 +67,20 @@ $(function(){
 <div class="page">
 {$loglist.page}
 </div>
+
+<layuijs/>
+<script>
+layui.use('form', function(){
+  var form = layui.form();
+  //全选
+  form.on('checkbox(allChoose)', function(data){
+    var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+    child.each(function(index, item){
+      item.checked = data.elem.checked;
+    });
+    form.render('checkbox');
+  });
+})
+</script>
+
 <include file="Public:footer" />

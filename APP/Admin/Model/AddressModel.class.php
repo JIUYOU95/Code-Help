@@ -5,7 +5,6 @@ use Admin\Common\Opadmin;
 class AddressModel extends BaseModel {
 	protected $_validate = array(
 		array('name','require','姓名必须！'), //默认情况下用正则进行验证
-		array('name','','姓名已经存在！',0,'unique',1), // 在新增的时候验证name字段是否唯一
 	);
 
 	protected $_link = array(

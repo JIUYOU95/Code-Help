@@ -12,23 +12,23 @@ class FrontController extends AuthController {
 	 * 图标字体
 	 */
 	public function font(){
-		//分类
-		$data=D('Type')->relation(true)->select();
-		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','1');
-		$this->assign('data',$font);
-		//查询条件
-		if(I('pid')){
-			$id=I('pid');
-			$cids=Category::getChildsId($data,$id);
-			$cids[]=$id;
-			$where=array('pid'=>array('IN',$cids));
-			$this->pid=I('pid');
-		}else{
-			$where['pid']='5';
-			$this->pid='5';
+
+		if(IS_POST){
+			if(I('pid'))
+			$pid=I('pid');
+			$this->pid=$pid;
+			//if(I('name'))
+			//$where['zh_name'] = array('like','%'.I('name').'%');
+
 		}
-		$list=D('Font')->where($where)->select();
-		$this->type=D('Type')->where(array('id'=>I('pid')))->find();
+		$data=D('Type')->relation(true)->select();
+		//$data=D('Type')->getdate();
+		//p($data);die;
+		//echo D('Type')->_sql();
+		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','1');
+		$list=Category::unlimitedForLayer($data,'child','1');
+		//p($list);die;
+		$this->assign('data',$font);
 		$this->assign('lists',$list);
 		$this->display();
 	}
@@ -55,29 +55,11 @@ class FrontController extends AuthController {
 			'id'=>$data['id']
 			);
 		$result=D('Font')->editData($map,$data);
-		$pid=D('Font')->where($map)->find();
 		if ($result) {
 			A('Config')->add_log('修改图标字体-'.I('zh_name'));
-			$this->redirect(U('Admin/Front/font',array('pid'=>$pid['pid'])));
+			$this->success('修改成功',U('Admin/Front/font'));
 		}else{
 			$this->error('修改失败');
-		}
-	}
-	/*
-	 * 删除字体图标
-	 */
-	public function del_font(){
-		$id=I('get.id');
-		$map=array(
-			'id'=>$id
-			);
-		$pid=D('Font')->where($map)->cache('key',60)->find();
-		$result=D('Font')->editData($map);
-		if($result){
-			A('Config')->add_log('删除字体图标-'.I('name'));
-			$this->redirect(U('Admin/Front/font',array('pid'=>$pid['pid'])));
-		}else{
-			$this->error('删除字体图标失败');
 		}
 	}
 

@@ -9,32 +9,22 @@
 .read_ul input{color:#000;}
 .read_ul li{padding:10px 0 0px;}
 </style>
-<script type="text/javascript">
-function autoSubmit(){
-
-}
-</script>
 <div class="edit_check_close">
   <span><a href="javascript:;" onclick="document.form1.submit()"><i class="fa fa-check fa-2x"></i></a></span>
   <span>编辑</span>
   <span><a href="javascript:;" onclick="window.history.back()"><i class="fa fa-close fa-2x"></i></a></span>
 </div>
 <div class="read_title">
-  <form class="layui-form" action="{:U('edit_address')}" name="form1" method="post">
-  <input type="hidden" name="id" value="{$edit.id}">
+  <form class="layui-form" action="{:U('add_address')}" name="form1" method="post">
   <div class="site-demo-upload">
-  <if condition="$edit['avatar'] eq ''">
     <img id="lay_demo_upload" src="__PUBLIC__/Admin/Images/thinkphp.gif">
-  <else/>
-    <img id="lay_demo_upload" src="__PUBLIC__/Uploads/address/{$edit.avataro}">
-  </if>
     <div class="site-demo-upbar">
       <input type="file" name="avatar" class="layui-upload-file">
     </div>
   </div>
 
   <div class="layui-input-inline" style="border-bottom:1px solid #e2e2e2;font-size:14px;">
-    <input type="text" name="name" lay-verify="title" autocomplete="off" value="{$edit.name}" class="layui-input">
+    <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="姓名" class="layui-input">
   </div>
 
   <ul class="read_ul">
@@ -43,44 +33,44 @@ function autoSubmit(){
         <select name="pid" lay-filter="pid">
           <option value=" ">全部联系人</option>
             <foreach name="data" item="v">
-              <option value="{$v.id}" <if condition="$edit['pid'] eq $v['id']">selected</if>>{$v.name}</option>
+              <option value="{$v.id}">{$v.name}</option>
             </foreach>
         </select>
       </div>
     </li>
     <li><i class="fa fa-circle-o"></i><label>性别</label>
       <div class="layui-input-inline">
-        <input type="text" name="sex" lay-verify="title" autocomplete="off" value="{$edit.sex}" class="layui-input">
+        <input type="text" name="sex" lay-verify="title" autocomplete="off" class="layui-input" placeholder="性别">
       </div>
     </li>
     <li><i class="fa fa-birthday-cake"></i><label>出生日期</label>
       <div class="layui-input-inline">
-        <input type="text" name="birthday" lay-verify="title" autocomplete="off" value="{$edit.birthday|date='Y-m-d',###}" class="layui-input" onclick="layui.laydate({elem: this})" readonly>
+        <input type="text" name="birthday" lay-verify="title" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})" readonly placeholder="出生日期">
       </div>
     </li>
     <li><i class="fa fa-vcard-o"></i><label>身份证号码</label>
       <div class="layui-input-inline">
-        <input type="text" name="id_card" lay-verify="title" autocomplete="off" value="{$edit.id_card}" class="layui-input">
+        <input type="text" name="id_card" lay-verify="title" autocomplete="off" class="layui-input" placeholder="身份证号码">
       </div>
     </li>
     <li><i class="fa fa-phone"></i><label>手机号</label>
       <div class="layui-input-inline">
-        <input type="text" name="phone" lay-verify="title" autocomplete="off" value="{$edit.phone}" class="layui-input">
+        <input type="text" name="phone" lay-verify="title" autocomplete="off" class="layui-input" placeholder="手机号">
       </div>
     </li>
     <li><i class="fa fa-weixin"></i><label>微信号</label>
       <div class="layui-input-inline">
-        <input type="text" name="weixin" lay-verify="title" autocomplete="off" value="{$edit.weixin}" class="layui-input">
+        <input type="text" name="weixin" lay-verify="title" autocomplete="off" class="layui-input" placeholder="微信号">
       </div>
     </li>
     <li><i class="fa fa-envelope"></i><label>邮箱</label>
       <div class="layui-input-inline">
-        <input type="text" name="email" lay-verify="title" autocomplete="off" value="{$edit.email}" class="layui-input">
+        <input type="text" name="email" lay-verify="title" autocomplete="off" class="layui-input" placeholder="邮箱">
       </div>
     </li>
     <li><i class="fa fa-home"></i><label>住址</label>
       <div class="layui-input-inline">
-        <input type="text" name="address" lay-verify="title" autocomplete="off" value="{$edit.address}" class="layui-input">
+        <input type="text" name="address" lay-verify="title" autocomplete="off" class="layui-input" placeholder="住址">
       </div>
     </li>
   </ul>
@@ -97,8 +87,8 @@ layui.use(['form','upload','laydate'], function(){
   upload({
       url: "#"
       ,success: function(res){
-        //$('#lay_demo_upload').attr("src","__PUBLIC__/Uploads/address/"+res)
-        console.log(res)
+        $('#lay_demo_upload').attr("src","__PUBLIC__/Uploads/avatar/"+res)
+        //console.log(res)
       }
     });
 })

@@ -85,11 +85,19 @@ class UserController extends AuthController {
 	public function address(){
 		$data=D('Type')->where('pid=31')->select();
 		$this->assign('data',$data);
-		$book=D('Address')->relation(true)->select();
+		$book=D('Address')->where($where)->select();
 		$this->assign('list',$book);
 		$this->display();
 	}
 
+	public function ajax_address(){
+		if(is_numeric(I('pid'))){
+			$where['pid']=I('pid');
+			$this->pid=I('pid');
+		}
+		$book=D('Address')->where($where)->select();
+		$this->ajaxReturn($book);
+	}
 	public function read_address(){
 		if(I('id')){
 			$where['id']=I('id');
@@ -107,20 +115,27 @@ class UserController extends AuthController {
 	 * 通讯录新增
 	 */
 	public function add_address(){
-		$address=D('Address');
-		$data=I('post.');
-		unset($data['id']);
-		if ($address->create()){
-			$data['birthday']=strtotime(I('birthday'));
-			$result=$address->addData($data);
-			if ($result) {
-				A('Config')->add_log('新增通讯录-'.I('name'));
-				$this->success('添加成功',U('User/address'));
+		if(IS_POST){
+			$address=D('Address');
+			$data=I('post.');
+			unset($data['id']);
+			if ($address->create()){
+				$data['birthday']=strtotime(I('birthday'));
+				$result=$address->addData($data);
+				$id=$result;
+				if ($result) {
+					A('Config')->add_log('新增通讯录-'.I('name'));
+					$this->redirect(U('User/read_address',array('id'=>$id)));
+				}else{
+					$this->error('添加失败');
+				}
 			}else{
-				$this->error('添加失败');
+				$this->error($address->getError());
 			}
 		}else{
-			$this->error($address->getError());
+			$data=D('Type')->where('pid=31')->select();
+			$this->assign('data',$data);
+			$this->display();
 		}
 
 	}
@@ -133,7 +148,6 @@ class UserController extends AuthController {
 		if(IS_POST){
 			if($address->create()){
 				$data=I('post.');
-				//p($data);die;
 				$map=array(
 					'id'=>$data['id']
 					);
@@ -141,7 +155,7 @@ class UserController extends AuthController {
 				$result=$address->editData($map,$data);
 				if ($result) {
 					A('Config')->add_log('修改通讯录-'.I('name'));
-					$this->success('修改成功',U('User/address'));
+					$this->redirect(U('User/read_address',array('id'=>I('id'))));
 				}else{
 					$this->error('修改失败');
 				}
@@ -160,6 +174,33 @@ class UserController extends AuthController {
 			$this->display();
 		}
 	}
+
+	/*
+	 * 删除通讯录
+	 */
+	public function del_address(){
+		//p(I('id'));die;
+		$ids=explode(',',substr(I('id'),1));
+		foreach($ids as $key=>$id){
+			if(!$this->dellog($id)){
+				$this->show(0);
+			}
+		}
+		$this->show(1);
+	}
+	private function dellog($id){
+		if(!$id)
+			return false;
+		$where['id']=$id;
+	 	$count=D('Address')->where($where)->delete();
+	 	if($count){
+			return true;
+	 	}else{
+	 		return false;
+	 	}
+
+	}
+
 	/*
 	 * 头像
 	 */
@@ -167,22 +208,22 @@ class UserController extends AuthController {
 		$upload = new \Think\Upload();
 		$upload->maxSize  = 0 ;
 		$upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
-		$upload->rootPath = 'Public/Uploads/avatar/';
+		$upload->rootPath = 'Public/Uploads/address/';
 		$upload->autoSub  = false;
 		$info = $upload->uploadOne($_FILES['avatar']);
 		if(!$info) {
 			$this->ajaxReturn(0);
 		}else{
-			$Opadmin=new Opadmin();
-			$where['uid']=$Opadmin->getUserid();
-			$avatar = M('Address')->where($where)->getField('avatar');
-			unfile('Public/Uploads/avatar/'.$avatar);	//原始头像删除
+			// $Opadmin=new Opadmin();
+			// $where['uid']=$Opadmin->getUserid();
+			// $avatar = M('Address')->where($where)->getField('avatar');
+			// unfile('Public/Uploads/address/'.$avatar);	//原始头像删除
 
-			$datainfo['avatar']=$info['savename'];
-			$Opadmin->updateinfo($datainfo);		//更新头像
+			// $datainfo['avatar']=$info['savename'];
+			// $Opadmin->updateinfo($datainfo);		//更新头像
 
-			$username=$Opadmin->getUsername();
-			A('Config')->add_log('更新头像-'.$username);	//写入日志
+			// $username=$Opadmin->getUsername();
+			// A('Config')->add_log('更新通讯录头像-'.$username);	//写入日志
 			$this->ajaxReturn($info['savename']);
 		}
 	}
