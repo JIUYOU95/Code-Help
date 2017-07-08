@@ -1,4 +1,5 @@
 <include file="Public:header" />
+<layuicss/>
 <!--面包屑导航-->
 <ol class="breadcrumb">
     <li><a href="{:U('Index/Welcome')}">Home</a></li>
@@ -7,12 +8,15 @@
 </ol>
 
 <div class="tab-content">
-	<table class="table table-striped table-bordered table-hover table-condensed">
+	<div class="layui-form">
+  		<table class="layui-table">
+  		<thead>
 		<tr>
 			<th>权限名</th>
 			<th>权限</th>
 			<th>操作</th>
 		</tr>
+		</thead>
 		<foreach name="data" item="v">
 		<tr>
 			<td>{$v['_name']}</td>
@@ -21,6 +25,7 @@
 		</tr>
 		</foreach>
 	</table>
+	</div>
 </div>
 
 <div class="modal fade" id="myModal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

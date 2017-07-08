@@ -29,8 +29,8 @@ ul,ol,li{list-style:none;margin:0;padding:0;}
 /**
  * Submenu
  -----------------------------*/
- .submenu {display: none;background: #444359;font-size: 12px;}
- .submenu li {border-bottom: 1px solid #4b4a5e;}
+ .submenu {display: none;background: #444359;}
+ /*.submenu li {border-bottom: 1px solid #4b4a5e;}*/
  .submenu a {display:block;text-decoration:none;color:#d9d9d9;padding:12px;padding-left:42px;
  	-webkit-transition: all 0.25s ease;
  	-o-transition: all 0.25s ease;

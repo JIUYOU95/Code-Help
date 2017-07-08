@@ -1,6 +1,6 @@
 @charset "utf-8";
-body,.dropdown-menu{font-family:'Microsoft Yahei';font-size:12px!important;}
-table,.btn,.form-control{font-size:12px;}
+body,.dropdown-menu{font-family:'Microsoft Yahei';}
+
 a,a:hover, a:focus{text-decoration:none;color:#434A54;}
 ul,ol,li{list-style:none;margin:0;padding:0;}
 label,th{font-weight:normal;cursor:pointer;margin:0;}
@@ -9,26 +9,35 @@ label,th{font-weight:normal;cursor:pointer;margin:0;}
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th{text-align:center;font-weight:normal;}
 tfoot{text-align:center;}
 input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
-/*引用*/
-blockquote{border-left:5px solid #428bca;}
-/*font*/
-.font{margin:10px 0;}
+.layui-table td{padding:7px 15px!important;}
+
+/*字体图标*/
+.font,.color{margin:10px 0;}
 .font li{display:inline-block;width:14.28%;text-align:center;border:1px solid #e2e2e2;padding:10px 0;color:#666;margin-right:-1px;margin-bottom:-1px;}
 .font li:hover,.font li:visited,.font li:active,.font li:hover a{background:#f2f2f2;color:#000;}
 .font li span{display:block;height:22px;line-height:22px;overflow:hidden;}
 .font .font_zh{color:#c2c2c2;padding:5px 0;}
 .font .font_en{font-family:"Consolas";}
 .search_address i{position:relative;right:-25px;}
-
-
+/*颜色*/
+.color{color:#fff;}
+.color li{display:inline-block;width:12.5%;text-align:center;padding:10px 0;}
+.color li span{display:block;height:22px;line-height:22px;}
+.color li:hover{z-index:999;;cursor:pointer;-webkit-transform:scale(1);
+    -moz-transform:scale(1);
+    -o-transform:scale(1);
+    transform:scale(1);
+    -webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,.2);
+    -moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,.2);
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,.2);}
 
 /*面包屑导航*/
-.breadcrumb{background-color:#fff;padding:0;height:31px;line-height:31px;}
+.breadcrumb{background-color:#fff;padding:0;height:31px;line-height:31px;margin-bottom:5px;}
 .breadcrumb .rightbut{float:right;}
 /*
  *标签页
  */
- .tab-content{margin:20px 0;}
+ .tab-content{margin:10px 0;}
 
  /*日志*/
  .center{text-align:center;}
@@ -69,9 +78,9 @@ blockquote{border-left:5px solid #428bca;}
 .tool_address label{font-size:14px;padding:0 20px;}
 
  /*分页*/
-.page{display:block;border-radius:4px;text-align:center;}
+.page{display:block;border-radius:3px;text-align:center;}
 .page div{overflow:hidden;display:inline-block;}
-.page a,.page span{float:left;padding:6px 12px;border:1px solid #ddd;margin-left: -1px;}
+.page a,.page span{float:left;padding:8px 15px;border:1px solid #ddd;margin-left: -1px;}
 .page a:first-child, .page span:first-child{margin-left:0;border-top-left-radius:4px;border-bottom-left-radius:4px;}
 .page a:last-child, .page span:last-child{border-top-right-radius:4px;border-bottom-right-radius:4px;}
 .page .current,.page .current:focus,.page .current:hover{z-index:3;color:#fff;cursor:default;background-color:#337ab7;border-color: #337ab7;}

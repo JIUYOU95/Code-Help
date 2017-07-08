@@ -11,6 +11,7 @@
 <font/>
 <admin/>
 <site/>
+<layuicss/>
 <base target="main" />
 </head>
 <body style="overflow-y:hidden;">
@@ -36,10 +37,10 @@
               <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">{$nickname} <b class="caret"></b></a>
                 <ul role="menu" class="dropdown-menu">
-                  <li><a href="{:U('User/index')}"><i class="fa fa-user"></i> 个人中心</a></li>
-                  <li><a href="{:U('Login/lock')}" target="_top"><i class="fa fa-unlock-alt"></i> 锁屏</a></li>
+                  <li><a href="{:U('User/index')}"><i class="fa fa-user">  个人中心</i></a></li>
+                  <li><a href="{:U('Login/lock')}" target="_top"><i class="fa fa-lock">  锁屏</i></a></li>
                   <li class="divider"></li>
-                  <li><a href="{:U('Login/logout')}" target="_top"><i class="fa fa-sign-out"></i> 退出</a></li>
+                  <li><a href="{:U('Login/logout')}" target="_top"><i class="fa fa-power-off">  退出</i></a></li>
                 </ul>
               </li>
             </ul>
@@ -69,7 +70,7 @@
         					<div class="link"><i class="fa fa-{$v['ico']}"></i>{$v['name']}<i class="fa fa-chevron-down"></i></div>
         					<ul class="submenu">
         					<foreach name="v['_data']" item="n">
-        						<li><a href="{:U($n['mca'])}">{$n['name']}</a></li>
+        						<li><a href="{:U($n['mca'])}" data-type="tabAdd" class="site-demo-active">{$n['name']}</a></li>
         					</foreach>
         					</ul>
         				</li>
@@ -77,11 +78,32 @@
         				</foreach>
             </ul>
         </div>
+<style type="text/css">
+.panel-title{display:inline-block;line-height:40px;}
+.layui-tab{display:inline-block;margin:0 20px;}
+.layui-tab-title{border-bottom:none;}
+.layui-tab-title li{vertical-align:baseline;}
+.layui-tab-title .layui-this{background:#fff;color:#b63b4d;}
+.layui-tab-title .layui-this:after{height:40px;border-bottom:3px solid #b63b4d;}
 
+</style>
         <div class="col-xs-12 col-sm-9 content">
             <div class="panel panel-default">
-	            <div class="panel-heading">
-	                <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a>面板标题</h3>
+	            <div class="panel-heading" style="padding:0 15px;">
+	                <h3 class="panel-title">
+                    <a href="javascript:void(0);" class="toggle-sidebar">
+                      <span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span>
+                    </a>控制面板
+                  </h3>
+                  <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
+                    <ul class="layui-tab-title">
+                      <li class="layui-this" lay-id="11">网站设置</li>
+                      <li lay-id="22">用户管理</li>
+                      <li lay-id="33">权限分配</li>
+                      <li lay-id="44">商品管理</li>
+                      <li lay-id="55">订单管理</li>
+                    </ul>
+                  </div>
 	            </div>
               	<div class="panel-body">
               		<iframe src="{:U('Welcome')}" id="main" name="main" width="100%" height="100%" frameborder="0" scrolling="yes"></iframe>
@@ -92,6 +114,27 @@
 </div>
 
 
+<layuijs/>
+<script>
+layui.use('element', function(){
+  var element = layui.element();
+   //触发事件
+  var active = {
+    tabAdd: function(){
+      //新增一个Tab项
+      element.tabAdd('demo', {
+        title: '新选项'+ (Math.random()*1000|0) //用于演示
+        ,content: '内容'+ (Math.random()*1000|0)
+        ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+      })
+    }
+  }
 
+  $('.site-demo-active').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+})
+</script>
 </body>
 </html>

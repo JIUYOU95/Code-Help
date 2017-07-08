@@ -68,16 +68,41 @@ class FrontController extends AuthController {
 	 */
 	public function del_font(){
 		$id=I('get.id');
-		$map=array(
-			'id'=>$id
-			);
-		$pid=D('Font')->where($map)->cache('key',60)->find();
-		$result=D('Font')->editData($map);
+		$where['id']=$id;
+		$result=D('Font')->where($where)->delete();
 		if($result){
 			A('Config')->add_log('删除字体图标-'.I('name'));
-			$this->redirect('Admin/Front/font',array('pid'=>$pid['pid']));
+			$this->redirect('Admin/Front/font',array('pid'=>I('pid')));
 		}else{
 			$this->error('删除字体图标失败');
+		}
+	}
+
+	/*
+	 * 颜色
+	 */
+	public function color(){
+		$this->color=D('Color')->order('id')->select();
+		$this->display();
+	}
+
+	/*
+	 * 新增颜色
+	 */
+	public function add_color(){
+		$color=D('Color');
+		$data=I('post.');
+		unset($data['id']);
+		if($color->create()){
+			$result=$color->addData($data);
+			if ($result) {
+				A('Config')->add_log('添加颜色-'.I('zh_name'));
+				$this->redirect('Admin/Front/color');
+			}else{
+				$this->error('添加失败');
+			}
+		}else{
+			$this->error($color->getError());
 		}
 	}
 
