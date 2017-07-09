@@ -1,8 +1,8 @@
 <include file="Public:header" />
 <bootstrapselect/>
 <style type="text/css">
-.fa-remove{float:right;cursor:pointer;padding-right:15px;display:none;}
-.font li:hover .fa-remove{display:inline;}
+.del{float:right;cursor:pointer;padding-right:15px;display:none;}
+.font li:hover .del{display:inline;}
 .font li:hover .fa-3x{padding-left:26px;}
 </style>
 <script type="text/javascript">
@@ -38,7 +38,7 @@ function autoSubmit(){
 <ul class="font">
     <foreach name="lists" item="vc">
     <li>
-        <i class="fa fa-{$vc.en_name} fa-3x" navId="{$vc.id}" navName="{$vc.en_name}" navMca="{$vc.zh_name}" onclick="edit(this)"></i><i navId="{$vc.id}" navPid="{$vc.pid}" navName="{$vc.en_name}" class="fa fa-remove" onclick="del(this)"></i>
+        <i class="fa fa-{$vc.en_name} fa-3x" navId="{$vc.id}" navName="{$vc.en_name}" navMca="{$vc.zh_name}" onclick="edit(this)"></i><i navId="{$vc.id}" navPid="{$vc.pid}" navName="{$vc.en_name}" class="fa fa-remove del" onclick="del(this)"></i>
         <span class="font_zh">{$vc.zh_name}</span>
         <span class="font_en">{$vc.en_name}</span>
     </li>

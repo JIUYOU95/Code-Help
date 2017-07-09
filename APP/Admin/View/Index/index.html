@@ -70,8 +70,8 @@
         					<div class="link"><i class="fa fa-{$v['ico']}"></i>{$v['name']}<i class="fa fa-chevron-down"></i></div>
         					<ul class="submenu">
         					<foreach name="v['_data']" item="n">
-        						<li><a href="{:U($n['mca'])}" data-type="tabAdd" class="site-demo-active">{$n['name']}</a></li>
-        					</foreach>
+        						<li><a href="{:U($n['mca'])}"  class="site-demo-active">{$n['name']}</a></li>
+        					</foreach><!-- data-type="tabAdd" -->
         					</ul>
         				</li>
         				</empty>
