@@ -11,6 +11,7 @@ class IndexController extends AuthController {
     	// 分配菜单数据
 		$nav_data=D('Nav')->getTree('level','order_number,id');
 		$this->assign('data',$nav_data);
+        //p($nav_data);die;
         $this->display();
     }
 

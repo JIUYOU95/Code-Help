@@ -7,24 +7,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{$config['description']}">
 <meta name="author" content="">
-<jquery/>
-<font/>
-<admin/>
-<site/>
+<bootstrapcss/>
+<bootstrapjs/>
 <layuicss/>
+<admin/>
 <base target="main" />
 </head>
-<body style="overflow-y:hidden;">
+<body>
 <!--nav-->
     <nav role="navigation" class="navbar navbar-custom">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+            <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle fa fa-navicon" type="button">
               <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
             </button>
             <a href="{:U('Welcome')}" class="navbar-brand">Code Help</a>
           </div>
@@ -53,7 +49,7 @@
     <!--documents-->
 	<div class="row row-offcanvas row-offcanvas-left">
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
-            <ul class="list-group panel accordion" id="accordion">
+            <ul class="list-group panel accordion" id="accordion" lay-filter="navBar">
                 <li>
                 	<div class="link"><i class="fa fa-navicon"></i>侧栏</div>
                 </li>
@@ -70,7 +66,7 @@
         					<div class="link"><i class="fa fa-{$v['ico']}"></i>{$v['name']}<i class="fa fa-chevron-down"></i></div>
         					<ul class="submenu">
         					<foreach name="v['_data']" item="n">
-        						<li><a href="{:U($n['mca'])}"  class="site-demo-active">{$n['name']}</a></li>
+        						<li><a href="{:U($n['mca'])}" data-id="{$n['id']}"  data-type="tabAdd" class="site-demo-active">{$n['name']}</a></li>
         					</foreach><!-- data-type="tabAdd" -->
         					</ul>
         				</li>
@@ -78,17 +74,9 @@
         				</foreach>
             </ul>
         </div>
-<style type="text/css">
-.panel-title{display:inline-block;line-height:40px;}
-.layui-tab{display:inline-block;margin:0 20px;}
-.layui-tab-title{border-bottom:none;}
-.layui-tab-title li{vertical-align:baseline;}
-.layui-tab-title .layui-this{background:#fff;color:#b63b4d;}
-.layui-tab-title .layui-this:after{height:40px;border-bottom:3px solid #b63b4d;}
 
-</style>
         <div class="col-xs-12 col-sm-9 content">
-            <div class="panel panel-default">
+            <div class="panel panel-default" lay-filter="tabMain">
 	            <div class="panel-heading" style="padding:0 15px;">
 	                <h3 class="panel-title">
                     <a href="javascript:void(0);" class="toggle-sidebar">
@@ -98,16 +86,12 @@
                   <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
                     <ul class="layui-tab-title">
                       <li class="layui-this" lay-id="11">网站设置</li>
-                      <li lay-id="22">用户管理</li>
-                      <li lay-id="33">权限分配</li>
-                      <li lay-id="44">商品管理</li>
-                      <li lay-id="55">订单管理</li>
                     </ul>
                   </div>
 	            </div>
-              	<div class="panel-body">
-              		<iframe src="{:U('Welcome')}" id="main" name="main" width="100%" height="100%" frameborder="0" scrolling="yes"></iframe>
-                </div>
+              <div class="panel-body">
+              	<iframe src="{:U('Welcome')}" id="main" name="main" width="100%" height="100%" frameborder="0" scrolling="yes"></iframe>
+              </div>
             </div>
         </div>
     </div>
@@ -118,22 +102,26 @@
 <script>
 layui.use('element', function(){
   var element = layui.element();
-   //触发事件
-  var active = {
-    tabAdd: function(){
-      //新增一个Tab项
-      element.tabAdd('demo', {
-        title: '新选项'+ (Math.random()*1000|0) //用于演示
-        ,content: '内容'+ (Math.random()*1000|0)
-        ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
-      })
-    }
-  }
-
-  $('.site-demo-active').on('click', function(){
-    var othis = $(this), type = othis.data('type');
-    active[type] ? active[type].call(this, othis) : '';
+  element.on('nav(navBar)', function(elem){
+    alert(11);
+    console.log(elem); //得到当前点击的DOM对象
   });
+  //  //触发事件
+  // var active = {
+  //   tabAdd: function(data){
+  //     //新增一个Tab项
+  //     element.tabAdd('demo', {
+  //       title: '新选项'+ (Math.random()*1000|0),
+  //       content: '内容'+ (Math.random()*1000|0),
+  //       id:data.attr('data-id')
+  //     })
+  //   }
+  // }
+
+  // $('.site-demo-active').on('click', function(){
+  //   var othis = $(this), type = othis.data('type');
+  //   active[type] ? active[type].call(this, othis) : '';
+  // });
 })
 </script>
 </body>

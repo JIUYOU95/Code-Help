@@ -24,6 +24,10 @@ $(function() {
 
 	var accordion = new Accordion($('#accordion'), false);
 
+	$('.toggle-sidebar').click(function(){
+		$(".row-offcanvas-left").toggleClass("active");
+	});
+
 	//侧栏列表
 	var sided=$(".submenu a");
     sided.click(function(){
@@ -33,7 +37,7 @@ $(function() {
 
     // 动态调整iframe的高度以适应不同高度的显示器
     $('.panel-body,.panel').height($(window).height()-70);
-    $('.panel-body').css('padding-bottom',50);
+    $('.panel-body').css('padding-bottom',80);
 
     // 左侧菜单自动适应高度
     $('.sidebar-offcanvas .accordion').height($(window).height()-70);

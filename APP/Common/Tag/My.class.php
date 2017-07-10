@@ -15,7 +15,7 @@ class My extends TagLib {
         'font'=>array('','close'=>0),
         'WdatePicker'=>array('','close'=>0),
         'nicescroll'=>array('','close'=>0),
-        'site'=>array('','close'=>0),
+        'login'=>array('','close'=>0),
         'admin'=>array('','close'=>0),
         'admincss'=>array('','close'=>0),
         
@@ -28,7 +28,6 @@ class My extends TagLib {
     public function _bootstrapcss($tag,$content) {
         $link=<<<php
     <link rel="stylesheet" href="__COMMON__/bootstrap/3.3.0/css/bootstrap.min.css" />
-    
     <link rel="stylesheet" href="__COMMON__/font-awesome/4.7.0/css/font-awesome.min.css" />
 php;
     return $link;
@@ -95,14 +94,6 @@ php;
 php;
     return $link;
     }
-    /*site框架*/
-    public function _site($tag,$content) {
-        $link=<<<php
-    <link rel="stylesheet" href="__PUBLIC__/Admin/Css/site.min.css" />
-    <script src="__PUBLIC__/Admin/Js/site.min.js"></script>
-php;
-    return $link;
-    }
     /* Admin后台css和js*/
     public function _admin($tag,$content) {
         $link=<<<php
@@ -116,6 +107,17 @@ php;
         $link=<<<php
     <link rel="stylesheet" href="__PUBLIC__/Admin/Css/main.css" />
     
+php;
+    return $link;
+    }
+    /*登录*/
+    public function _login(){
+         $link=<<<php
+    
+    <link rel="stylesheet" href="__COMMON__/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__COMMON__/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="__COMMON__/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Admin/Css/login.css" />
 php;
     return $link;
     }

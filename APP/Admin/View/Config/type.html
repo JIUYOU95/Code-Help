@@ -1,5 +1,4 @@
 <include file="Public:header" />
-<layuicss/>
 <!--面包屑导航-->
 <ol class="breadcrumb">
     <li><a href="{:U('Index/Welcome')}">Home</a></li>
@@ -9,8 +8,7 @@
 
 <div class="tab-content">
 	<form action="{:U('order_type')}" method="post">
-	<div class="layui-form">
-  		<table class="layui-table">
+  		<table class="table table-bordered table-hover table-condensed">
 			<thead>
 			<tr>
 				<th width="8%">排序</th>
@@ -21,7 +19,7 @@
 			<tbody>
 			<foreach name="data" item="v">
 			<tr>
-				<td> <input class="layui-input" style="width:40px;height:20px;margin:0 auto;" type="text" name="{$v['id']}" value="{$v['sort']}" autocomplete="off"></td>
+				<td> <input class="form-control" style="width:40px;height:20px;margin:0 auto;" type="text" name="{$v['id']}" value="{$v['sort']}" autocomplete="off"></td>
 				<td>{$v['_name']}</td>
 				<td style="text-align:center;">
 					<a href="javascript:;" navId="{$v['id']}" navName="{$v['name']}" onclick="add_child(this)">添加子菜单</a> |
@@ -37,7 +35,7 @@
 			</tr>
 			</tfoot>
 		</table>
-	</div>
+
 	</form>
 </div>
 

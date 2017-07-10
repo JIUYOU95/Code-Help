@@ -1,5 +1,4 @@
 <include file="Public:header" />
-<layuicss/>
 <script type="text/javascript">
 $(function(){
 	$('.nopurview').click(function(){
@@ -25,13 +24,7 @@ $(function(){
 </div>
 
 <div class="tab-content">
-	<div class="layui-form">
-  	<table class="layui-table">
-  		<colgroup>
-	      <col width="50">
-	      <col width="80">
-	      <col>
-	    </colgroup>
+  	<table class="table table-bordered table-hover table-condensed">
 		<thead>
 		<tr>
 			<th>用户名</th>
@@ -91,7 +84,6 @@ $(function(){
 		</foreach>
 		</tbody>
 	</table>
-	</div>
 </div>
 <!--新增管理员-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

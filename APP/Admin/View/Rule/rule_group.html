@@ -16,17 +16,17 @@
 	<foreach name="rule_data" item="v">
 	<empty name="v['_data']">
 		<tr class="b-group">
-			<th width="10%"> <label>{$v['title']} <input type="checkbox" name="rule_ids[]" value="{$v['id']}" <if condition="in_array($v['id'],$group_data['rules'])"> checked="checked"</if> onclick="checkAll(this)" ></label></th>
+			<td width="10%"> <label>{$v['title']} <input type="checkbox" name="rule_ids[]" value="{$v['id']}" <if condition="in_array($v['id'],$group_data['rules'])"> checked="checked"</if> onclick="checkAll(this)" ></label></td>
 			<td></td>
 		</tr>
 		<else/>
 		<tr class="b-group">
-			<th width="10%"> <label>{$v['title']} <input type="checkbox" name="rule_ids[]" value="{$v['id']}" <if condition="in_array($v['id'],$group_data['rules'])"> checked="checked"</if> onclick="checkAll(this)"></label></th>
+			<td width="10%"> <label>{$v['title']} <input type="checkbox" name="rule_ids[]" value="{$v['id']}" <if condition="in_array($v['id'],$group_data['rules'])"> checked="checked"</if> onclick="checkAll(this)"></label></td>
 			<td class="b-child">
 				<foreach name="v['_data']" item="n">
 				<table class="table table-striped table-bordered table-condensed">
 				<tr class="b-group">
-					<th width="15%"> <label>{$n['title']} <input type="checkbox" name="rule_ids[]" value="{$n['id']}" <if condition="in_array($n['id'],$group_data['rules'])"> checked="checked"</if> onclick="checkAll(this)"></label></th>
+					<td width="15%"> <label>{$n['title']} <input type="checkbox" name="rule_ids[]" value="{$n['id']}" <if condition="in_array($n['id'],$group_data['rules'])"> checked="checked"</if> onclick="checkAll(this)"></label></td>
 					<td>
 					<notempty name="n['_data']">
 						<volist name="n['_data']" id="c">

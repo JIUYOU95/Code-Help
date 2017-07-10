@@ -1,16 +1,33 @@
 @charset "utf-8";
 body,.dropdown-menu{font-family:'Microsoft Yahei';}
 
+/*
+ *对Bootstrap重设置
+ */
+ /*基础*/
 a,a:hover, a:focus{text-decoration:none;color:#434A54;}
+a:focus{border:none;outline:none;}
 ul,ol,li{list-style:none;margin:0;padding:0;}
 label,th{font-weight:normal;cursor:pointer;margin:0;}
+blockquote{border-color:#009688;}
+/*表格*/
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th,
 .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{border:none;vertical-align:middle;height:25px;line-height:25px;border-top:1px solid #ddd;}
-.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th{text-align:center;font-weight:normal;}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th{font-weight:normal;background-color:#f9f9f9;}
+.table-condensed>thead>tr>th,.table-condensed>tbody>tr>th,.table-condensed>tfoot>tr>th,.table-condensed>thead>tr>td,.table-condensed>tbody>tr>td,.table-condensed>tfoot>tr>td{padding:5px 10px;}
 tfoot{text-align:center;}
+.table-bordered {border: 1px solid #e2e2e2;}
+/*表单*/
+.form-control{border-radius:2px;box-shadow:none;border:1px solid #e6e6e6;}
+.form-control:focus{border-color:#C9C9C9!important;box-shadow:none}
 input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
-.layui-table td{padding:7px 15px!important;}
+/*按钮*/
+.btn{border-radius:2px;}
 
+
+/*欢迎页面*/
+.welcome{background-color:#f2f2f2;}
+.welcome span{display:block;font-size:14px;padding:5px 0;}
 /*字体图标*/
 .font,.color{margin:10px 0;}
 .font li{display:inline-block;width:14.28%;text-align:center;border:1px solid #e2e2e2;padding:10px 0;color:#666;margin-right:-1px;margin-bottom:-1px;}
