@@ -105,8 +105,7 @@ class UserController extends AuthController {
 			$where['id']='3';
 		}
 		
-		$book=D('Address')->where($where)->relation(true)->find();
-		//p($book);
+		$book=D('Address')->getData($id);
 		$this->assign('list',$book);
 		$this->display();
 	}
