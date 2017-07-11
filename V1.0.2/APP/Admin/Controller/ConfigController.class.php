@@ -151,7 +151,7 @@ class ConfigController extends AuthController {
 			$where['uid']=I('name');
 			$this->name=I('name');
 		}
-		$this->loglist=$Log->getPage($where,'id desc','15');
+		$this->loglist=$Log->getPage($where,'id desc','14');
 		$this->display();
 	}
 

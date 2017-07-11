@@ -113,10 +113,10 @@ php;
     /*登录*/
     public function _login(){
          $link=<<<php
-    
     <link rel="stylesheet" href="__COMMON__/bootstrap/3.3.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="__COMMON__/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="__COMMON__/jquery/2.0.0/jquery.min.js"></script>
+    <script src="__PUBLIC__/Admin/Js/util.js"></script>
     <link rel="stylesheet" href="__PUBLIC__/Admin/Css/login.css" />
 php;
     return $link;

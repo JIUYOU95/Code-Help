@@ -13,7 +13,7 @@ class FrontController extends AuthController {
 	 */
 	public function font(){
 		//分类
-		$data=D('Type')->relation(true)->select();
+		$data=D('Type')->select();
 		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','1');
 		$this->assign('data',$font);
 		//查询条件

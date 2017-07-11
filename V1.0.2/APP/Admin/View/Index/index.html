@@ -54,7 +54,7 @@
                 	<div class="link"><i class="fa fa-navicon"></i>侧栏</div>
                 </li>
                 <li class="search-query">
-                	<input type="text" class="form-control" placeholder="Search Something">
+                	<input type="text" class="form-control" placeholder="Search">
                 </li>
                 <foreach name="data" item="v">
         				<empty name="v['_data']">
@@ -66,7 +66,7 @@
         					<div class="link"><i class="fa fa-{$v['ico']}"></i>{$v['name']}<i class="fa fa-chevron-down"></i></div>
         					<ul class="submenu">
         					<foreach name="v['_data']" item="n">
-        						<li><a href="{:U($n['mca'])}" data-id="{$n['id']}"  data-type="tabAdd" class="site-demo-active">{$n['name']}</a></li>
+        						<li><a href="{:U($n['mca'])}" data-id="{$n['id']}" data-type="tabAdd"  class="site-demo-active"><span>{$n['name']}</span></a></li>
         					</foreach><!-- data-type="tabAdd" -->
         					</ul>
         				</li>
@@ -81,11 +81,11 @@
 	                <h3 class="panel-title">
                     <a href="javascript:void(0);" class="toggle-sidebar">
                       <span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span>
-                    </a>控制面板
+                    </a>
                   </h3>
                   <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
                     <ul class="layui-tab-title">
-                      <li class="layui-this" lay-id="11">网站设置</li>
+                      <li class="layui-this" lay-id="">控制面板</li>
                     </ul>
                   </div>
 	            </div>
@@ -102,26 +102,23 @@
 <script>
 layui.use('element', function(){
   var element = layui.element();
-  element.on('nav(navBar)', function(elem){
-    alert(11);
-    console.log(elem); //得到当前点击的DOM对象
-  });
-  //  //触发事件
-  // var active = {
-  //   tabAdd: function(data){
-  //     //新增一个Tab项
-  //     element.tabAdd('demo', {
-  //       title: '新选项'+ (Math.random()*1000|0),
-  //       content: '内容'+ (Math.random()*1000|0),
-  //       id:data.attr('data-id')
-  //     })
-  //   }
-  // }
+   //触发事件
+  var active = {
+    tabAdd: function(data){
+      //新增一个Tab项
+      element.tabAdd('demo', {
+        title:data.find('span').text(),
+        content:'',
+        id:data.attr('data-id')
+      })
+    }
+  }
 
-  // $('.site-demo-active').on('click', function(){
-  //   var othis = $(this), type = othis.data('type');
-  //   active[type] ? active[type].call(this, othis) : '';
-  // });
+  $('.site-demo-active').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+
 })
 </script>
 </body>

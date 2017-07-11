@@ -38,6 +38,36 @@ class LoginController extends Controller{
         //$this->display();
     }
 
+    public function login(){
+        if(!IS_POST) halt('页面不存在');
+        //验证用户和密码
+        $Opadmin=new Opadmin(I('username'),I('password'));
+        if($Opadmin->login()){
+            //验证码
+            if(C('cfg_verify')=='Y'){
+                $code=I('code');
+                $verify=$this->check_verify($code);
+                if(!$verify){$this->error('验证码错误');}
+            }
+            //验证用户状态
+            $username=I('username');
+
+            $user=M('Admin')->where(array('username'=>$username))->find();
+            $status=$user['status'];
+            if($status==3){
+                $this->ajaxReturn(3);
+            }elseif($status==2){
+                $this->ajaxReturn(4);
+            }else{
+                //A('Config')->add_log('登录');
+                $this->ajaxReturn(1);
+            }
+        }else{
+            $this->ajaxReturn(2);
+        }
+        //$this->display();
+    }
+
 	//验证码
     Public function verify(){
         $Verify = new \Think\Verify();

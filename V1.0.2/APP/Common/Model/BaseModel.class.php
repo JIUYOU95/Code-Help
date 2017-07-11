@@ -1,10 +1,10 @@
 <?php
 namespace Common\Model;
-use Think\Model\RelationModel;
+use Think\Model;
 /**
  * 基础model
  */
-class BaseModel extends RelationModel{
+class BaseModel extends Model{
 
     /**
      * 添加数据

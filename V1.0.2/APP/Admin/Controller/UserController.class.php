@@ -100,13 +100,13 @@ class UserController extends AuthController {
 	}
 	public function read_address(){
 		if(I('id')){
-			$where['id']=I('id');
+			$id=I('id');
 		}else{
-			$where['id']='3';
+			$id='3';
 		}
 		
-		$book=D('Address')->where($where)->relation(true)->find();
-		//p($book);
+		$book=D('Address')->getData($id);
+		//p($book);die;
 		$this->assign('list',$book);
 		$this->display();
 	}
