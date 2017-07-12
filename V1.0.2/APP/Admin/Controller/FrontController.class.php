@@ -30,6 +30,8 @@ class FrontController extends AuthController {
 		$list=D('Font')->where($where)->order('id asc')->select();
 		$this->type=D('Type')->where(array('id'=>I('pid')))->find();
 		$this->assign('lists',$list);
+
+		//p($where);
 		$this->display();
 	}
 	/*

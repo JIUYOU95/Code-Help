@@ -21,6 +21,7 @@ tfoot{text-align:center;}
 .form-control{border-radius:2px;box-shadow:none;border:1px solid #e6e6e6;}
 .form-control:focus{border-color:#C9C9C9!important;box-shadow:none}
 input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
+.layui-form-label{width:110px!important;}
 /*按钮*/
 .btn{border-radius:2px;}
 
@@ -86,14 +87,11 @@ input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
 .edit_check_close span{display:inline-block;line-height:45px;}
 .edit_check_close span:first-child{position:relative;right:40%;padding-top:4px;}
 .edit_check_close span:last-child{position:relative;left:40%;padding-top:4px;}
-/*.edit_check_close li{float:left;}
-.edit_check_close li a{display:inline;}
-.edit_check_close li:first-child{float:left;padding:0px 220px 0 50px;}
-.edit_check_close li:last-child{float:right;padding:0px 50px 0;}*/
 
 .tool_address{display:inline-block;padding-left:50%;}
 .tool_address label{font-size:14px;padding:0 20px;}
-
+ /*管理员*/
+ .user_list_edit a{width:20px;display:inline-block;text-align:center;}
  /*分页*/
 .page{display:block;border-radius:3px;text-align:center;}
 .page div{overflow:hidden;display:inline-block;}

@@ -21,7 +21,18 @@
                 data: data,
                 dataType: "json",
                 success: function (json) {
-                    options.callback(json);
+
+                        if ($.isFunction(options.callback)) {
+                            options.callback(json);
+                        } else {
+                            if (json.valid == 1) {
+                                util.message(json.message, options.successUrl, 'success');
+                            } else {
+                                util.message(json.message, '', 'info');
+                            }
+                        }
+                    
+                    //options.callback(json);
                     //return json;
                 }
             });
@@ -233,8 +244,9 @@
             }
             return modalObj.modal(opt);
         },
+        
 
         
         
-    }
+    };
 })(window);

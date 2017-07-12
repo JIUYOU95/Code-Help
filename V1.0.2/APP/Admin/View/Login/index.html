@@ -17,8 +17,8 @@
     <img id="lay_demo_upload" src="__PUBLIC__/Admin/Images/Kitty.jpg">
 </div>
 <div class="panel panel-default">
-    <div class="panel-body"> <!-- onsubmit="post(event) -->
-        <form action="{:u('sign')}" method="post">
+    <div class="panel-body"> <!--{:u('sign')}  -->
+        <form action="" method="post" onsubmit="post(event)">
             <div class="form-group">
                 <label for="username" class="sr-only">User</label>
                 <input type="text" name="username" class="form-control" id="username" autocomplete="off" placeholder="用户名">
@@ -45,10 +45,12 @@
         util.submit({
             callback: function (response) {
                 console.log(response);
-                if (response == 1) {
+                if (response.valid  == 1) {
                     location.href = "http://code.think.com/Admin/";
                 }else{
-                    alert(response);
+                    util.message(response.message, '', 'info');
+
+                    //alert(response.valid );
                 }
             }
         });

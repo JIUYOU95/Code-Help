@@ -29,7 +29,7 @@ class LoginController extends Controller{
             }elseif($status==2){
                 $this->redirect('Login/error_msg',array('msg'=>'2'));
             }else{
-                //A('Config')->add_log('登录');
+                A('Config')->add_log('登录-'.I('username'));
                 $this->success('登录成功',U('Admin/Index/index'));
             }
         }else{
@@ -42,6 +42,7 @@ class LoginController extends Controller{
         if(!IS_POST) halt('页面不存在');
         //验证用户和密码
         $Opadmin=new Opadmin(I('username'),I('password'));
+
         if($Opadmin->login()){
             //验证码
             if(C('cfg_verify')=='Y'){
@@ -55,15 +56,15 @@ class LoginController extends Controller{
             $user=M('Admin')->where(array('username'=>$username))->find();
             $status=$user['status'];
             if($status==3){
-                $this->ajaxReturn(3);
+                $this->ajaxReturn(array('valid'=>3,'message'=>'尊敬的用户，你的账户已被锁定，请联系管理员解锁！'));
             }elseif($status==2){
-                $this->ajaxReturn(4);
+                $this->ajaxReturn(array('valid'=>4,'message'=>'尊敬的用户，你的账户还没有完成邮箱验证，请验证后登陆！'));
             }else{
                 //A('Config')->add_log('登录');
-                $this->ajaxReturn(1);
+                $this->ajaxReturn(array('valid'=>1,));
             }
         }else{
-            $this->ajaxReturn(2);
+            $this->ajaxReturn(array('valid'=>2,'message'=>'尊敬的用户，你输入的用户名或密码错误！请重新输入。'));
         }
         //$this->display();
     }

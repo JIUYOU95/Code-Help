@@ -1,4 +1,5 @@
 <include file="Public:header" />
+<layuicss/>
 <script type="text/javascript">
 $(function(){
 	$('.nopurview').click(function(){
@@ -18,7 +19,7 @@ $(function(){
     <span class="btn btn-primary rightbut" data-toggle="modal" data-target="#myModal">新增管理员</span>
 </ol>
 
-<div class="alert alert-danger alert-dismissible" role="alert">
+<div class="alert alert-info alert-dismissible" role="alert">
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	用户名为admin的为超级管理员，不可锁定及删除，密码为空的用户名显示为红色。
 </div>
@@ -68,7 +69,7 @@ $(function(){
 				<else/>{$v['logintime'|date='Y-m-d',###]}
 				</if>
 			</td>
-			<td>
+			<td class="user_list_edit">
 				<if condition="$v['status'] eq 1">
 					<a href="{:U('Admin/Rule/lockHandle',array('id'=>$v['id'],'username'=>$v['username'],'lock'=>3))}" class='<if condition="$v['id'] eq 1">nopurview</if>'><i class="fa fa-lock" title="锁定"></i></a>
 				<elseif condition="$v['status'] eq 3"/>
@@ -78,7 +79,7 @@ $(function(){
 				</if>
 				| <a href="{:U('Admin/Rule/edit_admin',array('id'=>$v['id']))}"><i class="fa fa-edit" title="修改"></i></a>
 				| <a href="{:U('Admin/Rule/delete_admin',array('id'=>$v['id'],'username'=>$v['username']))}" class='<if condition="$v['id'] eq 1">nodel</if>'><i class="fa fa-trash-o" title="删除"></i></a>
-				| <a href="{:U('Admin/Rule/empty_password',array('id'=>$v['id'],'username'=>$v['username']))}">清空密码</a>
+				| <a href="{:U('Admin/Rule/empty_password',array('id'=>$v['id'],'username'=>$v['username']))}"><i class="fa fa-recycle" title="清空密码"></i></a>
 			</td>
 		</tr>
 		</foreach>
@@ -93,58 +94,51 @@ $(function(){
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">新增管理员</h4>
             </div>
-            <form class="form-horizontal" role="form" action="{:U('Admin/Rule/add_admin')}" method="post">
+            <form class="layui-form" role="form" action="{:U('Admin/Rule/add_admin')}" method="post">
             <div class="modal-body">
-            	<div class="form-group">
-				    <label class="col-sm-2 control-label">管理组</label>
-				    <div class="col-sm-10">
+				<div class="layui-form-item">
+				    <label class="layui-form-label">管理组</label>
+				    <div class="layui-input-block">
 				    	<foreach name="group" item="v">
-							<label for="{$v['id']}">{$v['title']}</label>
-							<input type="checkbox" name="group_ids[]" value="{$v['id']}" id="{$v['id']}"> &emsp;
+							<input type="checkbox" name="group_ids[]" value="{$v['id']}" title="{$v['title']}" lay-skin="primary">
 						</foreach>
 				    </div>
 				</div>
-				<div class="form-group">
-				    <label for="username" class="col-sm-2 control-label">用户名</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" name="username" id="username" placeholder="登录账号，填写后不可修改" autocomplete="off">
+				<div class="layui-form-item">
+				    <label class="layui-form-label">用户名</label>
+				    <div class="layui-input-block">
+				    	<input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="登录账号，填写后不可修改" class="layui-input">
 				    </div>
 				</div>
-				<div class="form-group">
-				    <label for="nickname" class="col-sm-2 control-label">昵称</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" name="nickname" id="nickname" placeholder="显示的名称" autocomplete="off">
+				<div class="layui-form-item">
+				    <label class="layui-form-label">昵称</label>
+				    <div class="layui-input-block">
+				    	<input type="text" name="nickname" lay-verify="required" autocomplete="off" placeholder="显示的名称" class="layui-input">
 				    </div>
 				</div>
-				<div class="form-group">
-				    <label for="phone" class="col-sm-2 control-label">手机号</label>
-				    <div class="col-sm-10">
-				      <input type="number" class="form-control" name="phone" id="phone" placeholder="请输入手机号" autocomplete="off">
+				<div class="layui-form-item">
+				    <label class="layui-form-label">手机号</label>
+				    <div class="layui-input-block">
+				    	<input type="text" name="phone" lay-verify="phone" autocomplete="off" placeholder="请输入手机号" class="layui-input">
 				    </div>
 				</div>
-				<div class="form-group">
-				    <label for="email" class="col-sm-2 control-label">邮箱</label>
-				    <div class="col-sm-10">
-				      <input type="email" class="form-control" name="email" id="email" placeholder="请输入邮箱" autocomplete="off">
+				<div class="layui-form-item">
+				    <label class="layui-form-label">邮箱</label>
+				    <div class="layui-input-block">
+				    	<input type="text" name="email" lay-verify="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
 				    </div>
 				</div>
-				<div class="form-group">
-				    <label for="password" class="col-sm-2 control-label">初始密码</label>
-				    <div class="col-sm-10">
-				      <input type="password" class="form-control" name="password" id="password" placeholder="请输入初始密码" autocomplete="off">
+				<div class="layui-form-item">
+				    <label class="layui-form-label">初始密码</label>
+				    <div class="layui-input-block">
+				    	<input type="password" name="password" autocomplete="off" placeholder="请输入初始密码" class="layui-input">
 				    </div>
 				</div>
-				<div class="form-group">
-				    <label class="col-sm-2 control-label">状态</label>
-				    <div class="col-sm-10">
-				      	<div class="btn-group" data-toggle="buttons">
-						    <label class="btn btn-primary active">
-						        <input type="radio" name="status" value="1" checked> 允许登录
-						    </label>
-						    <label class="btn btn-primary">
-						        <input type="radio" name="status" value="3"> 禁止登录
-						    </label>
-						</div>
+				<div class="layui-form-item">
+				    <label class="layui-form-label">状态</label>
+				    <div class="layui-input-block">
+				    	<input type="radio" name="status" value="1" title="允许登录" checked="">
+      					<input type="radio" name="status" value="3" title="禁止登录">
 				    </div>
 				</div>
             </div>
@@ -156,5 +150,10 @@ $(function(){
         </div>
     </div>
 </div>
-
+<layuijs/>
+<script>
+layui.use('form', function(){
+  var form = layui.form()
+})
+</script>
 <include file="Public:footer" />
