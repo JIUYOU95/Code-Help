@@ -22,7 +22,7 @@ class AuthController extends Controller{
 				$this->redirect('Login/error_msg',array('msg'=>'4'));
 			}
 		}else{
-			$this->error('请先登录！',U('Login/index'));
+			$this->redirect('Login/index');
 		}
 		
 		

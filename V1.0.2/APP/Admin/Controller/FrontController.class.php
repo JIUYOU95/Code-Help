@@ -108,5 +108,51 @@ class FrontController extends AuthController {
 		}
 	}
 
+	/*
+	 * manual手册
+	 */
+	public function manual(){
+		//分类
+		$data=D('Type')->select();
+		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','37');
+		$this->assign('data',$font);
+
+		$this->display();
+	}
+
+	/*
+	 * manual新增手册
+	 */
+	public function add_manual(){
+		//分类
+		$data=D('Type')->select();
+		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','37');
+		$this->assign('data',$font);
+
+		$this->display();
+	}
+	public function Upload_manual(){
+		$upload = new \Think\Upload();
+		$upload->maxSize  = 0 ;
+		$upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
+		$upload->rootPath = 'Public/Uploads/manual/';
+		$upload->autoSub  = false;
+		$info = $upload->upload();
+		if(!$info) {	//上传错误提示错误信息
+			$data['success']=0;
+			$data['message']='上传失败！';
+			$data['url']='';
+			$this->ajaxReturn($data);
+		}else{	//上传成功
+			foreach($info as $file){        
+			 	$up_url='../../Public/Uploads/manual/'.$file['savename'];   
+			}
+			$data['success']=1;
+			$data['message']='上传成功！';
+			$data['url']=$up_url;
+			$this->ajaxReturn($data);
+		}
+	}
+
 
 }

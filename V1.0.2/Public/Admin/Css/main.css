@@ -21,7 +21,9 @@ tfoot{text-align:center;}
 .form-control{border-radius:2px;box-shadow:none;border:1px solid #e6e6e6;}
 .form-control:focus{border-color:#C9C9C9!important;box-shadow:none}
 input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
+
 .layui-form-label{width:110px!important;}
+
 /*按钮*/
 .btn{border-radius:2px;}
 
