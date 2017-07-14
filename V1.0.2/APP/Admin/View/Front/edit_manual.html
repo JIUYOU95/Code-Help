@@ -22,14 +22,15 @@
     <a href="javascript:;" onclick="window.history.back()" class="btn btn-primary rightbut">返回</a>
 </ol>
 
-<form class="layui-form" action="{:U('add_manual')}" method="post">
+<form class="layui-form" action="{:U('edit_manual')}" method="post">
+	<input type="hidden" name="id" value="{$find.id}" />
 	<div class="layui-form-item">
 	    <div class="layui-inline">
 	      	<label class="layui-form-label">分类</label>
 	      	<div class="layui-input-inline">
 		        <select name="pid">
 	            <foreach name="data" item="v">
-	                <option value="{$v.id}" <if condition="$v['id'] eq $pid">selected</if>>{$v.html}{$v.name}</option>
+	                <option value="{$v.id}" <if condition="$v['id'] eq $find['pid']">selected</if>>{$v.html}{$v.name}</option>
 	            </foreach>
 	        	</select>
 	      	</div>
@@ -37,8 +38,8 @@
 	    <div class="layui-inline">
 		    <label class="layui-form-label">类型</label>
 		    <div class="layui-input-inline">
-		    	<input type="radio" name="type" value="1" title="内容" checked="">
-		      	<input type="radio" name="type" value="2" title="页面">
+		    	<input type="radio" name="type" value="1" title="内容" <eq name="find['type']" value="1">checked</eq>>
+		      	<input type="radio" name="type" value="2" title="页面" <eq name="find['type']" value="2">checked</eq>>
 		    </div>
 	  	</div>
 	</div>
@@ -46,13 +47,13 @@
 	    <div class="layui-inline">
 	      <label class="layui-form-label">标题</label>
 	      <div class="layui-input-inline">
-	        <input type="text" name="title" lay-verify="required" autocomplete="off" class="layui-input">
+	        <input type="text" name="title" lay-verify="required" autocomplete="off" class="layui-input" value="{$find.title}">
 	      </div>
 	    </div>
 	    <div class="layui-inline">
 	      <label class="layui-form-label">英文名</label>
 	      <div class="layui-input-inline">
-	        <input type="text" name="en_title" autocomplete="off" class="layui-input">
+	        <input type="text" name="en_title" autocomplete="off" class="layui-input" value="{$find.en_title}">
 	      </div>
 	    </div>
 	</div>
@@ -61,24 +62,24 @@
 	    <div class="layui-inline">
 	      <label class="layui-form-label">链接</label>
 	      <div class="layui-input-inline">
-	        <input type="text" name="link" autocomplete="off" class="layui-input">
+	        <input type="text" name="link" autocomplete="off" class="layui-input" value="{$find.link}">
 	      </div>
 	    </div>
 	    <div class="layui-inline">
 	      <label class="layui-form-label">发布时间</label>
 	      <div class="layui-input-inline">
-	        <input type="text" name="optime" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})" readonly>
+	        <input type="text" name="optime" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})" value="{$find.optime|date='Y-m-d',###}" readonly>
 	      </div>
 	    </div>
 	</div>
 	<div class="layui-form-item layui-form-text">
 	    <div id="editormd">
-	    	<textarea style="display:none;" name="content"></textarea>
+	    	<textarea style="display:none;" name="content">{$find.content}</textarea>
 	    </div>
 	</div>
 	<div class="layui-form-item">
 	    <div class="layui-input-block">
-	      <button type="submit" class="btn btn-primary">发布</button>
+	      <button type="submit" class="btn btn-primary">更新</button>
 	      <button type="reset" class="btn btn-default">重置</button>
 	    </div>
 	</div>

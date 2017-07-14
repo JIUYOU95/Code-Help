@@ -21,6 +21,9 @@ class My extends TagLib {
         'login'=>array('','close'=>0),
         'admin'=>array('','close'=>0),
         'admincss'=>array('','close'=>0),
+        'adminjs'=>array('','close'=>0),
+        'manual'=>array('','close'=>0),
+        'manualjs'=>array('','close'=>0),
         
     );
 
@@ -112,7 +115,7 @@ php;
      public function _nicescroll($tag,$content) {
         $link=<<<php
     <script src="__COMMON__/Js/jquery.nicescroll.js"></script>
-    <script src="__PUBLIC__/Admin/Js/main.js"></script>
+    
 php;
     return $link;
     }
@@ -128,7 +131,12 @@ php;
     public function _admincss($tag,$content) {
         $link=<<<php
     <link rel="stylesheet" href="__PUBLIC__/Admin/Css/main.css" />
-    
+php;
+    return $link;
+    }
+    public function _adminjs($tag,$content) {
+        $link=<<<php
+    <script src="__PUBLIC__/Admin/Js/main.js"></script>
 php;
     return $link;
     }
@@ -140,6 +148,20 @@ php;
     <script src="__COMMON__/jquery/2.0.0/jquery.min.js"></script>
     <script src="__PUBLIC__/Admin/Js/util.js"></script>
     <link rel="stylesheet" href="__PUBLIC__/Admin/Css/login.css" />
+php;
+    return $link;
+    }
+    /*Manual*/
+    public function _manual(){
+         $link=<<<php
+    <link rel="stylesheet" href="__PUBLIC__/Home/Css/manual.css" />
+    <script src="__PUBLIC__/Home/Js/manual.js"></script>
+php;
+    return $link;
+    }
+    public function _manualjs(){
+         $link=<<<php
+    <script src="__PUBLIC__/Home/Js/nicescroll.js"></script>
 php;
     return $link;
     }

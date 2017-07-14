@@ -116,7 +116,21 @@ class FrontController extends AuthController {
 		$data=D('Type')->select();
 		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','37');
 		$this->assign('data',$font);
-
+		//查询条件
+		if(I('pid')){
+			$id=I('pid');
+			$cids=Category::getChildsId($data,$id);
+			$cids[]=$id;
+			//$where=array('m.pid'=>array('IN',$cids));
+			$this->pid=I('pid');
+		}else{
+			//$where['m.pid']='42';
+			$cids='42';
+			$this->pid='42';
+		}
+		//p($cids);die;
+		$manual=D('Manual')->getAllData($cids,10);
+		$this->assign('list',$manual);
 		$this->display();
 	}
 
@@ -124,12 +138,80 @@ class FrontController extends AuthController {
 	 * manual新增手册
 	 */
 	public function add_manual(){
-		//分类
-		$data=D('Type')->select();
-		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','37');
-		$this->assign('data',$font);
+		$manual=D('Manual');
+		if(IS_POST){
+			if ($manual->create()){
+				$result=$manual->add();
+				if ($result) {
+					A('Config')->add_log('添加手册资料-'.I('title'));
+					$this->redirect('Admin/Front/manual',array('pid'=>I('pid')));
+				}else{
+					$this->error('添加失败');
+				}
+			}else{
+				$this->error($manual->getError());
+			}
+		}else{
+			$this->pid=I('pid');
+			//分类
+			$data=D('Type')->select();
+			$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','37');
+			$this->assign('data',$font);
 
-		$this->display();
+			$this->display();
+		}
+	}
+	/*
+	 * manual修改手册
+	 */
+	public function edit_manual(){
+		$manual=D('Manual');
+		if(IS_POST){
+			if ($manual->create()){
+				$result=$manual->save();
+				if ($result) {
+					A('Config')->add_log('更新手册资料-'.I('title'));
+					$this->redirect('Admin/Front/manual',array('pid'=>I('pid')));
+				}else{
+					$this->error('更新失败');
+				}
+			}else{
+				$this->error($manual->getError());
+			}
+		}else{
+			$where['id']=I('id');
+			$this->find=$manual->where($where)->find();
+			//分类
+			$data=D('Type')->select();
+			$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─','37');
+			$this->assign('data',$font);
+
+			$this->display();
+		}
+	}
+	/*
+	 *manual删除手册
+	 */
+	public function alldel(){
+		$ids=explode(',',substr(I('id'),1));
+		foreach($ids as $key=>$id){
+			if(!$this->dellog($id)){
+				$this->show(0);
+			}
+		}		
+		$this->show(1);
+	}
+	private function dellog($id){
+		if(!$id)
+			return false;
+		$where['id']=$id;
+	 	$count=D('Manual')->where($where)->delete();
+	 	if($count){
+			return true;
+	 	}else{
+	 		return false;
+	 	}
+
 	}
 	public function Upload_manual(){
 		$upload = new \Think\Upload();

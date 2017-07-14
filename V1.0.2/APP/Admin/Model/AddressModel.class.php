@@ -1,7 +1,6 @@
 <?php
 namespace Admin\Model;
 use Common\Model\BaseModel;
-use Admin\Common\Opadmin;
 class AddressModel extends BaseModel {
 	protected $_validate = array(
 		array('name','require','姓名必须！'), //默认情况下用正则进行验证

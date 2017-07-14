@@ -8,7 +8,7 @@
             
            var options = $.extend({
                 el: 'form',
-                url: 'login',
+                url: 'Login/login',
                 data: '',
                 successUrl: 'back',
                 callback: '',

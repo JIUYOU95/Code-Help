@@ -1,12 +1,33 @@
 <include file="Public:header" />
 <bootstrapselect/>
 <layuicss/>
+<script type="text/javascript">
+$(function(){
+     //ajax删除
+    $('input[type="button"]').click(function(){
+      var text="";
+      $("input[name=id]").each(function(){
+        if ($(this).prop("checked")) {
+          text += ","+$(this).val();
+        }
+      });
+      $.get("{:U('alldel')}",{'id':text},function(data){
+        if(data){
+          alert('删除成功');
+          window.location='__ACTION__';
+        }else{
+          alert('删除失败');
+        }
+      });
+    });
+})
+</script>
 <!--面包屑导航-->
 <ol class="breadcrumb">
     <li><a href="{:U('Index/Welcome')}">Home</a></li>
     <li>前端资料</li>
     <li class="active">手册</li>
-    <a href="{:U('add_manual')}" class="btn btn-primary rightbut">新增</a>
+    <a href="{:U('add_manual',array('pid'=>$pid))}" class="btn btn-primary rightbut">新增</a>
 </ol>
 
 <!--search-->
@@ -33,18 +54,31 @@
 	    </colgroup>
 		<thead>
 		<tr>
-		<th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+		  <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
 			<th>标题</th>
+      <th>分类目录</th>
 			<th>作者</th>
-			<th>分类目录</th>
 			<th>日期</th>
 			<th>Views</th>
 		</tr>
 		</thead>
 		<tbody>
-
+    <foreach name="list.data" item="v">
+    <tr>
+      <td><input type="checkbox" value="{$v['id']}" id="{$v.id}" name='id' lay-skin="primary"></td>
+      <td><a href="{:U('edit_manual',array('id'=>$v['id']))}">{$v.title}</a></td>
+      <td>{$v.name}</td>
+      <td>{$v.username}</td>
+      <td>{$v.optime|date='Y-m-d',###}</td>
+      <td>{$v.views} views</td>
+    </tr>
+    </foreach>
 		</tbody>
 	</table>
+  <input type="button" value='删除' class="btn btn-default">
+  <div class="page">
+  {$list.page}
+  </div>
 </div>
 
 <layuijs/>

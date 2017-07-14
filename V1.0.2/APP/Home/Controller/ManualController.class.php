@@ -2,11 +2,12 @@
 namespace Home\Controller;
 use Think\Controller;
 use Common\Common\Category;
-class IndexController extends Controller {
+class ManualController extends Controller {
     public function index(){
+    	$pid=I('pid');
     	//分类
 		$data=D('Type')->select();
-		$font=Category::unlimitedForLayer($data,'child','37');
+		$font=Category::unlimitedForLevel($data,'&nbsp;&nbsp;&nbsp;&nbsp;├─',$pid);
 		//p($font);die;
 		$this->assign('data',$font);
         $this->display();
