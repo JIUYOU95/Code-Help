@@ -1,43 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<title></title>
+<meta charset="UTF-8">
+<title>{$type.name}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <bootstrapcss/>
 <bootstrapjs/>
 <manual/>
 </head>
+<base target="main" />
 <body style="overflow-y:hidden;">
 
 <!--header-->
 <nav class="title">
-	<a href="">PHP教程</a>
+	<a href="{:U('/Home')}" target="_top">{$type.name}</a>
 </nav>
 
 <!--documents-->
 <div class="row window-body">
 	<div class="col-xs-12 col-sm-3 sidebar-offcanvas sidebar">
 		<ul id="myTab" class="nav nav-tabs">
-			<li class="active"><a href="#list" data-toggle="tab">目录</a></li>
-			<li><a href="#search" data-toggle="tab">搜索</a></li>
+			<li class="active">
+				<a href="#list" data-toggle="tab"><i class="fa fa-navicon"></i> 目录</a>
+			</li>
+			<li>
+				<a href="#search" data-toggle="tab"><i class="fa fa-search"></i> 搜索</a>
+			</li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane fade in active" id="list">
-				<ul class="accordion">
-				<foreach name="data" item="v">
-					<li>{$v.name}</li>
-				</foreach>
-				</ul>
+				<ul class="list-group accordion" id="accordion">
+                <foreach name="data" item="v">
+    				<empty name="v['list']">
+    				<li>
+    					<div class="link">{$v['name']}</div>
+    				</li>
+    				<else/>
+    				<li>
+    					<div class="link"><i class="fa fa-caret-right"></i>{$v['name']}</div>
+    					<ul class="submenu">
+    					<foreach name="v['list']" item="n">
+    						<li><a href="{:U('/main',array('id'=>$n['id']))}" class="site-demo-active"><span>{$n['title']}</span></a></li>
+    					</foreach><!-- data-type="tabAdd" -->
+    					</ul>
+    				</li>
+    				</empty>
+    			</foreach>
+            	</ul>
 			</div>
 			<div class="tab-pane fade in" id="search">
-				
+				<form role="form" target="_self">
+				  <div class="form-group">
+				    <label class="sr-only" for="key">搜索</label>
+				    <input type="text" class="form-control" id="key" name="key" placeholder="请输入搜索关键词..." autocomplete="off"><i class="fa fa-search isearch"></i>
+				  </div>
+				</form>
+				<div class="search_list">
+					<ul>
+						<li>暂无相关搜索结果</li>
+					</ul>
+				</div>
 			</div>
+		</div>
+		<div class="sidebar-copyright">
+		本文档使由<a href="http://wp.itnetve.top" target="_blank">九幽</a>编辑
 		</div>
 		
 	</div>
 
     <div class="col-xs-6 col-sm-9 workspace">
 		<div class="panel-body">
-		hellow
+			<iframe src="{:U('/main',array('id'=>$n['id']))}" name="main" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
 </div>

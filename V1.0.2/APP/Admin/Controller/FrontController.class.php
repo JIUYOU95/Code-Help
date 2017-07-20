@@ -27,7 +27,7 @@ class FrontController extends AuthController {
 			$where['pid']='5';
 			$this->pid='5';
 		}
-		$list=D('Font')->where($where)->order('id asc')->select();
+		$list=D('Font')->where($where)->order('id desc')->select();
 		$this->type=D('Type')->where(array('id'=>I('pid')))->find();
 		$this->assign('lists',$list);
 
@@ -187,6 +187,17 @@ class FrontController extends AuthController {
 			$this->assign('data',$font);
 
 			$this->display();
+		}
+	}
+	public function sort_manual(){
+		$data[I('id')]=I('sort');
+		//p($data);die;
+		$result=D('Manual')->orderData($data,'id','sort');
+		if ($result) {
+			A('Config')->add_log('手册排序');
+			$this->show('排序成功');
+		}else{
+			$this->show('排序失败');
 		}
 	}
 	/*

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{$v['title']}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+<editorcss/>
+<jquery/>
+<manual/>
+</head>
+<body style="overflow-y:hidden;">
+<div class="article-wrap">
+	<h2>{$v['title']}</h2>
+	<div id="wordsView">
+		<textarea name="content" style="display:none;">{$v['content']}</textarea>
+	</div>
+</div>
+
+<markdown/>
+<editorjs/>
+<nicescroll/>
+<manualjs/>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var wordsView;
+        wordsView = editormd.markdownToHTML("wordsView", {
+            htmlDecode      : "style,script,iframe",  // you can filter tags decode
+            emoji           : true,
+            taskList        : true,
+            tex             : true,  // 默认不解析
+            flowChart       : true,  // 默认不解析
+            sequenceDiagram : true,  // 默认不解析
+        });
+
+    })
+</script>
+</body>
+</html>

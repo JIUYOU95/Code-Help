@@ -4,7 +4,7 @@
 <script type="text/javascript">
 $(function(){
      //ajax删除
-    $('input[type="button"]').click(function(){
+    $('input[name="del"]').click(function(){
       var text="";
       $("input[name=id]").each(function(){
         if ($(this).prop("checked")) {
@@ -21,6 +21,12 @@ $(function(){
       });
     });
 })
+function clicksort(sort,id){
+  sort=$('#'+sort).val();
+  $.get("{:U('sort_manual')}",{'sort':sort,'id':id},function(data){
+      alert(data);
+  });
+}
 </script>
 <!--面包屑导航-->
 <ol class="breadcrumb">
@@ -55,6 +61,7 @@ $(function(){
 		<thead>
 		<tr>
 		  <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+      <th>排序</th>
 			<th>标题</th>
       <th>分类目录</th>
 			<th>作者</th>
@@ -66,6 +73,10 @@ $(function(){
     <foreach name="list.data" item="v">
     <tr>
       <td><input type="checkbox" value="{$v['id']}" id="{$v.id}" name='id' lay-skin="primary"></td>
+      <td style="padding:0 10px;">
+        <input class="form-control" style="width:40px;height:30px;display:inline-block;" type="text" name="sort" value="{$v['sort']}" id="sort_{$v['id']}" autocomplete="off">
+        <input onclick="clicksort('sort_{$v.id}','{$v.id}')" type="button" value="排序"  class="layui-btn layui-btn-primary layui-btn-small" />
+      </td>
       <td><a href="{:U('edit_manual',array('id'=>$v['id']))}">{$v.title}</a></td>
       <td>{$v.name}</td>
       <td>{$v.username}</td>
@@ -75,7 +86,7 @@ $(function(){
     </foreach>
 		</tbody>
 	</table>
-  <input type="button" value='删除' class="btn btn-default">
+  <input type="button" name="del" value='删除' class="btn btn-default">
   <div class="page">
   {$list.page}
   </div>

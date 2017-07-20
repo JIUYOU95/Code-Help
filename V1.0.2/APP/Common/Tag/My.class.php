@@ -16,6 +16,7 @@ class My extends TagLib {
         'fontb'=>array('','close'=>0),
         'editorcss'=>array('','close'=>0),
         'editorjs'=>array('','close'=>0),
+        'markdown'=>array('','close'=>0),
         'WdatePicker'=>array('','close'=>0),
         'nicescroll'=>array('','close'=>0),
         'login'=>array('','close'=>0),
@@ -101,6 +102,20 @@ php;
     public function _editorjs($tag,$content) {
         $link=<<<php
     <script src="__COMMON__/Editor.md/1.5.0/editormd.js"></script>
+php;
+    return $link;
+    }
+    public function _markdown($tag,$content) {
+        $link=<<<php
+    <script src="__COMMON__/Editor.md/1.5.0/editormd.js"></script>
+    <script src="__COMMON__/Editor.md/1.5.0/lib/marked.min.js"></script>
+    <script src="__COMMON__/Editor.md/1.5.0/lib/prettify.min.js"></script>
+
+    <script src="__COMMON__/Editor.md/1.5.0/lib/raphael.min.js"></script>
+    <script src="__COMMON__/Editor.md/1.5.0/lib/underscore.min.js"></script>
+    <script src="__COMMON__/Editor.md/1.5.0/lib/sequence-diagram.min.js"></script>
+    <script src="__COMMON__/Editor.md/1.5.0/lib/flowchart.min.js"></script>
+    <script src="__COMMON__/Editor.md/1.5.0/lib/jquery.flowchart.min.js"></script>
 php;
     return $link;
     }

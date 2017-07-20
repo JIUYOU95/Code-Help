@@ -37,11 +37,12 @@ class ManualModel extends BaseModel {
         $page->setConfig('header','条');
 		// 获取分页数据
 		$list=$this
-			->field('m.id,m.type,m.title,m.en_title,m.link,m.optime,m.content,m.views,ag.name,u.username')
+			->field('m.id,m.type,m.title,m.en_title,m.link,m.optime,m.content,m.views,m.sort,ag.name,u.username')
 			->alias('m')
 			->join('__ADMIN__ u ON m.uid=u.id','LEFT')
 			->join('__TYPE__ ag ON m.pid=ag.id','LEFT')
 			->where($where)
+			->order('m.sort desc')
 			->limit($page->firstRow.','.$page->listRows)
 			->select();
 		$data=array(

@@ -10,5 +10,7 @@ return array(
 	'URL_ROUTER_ON'   => true,
 	'URL_ROUTE_RULES'=>array(
 		'manual/:pid'=>'Manual/index',
+		'main'=>'Manual/main',
+		//'Home'=>'__ROOT__'
 	),
 );
