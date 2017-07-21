@@ -10,7 +10,6 @@ $(function() {
         $(".accordion li div").removeClass("active");
         $(this).addClass("active");
     });
-
     var Accordion = function(el, multiple) {
         this.el = el || {};
         this.multiple = multiple || false;
@@ -37,10 +36,40 @@ $(function() {
     var accordion = new Accordion($('#accordion'), true);
 
     // 动态调整iframe的高度以适应不同高度的显示器
-    $('.panel-body,.panel').height($(window).height()-85);
+    $('.panel-body,.panel').height($(window).height()-110);
     //$('.panel-body').css('padding-bottom',80);
 
     // 左侧菜单自动适应高度
     $('.sidebar-offcanvas .tab-pane').height($(window).height()-170);
     //$('.sidebar-offcanvas .tab-pane').css('overflow-y','auto');
+
+
+    $('.navicon').click(function(){
+        $(".window-body").toggleClass("active");
+    });
 });
+
+// window.onload = function() {
+//     document.onkeydown = function() {
+//         var e = window.event || arguments[0];
+//         //屏蔽F12
+//         if(e.keyCode == 123) {
+//             return false;
+//         //屏蔽Ctrl+Shift+I
+//         }else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+//             return false;
+//         //屏蔽Shift+S
+//         }else if((e.ctrlKey) && (e.keyCode == 83)){
+//             return false;
+//         //屏蔽Shift+F10
+//         }else if((e.shiftKey) && (e.keyCode == 121)){
+//             return false;
+//         }
+//     };
+//     //屏蔽右键单击
+//     document.oncontextmenu = function(){
+//         return false;
+//     }
+// }
+
+

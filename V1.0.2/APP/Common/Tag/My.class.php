@@ -25,6 +25,8 @@ class My extends TagLib {
         'adminjs'=>array('','close'=>0),
         'manual'=>array('','close'=>0),
         'manualjs'=>array('','close'=>0),
+        'homecss'=>array('','close'=>0),
+        'homejs'=>array('','close'=>0),
         
     );
 
@@ -177,6 +179,22 @@ php;
     public function _manualjs(){
          $link=<<<php
     <script src="__PUBLIC__/Home/Js/nicescroll.js"></script>
+php;
+    return $link;
+    }
+    /*home*/
+    public function _homecss(){
+         $link=<<<php
+    <link rel="stylesheet" href="__PUBLIC__/Home/Css/reset.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Home/Css/style.css" />
+php;
+    return $link;
+    }
+    public function _homejs(){
+         $link=<<<php
+    <script src="__PUBLIC__/Home/Js/velocity.min.js"></script>
+    <script src="__PUBLIC__/Home/Js/velocity.ui.min.js"></script>
+    <script src="__PUBLIC__/Home/Js/main.js"></script>
 php;
     return $link;
     }

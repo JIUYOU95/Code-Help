@@ -19,7 +19,7 @@
 
 <!--documents-->
 <div class="row window-body">
-	<div class="col-xs-12 col-sm-3 sidebar-offcanvas sidebar">
+	<div class="col-xs-6 col-sm-3 sidebar-offcanvas sidebar">
 		<ul id="myTab" class="nav nav-tabs">
 			<li class="active">
 				<a href="#list" data-toggle="tab"><i class="fa fa-navicon"></i> 目录</a>
@@ -50,15 +50,13 @@
             	</ul>
 			</div>
 			<div class="tab-pane fade in" id="search">
-				<form role="form" target="_self">
-				  <div class="form-group">
+				<div class="form-group">
 				    <label class="sr-only" for="key">搜索</label>
 				    <input type="text" class="form-control" id="key" name="key" placeholder="请输入搜索关键词..." autocomplete="off"><i class="fa fa-search isearch"></i>
-				  </div>
-				</form>
+				</div>
 				<div class="search_list">
-					<ul>
-						<li>暂无相关搜索结果</li>
+					<ul class="search_ul">
+						<span>暂无相关搜索结果</span>
 					</ul>
 				</div>
 			</div>
@@ -69,12 +67,48 @@
 		
 	</div>
 
-    <div class="col-xs-6 col-sm-9 workspace">
+    <div class="col-xs-12 col-sm-9 workspace">
+    	<div class="toggle-sidebar">
+    		<i class="fa fa-navicon navicon"></i>
+    	</div>
 		<div class="panel-body">
 			<iframe src="{:U('/main',array('id'=>$n['id']))}" name="main" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$("#key").keyup(function(){ 
+	if(event.keyCode == 13){ 
+		$key=$(this).val();
+		$.post("{:U('/search')}",{key:$key},
+		   	function(data){
+		   		var count=data.length;
+		   		var html = "";
+					if($.isArray(data)){
+						for(i=0;i<count;i++){
+							html+="<li><a href=\"{:U('/main/id/"+data[i].id+"')}\">"+data[i].title+"</a></li>";
+						}
+						$('.search_ul').html(html); 
+					}
+		     	//console.log(data);
+		});
+	}
+});
+</script>
+<nicescroll/>
+<script type="text/javascript">
+$('#myTabContent').niceScroll({
+    cursorcolor: "#9d9d9d",//#CC0071 光标颜色
+    cursoropacitymax: 1, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+    touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+    scrollspeed:60,//滚动速度
+    autohidemode: false, //是否隐藏滚动条
+    cursorwidth:8,	//像素光标的宽度
+    horizrailenabled:false,
+    cursorborder:"1px solid #9d9d9d"//游标边框css定义
+});
 
+</script>
+<!--<manualjs/> -->
 </body>
 </html>

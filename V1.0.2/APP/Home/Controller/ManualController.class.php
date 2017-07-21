@@ -12,8 +12,16 @@ class ManualController extends Controller {
         $this->display();
     }
     public function main(){
-    	$id=I('id');
-    	$this->v=D('Manual')->where(array('id'=>$id))->find();
+        $where['id']=I('id');
+    	$this->v=D('Manual')->where($where)->find();
+        M('Manual')->where($where)->setInc('views');
     	$this->display();
+    }
+    public function ajax_key(){
+        $key=I('key');
+        $map['content'] = array('like','%'.$key.'%');
+        $search=D('Manual')->field('id,title')->where($map)->select();
+        //p($search);
+        $this->ajaxReturn($search);
     }
 }

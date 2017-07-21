@@ -7,14 +7,17 @@ a,a:hover, a:focus{text-decoration:none;color:#666;}
 .form-control:focus{border-color:#C9C9C9!important;box-shadow:none}
 /*head*/
 .title{border-bottom:1px solid #ddd;height:55px;padding:0 1em;}
-.title a{display:inline-block;line-height:55px;font-size:18px;}
+.title a{display:inline-block;line-height:55px;font-size:28px;font-family:"STXingkai";}
 
 @media screen and (min-width: 768px){
-	
+	.window-body.active .sidebar{display:none;}
+    .window-body.active .workspace{-webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;transition: all .25s ease-out;width:100%;}
 }
 @media screen and (max-width: 768px){
-	.workspace{display:none;-webkit-transition: all .25s ease-out;
-    -moz-transition: all .25s ease-out;transition: all .25s ease-out;}
+	.sidebar{display:none;}
+    .workspace{-webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;transition: all .25s ease-out;width:100%;}
 }
 .window-body{}
 /*sidebar*/
@@ -47,18 +50,23 @@ a,a:hover, a:focus{text-decoration:none;color:#666;}
  	-webkit-transition: all 0.25s ease;
  	-o-transition: all 0.25s ease;
  	transition: all 0.25s ease;}
- .submenu a:hover{background:#f2f2f2;}
+ .submenu a:hover,.search_list ul li:hover{background:#f2f2f2;}
 
 
-#search form div{padding-left:35px;padding-right:20px;}
-#search form div input{padding-right:30px;}
-#search form div .isearch{float:right;position:relative;top:-23px;right:10px;}
+#search .form-group{padding-left:35px;padding-right:20px;}
+#search .form-group input{padding-right:30px;}
+#search .form-group .isearch{float:right;position:relative;top:-23px;right:10px;}
 .search_list{border-top:1px solid #ddd;}
-.search_list ul{padding:15px 0;margin-left:25px;}
+.search_list ul{padding:15px 0;}
+.search_list ul li{padding-left:40px;}
+.search_list ul li a{display:block;line-height:30px;}
+.search_ul span{display:block;text-align:center;}
 
  .sidebar-copyright{background:#fafafa;border-top:1px solid #ccc;font-size:12px;padding:5px 0;text-align:center;line-height:24px;}
 /*workspace*/
 .workspace{padding:0;}
+.workspace .toggle-sidebar{font-size:20px;cursor:pointer;color:#7e888b;position:relative;left:30px;top:10px;}
+.workspace .toggle-sidebar:hover{color:#000;}
 .article-wrap h2{text-align:center;}
 #wordsView{padding-right:30px;width:auto;}
 #wordsView li{padding:3px 0;}

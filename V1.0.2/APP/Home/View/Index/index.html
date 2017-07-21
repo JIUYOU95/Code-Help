@@ -1,40 +1,77 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="CN_zh">
 <head>
-	<title>手册</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code Help</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
 <bootstrapcss/>
+<homecss/>
+
 </head>
-<body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">Code Help</a>
-    </div>
-    <div>
-        <ul class="nav navbar-nav">
-        	<foreach name="data" item="v">
-            <li><a href="{:U('/manual/'.$v['id'])}">{$v.name}</a></li>
-            </foreach>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Java <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">jmeter</a></li>
-                    <li><a href="#">EJB</a></li>
-                    <li><a href="#">Jasper Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
+<body data-hijacking="off" data-animation="parallax">
+    <section class="cd-section">
+        <div>
+            <h2><!--手册-->
+                <span>Manual</span>
+                <ul class="nav navbar-nav">
+                    <foreach name="data" item="v">
+                    <li><a href="{:U('/manual/'.$v['id'])}">{$v.name}</a></li>
+                    </foreach>
                 </ul>
-            </li>
-        </ul>
-    </div>
-    </div>
-</nav>
+            </h2>
+        </div>
+    </section>
 
-<bootstrapjs/>
+    <section class="cd-section">
+        <div>
+            <h2><!--页面-->
+                <span>Page</span>
+            </h2>
+        </div>
+    </section>
+
+    <section class="cd-section">
+        <div>
+            <h2><!--名词-->
+                <span>Word</span>
+            </h2>
+        </div>
+    </section>
+
+    <section class="cd-section">
+        <div>
+            <h2>无积分、无注册、无限制</h2>
+        </div>
+    </section>
+
+    <section class="cd-section visible">
+        <div>
+            <h2><!--联系方式-->
+                <span>Contact</span>
+                <div>
+                    <div class="address">
+
+                    </div>
+                    <div class="link"></div>
+                    <div class="copy"></div>
+                </div>
+            </h2>
+        </div>
+    </section>
+
+    <nav>
+        <ul class="cd-vertical-nav">
+            <li><a href="#0" class="cd-prev inactive">Next</a></li>
+            <li><a href="#0" class="cd-next">Prev</a></li>
+        </ul>
+    </nav>
+
+<jquery/>
+<homejs/>
+<nicescroll/>
+<manualjs/>
+
 </body>
 </html>
