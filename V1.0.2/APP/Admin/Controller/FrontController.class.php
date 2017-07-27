@@ -191,7 +191,6 @@ class FrontController extends AuthController {
 	}
 	public function sort_manual(){
 		$data[I('id')]=I('sort');
-		//p($data);die;
 		$result=D('Manual')->orderData($data,'id','sort');
 		if ($result) {
 			A('Config')->add_log('手册排序');

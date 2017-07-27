@@ -61,7 +61,6 @@ class BaseModel extends Model{
         foreach ($data as $k => $v) {
             $v=empty($v) ? null : $v;
             $this->where(array($id=>$k))->save(array($order=>$v));
-
         }
         return true;
     }

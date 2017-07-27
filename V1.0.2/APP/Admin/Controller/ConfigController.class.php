@@ -71,6 +71,92 @@ class ConfigController extends AuthController {
 	}
 
 	/*
+	 * 链接
+	 */
+	public function link(){
+		//分类
+		$type=D('Type')->select();
+		$font=Category::unlimitedForLevel($type,'&nbsp;&nbsp;&nbsp;&nbsp;├─','50');
+		$this->assign('type',$font);
+
+		// $data=D('Links')->getPage('','sort','10');
+		$data=D('Links')->getAllData('10');
+		//p($data);die;
+		$this->assign('data',$data);
+		$this->display();
+	}
+	public function add_link(){
+		$data=I('post.');
+		unset($data['id']);
+		$result=D('Links')->addData($data);
+		if ($result) {
+			A('Config')->add_log('添加链接-'.I('name'));
+			$this->success('添加成功',U('Config/link'));
+		}else{
+			$this->error('添加失败');
+		}
+	}
+	public function edit_link(){
+		$data=I('post.');
+		$map=array(
+			'id'=>$data['id']
+			);
+		$result=D('Links')->editData($map,$data);
+		if ($result) {
+			A('Config')->add_log('修改链接-'.I('name'));
+			$this->redirect('Config/link');
+		}else{
+			$this->error('修改失败');
+		}
+	}
+	public function sort_link(){
+		$data[I('id')]=I('sort');
+		$result=D('Links')->orderData($data,'id','sort');
+		if ($result) {
+			A('Config')->add_log('链接排序');
+			$this->show('排序成功');
+		}else{
+			$this->show('排序失败');
+		}
+	}
+	public function all_link(){
+		$ids=explode(',',substr(I('id'),1));
+		foreach($ids as $key=>$id){
+			if(!$this->del_link($id)){
+				$this->show(0);
+			}
+		}		
+		$this->show(1);
+	}
+	private function del_link($id){
+		if(!$id)
+			return false;
+		$where['id']=$id;
+	 	$count=D('Links')->where($where)->delete();
+	 	if($count){
+			return true;
+	 	}else{
+	 		return false;
+	 	}
+	}
+	public function state_link(){
+		$id=I('id');
+        $state=I('state');
+        if($state=='on'){
+            $msg='显示';
+        }elseif($state=='off'){
+            $msg='隐藏';
+        }
+        $count=M('Links')->where(array('id'=>$id))->setField('state',$state);
+        if($count>0){
+            A('Config')->add_log($msg.'链接-'.I('name'));
+            $this->redirect('Config/link');
+        }else{
+            $this->error('链接'.$msg.'失败！');
+        }
+	}
+
+	/*
 	 * 分类列表
 	 */
 	public function type(){

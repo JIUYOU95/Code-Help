@@ -7,8 +7,8 @@ class IndexController extends Controller {
     	//分类
 		$data=D('Type')->select();
 		$font=Category::unlimitedForLayer($data,'child','37');
-		//p($font);die;
 		$this->assign('data',$font);
+		//p($font);die;	
         $this->display();
     }
 }

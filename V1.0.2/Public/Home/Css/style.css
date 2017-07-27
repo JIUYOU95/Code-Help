@@ -1,14 +1,13 @@
 *, *::after, *::before {box-sizing: border-box;}
 html{font-size: 62.5%;}
-
-body{font-size: 1.6rem;font-family: "Open Sans", sans-serif;color: #ffffff;background-color: #22283f;
+body{font-size:1.6rem;font-family:"Open Sans",sans-serif;color:#ffffff;background-color: #22283f;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;}
 body::before {content: 'mobile';display: none;}
 @media only screen and (min-width: 1050px) {
   body::before{content: 'desktop';}
 }
-a{color:#fff;text-decoration: none;}
+a,a:visited,a:hover,a:active{color:#fff;text-decoration:none;}
 
 /* -------------------------------- 
 
@@ -112,7 +111,30 @@ Main Components
 @media only screen and (min-width: 1050px) {
   .cd-vertical-nav {display: block;}
 }
+.foreign{background:#C91F37;}
+.foreign:hover{background:#6C7A89;}
+.wisteria{background:#875F9A;}
+.wisteria:hover{background:#044F67;}
+.picton{background:#59ABE3;}
+.picton:hover{background:#F9690E;}
+.siskin{background:#7A942E;}
+.amber{background:#CA6924;}
+.lynch{background:#6C7A89;}
+.medium{background:#C93756;}
 
 /*手册*/
 .nav{overflow:hidden;padding:0 100px;width: 100%;}
 .nav li{float:left;display:inline-block;width:25%;height:150px;line-height:150px;font-size:3rem;}
+
+.link-nav li a{display:inline-block;width:100%;}
+
+.address{opacity:0.6;width:50%;margin:0 auto;padding-bottom:150px;background:#fff;}
+.address ul{color:#000;}
+.address ul li{text-align:left;vertical-align:middle;line-height:60px;font-size:18px;}
+.address ul li i{padding:0 30px 0 100px;}
+
+.copy{width:100%;display:block;padding:0 100px;}
+.copy p{padding:50px 0;}
+
+/*Links*/
+.container{margin:50px 100px;}

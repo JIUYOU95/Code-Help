@@ -21,7 +21,7 @@
 			<tr>
 				<td style="padding:0;"><input class="form-control" style="width:40px;height:30px;margin:0 auto;" type="text" name="{$v['id']}" value="{$v['sort']}" autocomplete="off"></td>
 				<td>{$v['_name']}</td>
-				<td style="text-align:center;">
+				<td>
 					<a href="javascript:;" navId="{$v['id']}" navName="{$v['name']}" onclick="add_child(this)">添加子菜单</a> |
 					<a href="javascript:;" navId="{$v['id']}" navName="{$v['name']}" navLink="{$v['link']}" onclick="edit(this)">修改</a> |
 					<a href="javascript:if(confirm('确定删除？'))location='{:U('del_type',array('id'=>$v['id'],'name'=>$v['name']))}'">删除</a>
