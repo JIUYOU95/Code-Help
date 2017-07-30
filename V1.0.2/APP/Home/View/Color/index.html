@@ -1,0 +1,18 @@
+<!--颜色-->
+<div class="container">
+	<div class="panel panel-default">
+	    <div class="panel-body">
+	    	<blockquote class="layui-elem-quote">Color</blockquote>
+			<!--列表-->
+			<ul class="color">
+				<foreach name="color" item="v">
+				<li style="background-color:{$v.color}">
+					<span>{$v.color}</span>
+					<span>{$v.en_name}</span>
+					<span>{$v.zh_name}</span>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+</div>

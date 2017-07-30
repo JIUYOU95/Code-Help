@@ -27,6 +27,9 @@ function clicksort(sort,id){
       alert(data);
   });
 }
+function autoSubmit(){
+    document.getElementById("form1").submit();
+}
 </script>
 <!--面包屑导航-->
 <ol class="breadcrumb">
@@ -34,6 +37,19 @@ function clicksort(sort,id){
     <li class="active">链接</li>
     <span class="btn btn-primary rightbut"  onclick="add()">新增链接</span>
 </ol>
+
+<!--search-->
+<form class="form-inline" role="form" id="form1" action="{:U('link')}" method="get">
+    <div class="form-group">
+        <select name="pid" class="selectpicker show-tick" onChange="autoSubmit();">
+          <option value="">所有</option>
+            <foreach name="type" item="v">
+                <option value="{$v.id}" <if condition="$v['id'] eq $pid">selected</if>>{$v.html}{$v.name}</option>
+            </foreach>
+        </select>
+    </div>
+</form>
+
 
 <div class="layui-form">
   	<table class="layui-table" lay-skin="line">

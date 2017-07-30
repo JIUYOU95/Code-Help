@@ -1,0 +1,42 @@
+<bootstrapselect/>
+<fontb/>
+
+<script type="text/javascript">
+function autoSubmit(){
+    document.getElementById("form1").submit();
+}
+</script>
+<div class="container">
+	<div class="panel panel-default">
+	    <div class="panel-body">
+	    	<blockquote class="layui-elem-quote">字体图标</blockquote>
+
+	        <!--search-->
+			<form class="form-inline" role="form" id="form1" action="{:U('index')}" method="post">
+			    <div class="form-group">
+			        <select name="pid" class="selectpicker show-tick" onChange="autoSubmit();">
+			            <foreach name="data" item="v">
+			                <option value="{$v.id}" <if condition="$v['id'] eq $pid">selected</if>>{$v.html}{$v.name}</option>
+			            </foreach>
+			        </select>
+			    </div>
+			    <div class="form-group">
+			        <if condition="$type['link'] neq ''">
+			            <a href="{$type['link']}" target="_blank" class="btn btn-primary"><i class="fa fa-paper-plane-o"></i> 官网地址</a>
+			        </if>
+			    </div>
+			</form>
+
+			<!--列表-->
+			<ul class="font">
+			    <foreach name="lists" item="vc">
+			    <li>
+			        <i class="fa fa-{$vc.en_name} fa-3x icon-{$vc.en_name} icon-3x" class="fa fa-remove" ></i>
+			        <span class="font_zh">{$vc.zh_name}</span>
+			        <span class="font_en">{$vc.en_name}</span>
+			    </li>
+			    </foreach>
+			</ul>
+	    </div>
+	</div>
+</div>

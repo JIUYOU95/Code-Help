@@ -2,7 +2,7 @@
 return array(
 	//'配置项'=>'配置值'
 	//模板布局
-	'LAYOUT_ON'=>false,
+	'LAYOUT_ON'=>true,
 	'LAYOUT_NAME'=>'layout',
 	// URL模式
 	'URL_MODEL'			=> '2',

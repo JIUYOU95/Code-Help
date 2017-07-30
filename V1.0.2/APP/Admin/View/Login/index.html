@@ -46,7 +46,7 @@
             callback: function (response) {
                 console.log(response);
                 if (response.valid  == 1) {
-                    location.href = "http://code.think.com/Admin/";
+                    location.href ="{:U('Admin/Index/index')}";
                 }else{
                     util.message(response.message, '', 'info');
 

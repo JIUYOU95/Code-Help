@@ -10,6 +10,11 @@ $(function() {
         $(".accordion li div").removeClass("active");
         $(this).addClass("active");
     });
+     $(".accordion .lins").click(function(){
+        $(".accordion li").removeClass("active");
+        //$(".submenu li").removeClass("active");
+        $(this).addClass("active");
+    });
     var Accordion = function(el, multiple) {
         this.el = el || {};
         this.multiple = multiple || false;

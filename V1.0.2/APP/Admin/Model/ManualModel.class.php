@@ -23,11 +23,12 @@ class ManualModel extends BaseModel {
 		if(is_array($map)){
 			$where=array('m.pid'=>array('IN',$map));
 			$whered=array('pid'=>array('IN',$map));
-		}else{
-			$where['m.pid']=$map;
-			$whered['pid']=$map;
-			
 		}
+		// else{
+		// 	$where['m.pid']=$map;
+		// 	$whered['pid']=$map;
+			
+		// }
 		//数据条数
 		$count=$this->where($whered)->count();
          //p($count);die;

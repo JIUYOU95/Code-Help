@@ -185,7 +185,6 @@ php;
     /*home*/
     public function _homecss(){
          $link=<<<php
-    <link rel="stylesheet" href="__PUBLIC__/Home/Css/reset.css" />
     <link rel="stylesheet" href="__PUBLIC__/Home/Css/style.css" />
 php;
     return $link;

@@ -31,22 +31,30 @@
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane fade in active" id="list">
 				<ul class="list-group accordion" id="accordion">
-                <foreach name="data" item="v">
-    				<empty name="v['list']">
-    				<li>
-    					<div class="link">{$v['name']}</div>
-    				</li>
-    				<else/>
-    				<li>
-    					<div class="link"><i class="fa fa-caret-right"></i>{$v['name']}</div>
-    					<ul class="submenu">
-    					<foreach name="v['list']" item="n">
-    						<li><a href="{:U('/main',array('id'=>$n['id']))}" class="site-demo-active"><span>{$n['title']}</span></a></li>
-    					</foreach><!-- data-type="tabAdd" -->
-    					</ul>
-    				</li>
-    				</empty>
-    			</foreach>
+				<empty name="manual">
+	                <foreach name="data" item="v">
+	    				<empty name="v['list']">
+	    				<li>
+	    					<div class="link">{$v['name']}</div>
+	    				</li>
+	    				<else/>
+	    				<li>
+	    					<div class="link"><i class="fa fa-caret-right"></i>{$v['name']}</div>
+	    					<ul class="submenu">
+	    					<foreach name="v['list']" item="n">
+	    						<li><a href="{:U('/main',array('id'=>$n['id']))}" class="site-demo-active"><span>{$n['title']}</span></a></li>
+	    					</foreach><!-- data-type="tabAdd" -->
+	    					</ul>
+	    				</li>
+	    				</empty>
+	    			</foreach>
+	    		<else />
+	    			<foreach name="manual" item="v">
+	    			<li class="lins">
+	    				<a href="{:U('/main',array('id'=>$v['id']))}" class="site-demo-active">{$v['title']}</a>
+	    			</li>
+	    			</foreach>
+	    		</empty>
             	</ul>
 			</div>
 			<div class="tab-pane fade in" id="search">

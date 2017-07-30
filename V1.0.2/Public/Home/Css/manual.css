@@ -38,13 +38,14 @@ a,a:hover, a:focus{text-decoration:none;color:#666;}
 	-webkit-transition: all 0.4s ease;
 	-o-transition: all 0.4s ease;
 	transition: all 0.4s ease;}
-
 .accordion .active,.site-demo-active .pc{background-color:#e5e5e5;}
 .accordion li.open i.fa-caret-right{
 	-webkit-transform: rotate(90deg);
 	-ms-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	transform: rotate(90deg);}
+
+.accordion .lins a{display:block;padding-left:40px;}
 .submenu {display:none;}
 .submenu a{display:block;text-decoration:none;padding-left:80px;
  	-webkit-transition: all 0.25s ease;

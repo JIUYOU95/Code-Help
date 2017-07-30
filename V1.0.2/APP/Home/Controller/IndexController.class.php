@@ -4,6 +4,7 @@ use Think\Controller;
 use Common\Common\Category;
 class IndexController extends Controller {
     public function index(){
+    	layout(false); 
     	//分类
 		$data=D('Type')->select();
 		$font=Category::unlimitedForLayer($data,'child','37');

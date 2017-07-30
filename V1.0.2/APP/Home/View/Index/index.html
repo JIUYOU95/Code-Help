@@ -6,16 +6,17 @@
 <title>Code Help</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<font/>
-<homecss/>
 
+<font/>
+<css href="__PUBLIC__/Home/Css/reset.css" />
+<homecss/>
 </head>
 <body data-hijacking="off" data-animation="parallax">
     <section class="cd-section">
         <div>
             <h2><!--手册-->
                 <span>Manual</span>
-                <ul class="nav navbar-nav">
+                <ul class="link-nav manual">
                     <foreach name="data" item="v">
                     <li><a href="{:U('/manual/'.$v['id'])}">{$v.name}</a></li>
                     </foreach>
@@ -28,10 +29,10 @@
         <div>
             <h2><!--页面-->
                 <span>Page</span>
-                <ul class="nav link-nav">
+                <ul class="link-nav">
                     <li><a href="{:U('Links/index')}" class="foreign">Link</a></li>
-                    <li><a href="" class="wisteria">Color</a></li>
-                    <li><a href="" class="picton">Icon Font</a></li>
+                    <li><a href="{:U('Color/index')}" class="wisteria">Color</a></li>
+                    <li><a href="{:U('Font/index')}" class="picton">Font</a></li>
                 </ul>
             </h2>
         </div>
@@ -47,7 +48,9 @@
 
     <section class="cd-section">
         <div>
-            <h2>无积分、无注册、无限制</h2>
+            <h2>
+                <span>Image</span>
+            </h2>
         </div>
     </section>
 
@@ -60,6 +63,7 @@
                     <li><i class="fa fa-phone"></i>18702629929</li>
                     <li><i class="fa fa-envelope"></i>jian34long@163.com</li>
                     <li><i class="fa fa-weixin"></i>jiuyou95</li>
+                    <li><i class="fa fa-qq"></i>1547560934</li>
                     </ul>
                 </div>
                 <div class="copy">

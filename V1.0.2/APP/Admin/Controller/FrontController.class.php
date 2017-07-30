@@ -123,13 +123,14 @@ class FrontController extends AuthController {
 			$cids[]=$id;
 			//$where=array('m.pid'=>array('IN',$cids));
 			$this->pid=I('pid');
-		}else{
-			//$where['m.pid']='42';
-			$cids='42';
-			$this->pid='42';
 		}
+		// else{
+		// 	//$where['m.pid']='42';
+		// 	$cids='42';
+		// 	$this->pid='42';
+		// }
 		//p($cids);die;
-		$manual=D('Manual')->getAllData($cids,10);
+		$manual=D('Manual')->getAllData($cids,14);
 		$this->assign('list',$manual);
 		$this->display();
 	}

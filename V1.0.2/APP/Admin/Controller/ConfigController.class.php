@@ -78,9 +78,12 @@ class ConfigController extends AuthController {
 		$type=D('Type')->select();
 		$font=Category::unlimitedForLevel($type,'&nbsp;&nbsp;&nbsp;&nbsp;├─','50');
 		$this->assign('type',$font);
-
-		// $data=D('Links')->getPage('','sort','10');
-		$data=D('Links')->getAllData('10');
+		//查询条件
+		if(I('pid')){
+			$id=I('pid');
+			$this->pid=I('pid');
+		}
+		$data=D('Links')->getAllData('14',$id);
 		//p($data);die;
 		$this->assign('data',$data);
 		$this->display();
@@ -91,7 +94,7 @@ class ConfigController extends AuthController {
 		$result=D('Links')->addData($data);
 		if ($result) {
 			A('Config')->add_log('添加链接-'.I('name'));
-			$this->success('添加成功',U('Config/link'));
+			$this->success('添加成功',U('Config/link',array('pid'=>I('pid'))));
 		}else{
 			$this->error('添加失败');
 		}
@@ -104,7 +107,7 @@ class ConfigController extends AuthController {
 		$result=D('Links')->editData($map,$data);
 		if ($result) {
 			A('Config')->add_log('修改链接-'.I('name'));
-			$this->redirect('Config/link');
+			$this->redirect('Config/link',array('pid'=>I('pid')));
 		}else{
 			$this->error('修改失败');
 		}
