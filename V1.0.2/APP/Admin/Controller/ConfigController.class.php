@@ -75,7 +75,7 @@ class ConfigController extends AuthController {
 	 */
 	public function link(){
 		//分类
-		$type=D('Type')->select();
+		$type=D('Type')->order('sort')->select();
 		$font=Category::unlimitedForLevel($type,'&nbsp;&nbsp;&nbsp;&nbsp;├─','50');
 		$this->assign('type',$font);
 		//查询条件
@@ -163,7 +163,7 @@ class ConfigController extends AuthController {
 	 * 分类列表
 	 */
 	public function type(){
-		$data=D('Type')->getTreeData('tree','id');
+		$data=D('Type')->getTreeData('tree','sort');
 		$this->assign('data',$data);
 		$this->display();
 	}

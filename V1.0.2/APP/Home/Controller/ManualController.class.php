@@ -7,6 +7,7 @@ class ManualController extends Controller {
         layout(false); 
     	$pid=I('pid');
 		$data=D('Type')->where(array('pid'=>$pid))->relation(true)->select();
+
         if(empty($data)){
             $manual=D('Manual')->where(array('pid'=>$pid))->select();
             $this->assign('manual',$manual);

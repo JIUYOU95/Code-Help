@@ -74,7 +74,7 @@ function clicksort(sort,id){
     <tr>
       <td><input type="checkbox" value="{$v['id']}" id="{$v.id}" name='id' lay-skin="primary"></td>
       <td style="padding:0 10px;">
-        <input class="form-control" style="width:40px;height:30px;display:inline-block;" type="text" name="sort" value="{$v['sort']}" id="sort_{$v['id']}" autocomplete="off">
+        <input class="form-control" style="width:50px;height:30px;display:inline-block;" type="text" name="sort" value="{$v['sort']}" id="sort_{$v['id']}" autocomplete="off">
         <input onclick="clicksort('sort_{$v.id}','{$v.id}')" type="button" value="排序"  class="layui-btn layui-btn-primary layui-btn-small" />
       </td>
       <td><a href="{:U('edit_manual',array('id'=>$v['id']))}">{$v.title}</a></td>

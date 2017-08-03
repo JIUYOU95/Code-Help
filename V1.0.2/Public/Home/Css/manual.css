@@ -2,6 +2,7 @@
 body{font-family:'Microsoft Yahei';font-size:14px;overflow-x:hidden;}
 ul,ol,li{list-style:none;margin:0;padding:0;}
 a,a:hover, a:focus{text-decoration:none;color:#666;}
+code{color: #c7254e;}
 .col-xs-12,.col-sm-3{padding:0;}
 .form-control{border-radius:2px;box-shadow:none;border:1px solid #e6e6e6;}
 .form-control:focus{border-color:#C9C9C9!important;box-shadow:none}
@@ -68,7 +69,7 @@ a,a:hover, a:focus{text-decoration:none;color:#666;}
 .workspace{padding:0;}
 .workspace .toggle-sidebar{font-size:20px;cursor:pointer;color:#7e888b;position:relative;left:30px;top:10px;}
 .workspace .toggle-sidebar:hover{color:#000;}
-.article-wrap h2{text-align:center;}
+.article-wrap h2{text-align:center;font-size:32px;font-weight:500;}
 #wordsView{padding-right:30px;width:auto;}
 #wordsView li{padding:3px 0;}
 .editormd-preview-container, .editormd-html-preview{line-height:1.9;}
