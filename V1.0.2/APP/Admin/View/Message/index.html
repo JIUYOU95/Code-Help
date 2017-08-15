@@ -1,0 +1,120 @@
+<include file="Public:header" />
+<layuicss/>
+<script type="text/javascript">
+$(function(){
+     //ajax删除
+    $('input[type="button"]').click(function(){
+      var text="";
+      $("input[name=id]").each(function(){
+        if ($(this).prop("checked")) {
+          text += ","+$(this).val();
+        }
+      });
+      $.get("{:U('del_msg')}",{'id':text},function(data){
+        if(data){
+          alert('留言删除成功');
+          window.location='__ACTION__';
+        }else{
+          alert('留言删除失败');
+        }
+      });
+    });
+})
+</script>
+<!--面包屑导航-->
+<ol class="breadcrumb">
+    <li><a href="{:U('Index/Welcome')}">Home</a></li>
+    <li>留言评论</li>
+    <li class="active">首页留言</li>
+</ol>
+
+<div class="layui-form">
+  	<table class="layui-table" lay-skin="line">
+	    <colgroup>
+        <col width="50">
+	      <col>
+	    </colgroup>
+		<thead>
+		<tr>
+      <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+      <th>姓名</th>
+      <th>Email</th>
+      <th>IP</th>
+      <th>时间</th>
+      <th>查阅</th>
+		</tr>
+		</thead>
+		<tbody>
+    <foreach name="Messagelist.data" item="vo">
+    <tr>
+      <td><input type="checkbox" value="{$vo['id']}" id="{$vo.id}" name='id' lay-skin="primary"></td>
+      <td>{$vo.to_user}</td>
+      <td>{$vo.email}</td>
+      <td>{$vo.ip}</td>
+      <td>{$vo.optime|date='Y-m-d H:i:s',###}</td>
+      <td><a href="javascript:;" onclick="message('{$vo.id}')">详细</a></td>
+    </tr>
+    </foreach>
+		</tbody>
+	</table>
+  <input type="button" value='删除' class="btn btn-default">
+  <div class="page">
+  {$Messagelist.page}
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">留言查看</h4>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group message">
+                  <li class="list-group-item"><span>留言者</span><span class="user"></span></li>
+                  <li class="list-group-item"><span>邮箱</span><span class="email"></span></li>
+                  <li class="list-group-item"><span>时间</span><span class="time"></span></li>
+                  <li class="list-group-item"><span>IP</span><span class="ip"></span></li>
+                  <li class="list-group-item"><span>内容</span><span class="content"></span></li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<layuijs/>
+<script>
+layui.use('form', function(){
+  var form = layui.form();
+  //全选
+  form.on('checkbox(allChoose)', function(data){
+    var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+    child.each(function(index, item){
+      item.checked = data.elem.checked;
+    });
+    form.render('checkbox');
+  });
+})
+function message(data){
+  $.get("{:U('read_msg')}",{'id':data},function(data){
+    if(data){
+      $('#myModal').modal({keyboard: true})
+      $(".user").html(data['to_user']);
+      $(".email").html(data['email']);
+      $(".time").html(data['optime']);
+      $(".ip").html(data['ip']);
+      $(".content").html(data['content']);
+      console.log(data);
+    }else{
+      alert('读取失败！');
+    }
+  });
+}
+</script>
+
+<include file="Public:footer" />

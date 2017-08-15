@@ -7,7 +7,7 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 
-<font/>
+<layuicss/>
 <css href="__PUBLIC__/Home/Css/reset.css" />
 <homecss/>
 </head>
@@ -29,10 +29,28 @@
         <div>
             <h2><!--页面-->
                 <span>Page</span>
-                <ul class="link-nav">
-                    <li><a href="{:U('Links/index')}" class="foreign">Link</a></li>
-                    <li><a href="{:U('Color/index')}" class="wisteria">Color</a></li>
-                    <li><a href="{:U('Font/index')}" class="picton">Font</a></li>
+                <ul id="hexGrid">
+                    <li class="hex"> 
+                        <a class="hexIn" href="{:U('Links/index')}"> 
+                            <img src="__PUBLIC__/Home/Images/link.png" alt="" />
+                            <h1>Link</h1>
+                            <p>IT类链接归类</p>
+                        </a>
+                    </li>
+                    <li class="hex"> 
+                        <a class="hexIn" href="{:U('Color/index')}"> 
+                            <img src="__PUBLIC__/Home/Images/color.jpg" alt="" />
+                            <h1>Color</h1>
+                            <p>颜色显示</p>
+                        </a>
+                    </li>
+                    <li class="hex"> 
+                        <a class="hexIn" href="{:U('Font/index')}"> 
+                            <img src="__PUBLIC__/Home/Images/font.jpg" alt="" />
+                            <h1>Font</h1>
+                            <p>字体图标中文对译</p>
+                        </a>
+                    </li>
                 </ul>
             </h2>
         </div>
@@ -60,11 +78,34 @@
                 <span>Contact</span>
                 <div class="address">
                     <ul>
-                    <li><i class="fa fa-phone"></i>18702629929</li>
-                    <li><i class="fa fa-envelope"></i>jian34long@163.com</li>
-                    <li><i class="fa fa-weixin"></i>jiuyou95</li>
-                    <li><i class="fa fa-qq"></i>1547560934</li>
+                        <li><h4>手机</h4>18702629929</li>
+                        <li><h4>邮箱</h4>jian34long@163.com</li>
+                        <li><h4>微信</h4>jiuyou95</li>
+                        <li><h4>QQ</h4>1547560934</li>
                     </ul>
+                    <form  class="layui-form layui-form-pane" action="{:U('./message')}" method="post">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="to_user" required placeholder="用户名" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-inline">
+                              <input type="email" name="email" required placeholder="邮箱" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">留言区域</label>
+                            <div class="layui-input-block">
+                              <textarea class="layui-textarea" name="content" required placeholder="请写下你的建议"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button type="submit" class="layui-btn">提交</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="copy">
                     <p>CopyRight © 2016 九幽IT 版权所有 粤ICP备16060013号-1</p>
@@ -85,6 +126,11 @@
 <homejs/>
 <nicescroll/>
 <manualjs/>
-
+<layuijs/>
+<script>
+layui.use('form', function(){
+  var form = layui.form();
+})
+</script>
 </body>
 </html>

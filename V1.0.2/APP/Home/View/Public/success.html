@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>{$message}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<bootstrapcss/>
+<style type="text/css">
+body{font-family:"Microsoft Yahei";}
+.alert{padding:15px;}
+.alert-info{color: #31708f;}
+.pull-left p{height:56px;line-height:56px;}
+.modal-body{overflow:hidden;}
+</style>
+</head>
+<body>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content alert alert-info">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    {$message}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <i class="fa fa-check-circle fa-4x pull-left"></i>
+                <div class="pull-left">
+                   <p class="countdown">{$waitSecond}秒后自动跳转到首页！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<bootstrapjs/>
+<script>
+$(function(){
+    //显示毫秒跳动
+    var i={$waitSecond}-1;
+     setInterval(function(){
+        $(".countdown").html(i + "秒后自动跳转到首页！");
+         i--;
+    },1000);
+    //模态框自动激活
+    $('#myModal').modal()
+    $('#myModal').on('hide.bs.modal',
+        $(document).ready(function(){
+            setTimeout('delayer()',{$waitSecond}000); 
+        })
+    )
+});
+//跳动函数
+function delayer(){
+    window.location="{$jumpUrl}";
+}
+</script>
+
+
+
+</body>
+</html>

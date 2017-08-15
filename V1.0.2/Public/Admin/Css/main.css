@@ -94,6 +94,9 @@ input[type=radio], input[type=checkbox]{margin: 7px 0 0;}
 .tool_address label{font-size:14px;padding:0 20px;}
  /*管理员*/
  .user_list_edit a{width:20px;display:inline-block;text-align:center;}
+ /*Message*/
+.message li span{display:inline-block;width:20%;}
+
  /*分页*/
 .page{display:block;border-radius:3px;text-align:center;}
 .page div{overflow:hidden;display:inline-block;}
