@@ -1,0 +1,15 @@
+<script>
+    require(['util','select2'],function () {
+        require(['__PUBLIC__/js/app.js', 'css!__PUBLIC__/css/app.css']);
+        require(['angular','jquery'],function (angualr,$) {
+            angular.module('app', []).controller('ctrl', ['$scope','$http','$filter', function ($scope,$http, $filter) {
+                if (angular.isFunction(controller)) {
+                    controller($scope,$http,$filter);
+                }
+            }]);
+            angular.bootstrap(document.getElementsByTagName('body'), ['app']);
+        });
+    })
+</script>
+</body>
+</html>

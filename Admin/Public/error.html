@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //配置后台地址
+        var app = {
+            'base': 'vendor',
+        };
+    </script>
+    <script src="vendor/require.js"></script>
+    <script src="vendor/config.js"></script>
+    <style>
+        .ng-cloak {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-cloak class="ng-cloak" ng-controller="ctrl">
+<div class="container">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <div class="panel panel-default error">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        页面错误
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <i class="fa fa-exclamation-circle fa-4x pull-left"></i>
+                    <div class="pull-left">
+                        <p>页面错误，请及时联系开发者处理，谢谢！</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2"></div>
+
+</div>
+
+
+<script>
+    require(['css!../../css/app.css']);
+    require(['util','angular','jquery'],function () {
+        angular.module('app', []).controller('ctrl', ['$scope', function ($scope) {
+            }]);
+        angular.bootstrap(document.getElementsByTagName('body'), ['app']);
+    });
+
+</script>
+
+</body>
+</html>

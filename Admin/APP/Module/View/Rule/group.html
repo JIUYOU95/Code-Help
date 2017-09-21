@@ -1,0 +1,101 @@
+<include file="Public:header" />
+<ul class="breadcrumb row navigation">
+    <li><a href="{:U('./Theme/welcome')}"><i class="fa fa-home"></i> Home</a></li>
+    <li><a href="#">权限控制</a></li>
+    <li class="active">用户组管理</li>
+    <span class="btn btn-primary rightbut" onclick="add()">新增用户组</span>
+</ul>
+<!--用户组列表-->
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-bordered table-hover table-condensed">
+            <thead>
+            <tr>
+                <th>用户组名</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <foreach name="data" item="v">
+                <tr>
+                    <td>{$v['title']}</td>
+                    <td>
+                        <a href="javascript:;" ruleId="{$v['id']}" ruleTitle="{$v['title']}" onclick="edit(this)">修改</a> |
+                        <a href="javascript:if(confirm('确定删除？'))location='{:U('delete_group',array('id'=>$v['id'],'title'=>$v['title']))}'">删除</a> |
+                        <a href="{:U('rule_group',array('id'=>$v['id']))}">分配权限</a> |
+                        <a href="{:U('Admin/Rule/check_user',array('group_id'=>$v['id']))}">新增成员</a>
+                    </td>
+                </tr>
+            </foreach>
+        </table>
+    </div>
+</div>
+<!--新增用户组-->
+<div class="modal fade" id="myModal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
+                <h4 class="modal-title" id="myModalLabel">添加用户组</h4>
+            </div>
+            <form class="form-horizontal" action="{:U('add_group')}" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">用户组名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  id="title" name="title" placeholder="请输入用户组名" autocomplete="off" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">提交更改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--修改用户组-->
+<div class="modal fade" id="myModal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button>
+                <h4 class="modal-title" id="myModalLabel">修改用户组</h4>
+            </div>
+            <form class="form-horizontal" action="{:U('edit_group')}" method="post">
+                <input type="hidden" name="id">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">用户组名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  id="title" name="title" placeholder="请输入用户组名" autocomplete="off" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">提交更改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function controller($scope, $, _) {
+    }
+    // 添加菜单
+    function add(){
+        $("input[name='title']").val('');
+        $('#myModal-add').modal('show');
+    }
+    // 修改菜单
+    function edit(obj){
+        var ruleId=$(obj).attr('ruleId');
+        var ruletitle=$(obj).attr('ruletitle');
+        $("input[name='id']").val(ruleId);
+        $("input[name='title']").val(ruletitle);
+        $('#myModal-edit').modal('show');
+    }
+</script>
+<include file="Public:footer" />
